@@ -1,7 +1,4 @@
 // File js
-import "./generateMap";
-import "./fetchAPI"
-import "./generatePoint"
 import "./initializeApp"
 
 // File css
