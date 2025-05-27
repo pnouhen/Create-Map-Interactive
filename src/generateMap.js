@@ -1,5 +1,6 @@
 /* Generate the map with OpenStreetMap**/
 import L from "leaflet";
+import { generateClusters } from "./generateClusters";
 import "leaflet/dist/leaflet.css";
 
 export function generateMap() {
@@ -9,7 +10,8 @@ export function generateMap() {
     maxZoom: 19,
     attribution:
       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  }).addTo(map);
+  
+    }).addTo(map);
 
   return map
 }

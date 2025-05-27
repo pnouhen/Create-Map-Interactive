@@ -1,16 +1,19 @@
-import { getDataRnn } from "./fetchAPI";
+import { getDataRnn } from "./getDataRnn";
 import { generateClusters } from "./generateClusters";
 
 export async function initializeApp() {
-  const local = JSON.parse(localStorage.getItem("dataRnn"));
 
-  if (local === null) {
-    const dataRnn = await getDataRnn();
-    generateClusters(dataRnn);
+  // For recover data
+  let local = []
+  if(!localStorage.getItem("dataRnn")){
+    local = await getDataRnn()
   } else {
-    const dataRnn = local;
-    generateClusters(dataRnn);
+    local = JSON.parse(localStorage.getItem("dataRnn"))
   }
+
+  let store = [...local.features]
+
+  generateClusters(store)
 }
 
 initializeApp();

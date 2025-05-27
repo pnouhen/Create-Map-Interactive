@@ -1,16 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Carte Interactive</title>
     <script type="module" src="/src/main.js"></script>
-    
   </head>
   <body>
     <main>
-      <div id="map">
+      <div id="map"></div>
+      <div class="filter">
+        <h2>
+          Filtres
+        </h2>
+        <form action="">
+        <div class="rnnNorth">
+          <label for="RnnNorth" id="RnnNorthLabel">Réserves naturelles situées au nord</label>
+          <input type="checkbox" id="RnnNorthInput" />
+        </div>
       </div>
+      
+      </form>
     </main>
   </body>
 </html>
