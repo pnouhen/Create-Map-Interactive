@@ -1,6 +1,7 @@
 // Generate ToolTip in generatePoint.js
+import L from "leaflet";
 
-export function generateToolTip(L, marker, dataRnn, map) {
+export function generateToolTip(marker, dataRnn, map) {
   // Search the id in dataRnn.features
   const id = marker.target.id;
   const markerSelect = dataRnn.features.find((item) => item.id === id);

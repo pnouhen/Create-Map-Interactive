@@ -1,19 +1,23 @@
 // Generate nature reserve with a grid
-import { generateMap } from "./generateMap";
 import { generateToolTip } from "./generateToolTip";
 
-export function generatePoints(dataRnn) {
-  const map = generateMap(L);
+import L from "leaflet";
 
-  for (let i = 0; i < dataRnn.features.length; i++) {
-    const marker = L.marker([
-      dataRnn.features[i].bbox[1],
-      dataRnn.features[i].bbox[0],
-    ]).addTo(map);
+export function generatePoints(dataRnn, map) {
+  const markers = [];
+
+  dataRnn.features.forEach((element) => {
+    const lat = element.bbox[1];
+    const lng = element.bbox[0];
+    const marker = L.marker([lat, lng]);
+
     // Associate dataRnn.features =>  marker
-    marker["id"] = dataRnn.features[i].id;
+    marker["id"] = element.id;
 
     // Generate ToolTip
-    marker.on("click", (marker) => generateToolTip(L, marker, dataRnn, map));
-  }
+    marker.on("click", (marker) => generateToolTip(marker, dataRnn, map));
+
+    markers.push(marker);
+  });
+  return markers;
 }
