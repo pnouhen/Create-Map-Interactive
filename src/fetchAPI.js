@@ -1,7 +1,6 @@
 // Data is generated in localStorage for to avoid making a call to the retrieval API for  each item
 
-export async function fetchAPI() {
-  const apiUrl = "https://apicarto.ign.fr/api/nature/rnn";
+export async function fetchAPI(apiUrl, dataName) {
 
   try {
     const response = await fetch(apiUrl);
@@ -10,10 +9,10 @@ export async function fetchAPI() {
       throw new Error(`Response status : ${response.status}`);
     }
 
-    const dataBase = await response.json();
-    localStorage.setItem("dataRnn", JSON.stringify(dataBase));
+    const data = await response.json();
+    localStorage.setItem(dataName, JSON.stringify(data));
+    return data;
 
-    return dataBase;
   } catch (error) {
     console.error("Catch :", error.message);
   }

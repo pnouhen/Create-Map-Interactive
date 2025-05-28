@@ -1,4 +1,6 @@
-import { generatePoints } from "./generatePoint";
+import { generateMarker } from "./generateMarker";
+import { generatePolygon } from "./generatePolygon";
+
 import L from "leaflet";
 import "leaflet.markercluster/dist/leaflet.markercluster.js";
 import "leaflet.markercluster/dist/MarkerCluster.css";
@@ -14,11 +16,9 @@ export function generateClusters(store, map) {
     clusterGroup.clearLayers();
   }
 
+  // Generate cluster
   clusterGroup = L.markerClusterGroup();
-
-  const markers = generatePoints(store, map);
-
-  markers.forEach((marker) => clusterGroup.addLayer(marker));
-
+  const markers = generateMarker(store, map);
+  markers.forEach((el) => clusterGroup.addLayer(el));
   map.addLayer(clusterGroup);
 }

@@ -2,7 +2,8 @@
 import L from "leaflet";
 
 export function generateToolTip(marker, store, map) {
-  // Search the id in store.features
+
+  // Search the id in store
   const id = marker.target.id;
   const markerSelect = store.find((item) => item.id === id);
 
