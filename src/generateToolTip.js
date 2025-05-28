@@ -7,7 +7,7 @@ export function generateToolTip(marker, store, map) {
   const markerSelect = store.find((item) => item.id === id);
 
   // Create ToolTip
-  var popup = L.popup();
+  const popup = L.popup();
   popup
     .setLatLng(marker.latlng)
     .setContent(
@@ -15,5 +15,5 @@ export function generateToolTip(marker, store, map) {
         "<br/>" +
         markerSelect.properties.url.toString()
     )
-    .openOn(map);
+    .addTo(map);
 }

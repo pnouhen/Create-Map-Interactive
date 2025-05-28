@@ -1,19 +1,18 @@
-import { getDataRnn } from "./getDataRnn";
+import { getData } from "./getData";
+import { generateMap } from "./generateMap";
 import { generateClusters } from "./generateClusters";
+import { filterNorth } from "./filterNorth";
 
 export async function initializeApp() {
+  const dataRnn = await getData();
+  let store = dataRnn;
 
-  // For recover data
-  let local = []
-  if(!localStorage.getItem("dataRnn")){
-    local = await getDataRnn()
-  } else {
-    local = JSON.parse(localStorage.getItem("dataRnn"))
-  }
+  const map = generateMap();
 
-  let store = [...local.features]
+  generateClusters(store, map);
+  
+  filterNorth(store, dataRnn, map)
 
-  generateClusters(store)
 }
 
 initializeApp();

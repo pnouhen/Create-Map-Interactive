@@ -2,6 +2,7 @@
 import { generateToolTip } from "./generateToolTip";
 
 export function generatePoints(store, map) {
+  let markers = [];
 
   store.forEach((element) => {
     const lat = element.bbox[1];
@@ -12,6 +13,11 @@ export function generatePoints(store, map) {
     marker["id"] = element.id;
 
     // Generate ToolTip
-    marker.on("click", (marker) => generateToolTip(marker, dataRnn, map));
+    marker.on("click", (marker) => generateToolTip(marker, store, map));
+
+    // Push marker in markers
+    markers.push(marker);
   });
+
+  return markers;
 }
