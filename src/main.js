@@ -1,5 +1,6 @@
 // File js
-import "./initializeApp"
+import "./generateClusters"
+import "./filterNorth"
 
 // File css
 import "./style.css";

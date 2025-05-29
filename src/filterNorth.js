@@ -1,23 +1,27 @@
+import { storeRnn } from "./storeRnn";
 import { generateClusters } from "./generateClusters";
 
-export function filterNorth(store, dataRnn, map) {
-  //  The filter
+export function filterNorth() {
+  const RnnNorthMapCheck = document.getElementById("RnnNorthInput");
+  const RnnNorthMapLabel = document.getElementById("RnnNorthLabel");
+
   function filterLatNorth(value) {
     return value >= 46.387255 && value <= 52;
   }
-  
-  // When the input is checked, the font-weight label increase and the filter activates 
-  const RnnNorthMapCheck = document.getElementById("RnnNorthInput");
-  const RnnNorthMapLabel = document.getElementById("RnnNorthLabel");
-  
+
   RnnNorthMapCheck.addEventListener("click", () => {
     RnnNorthMapLabel.classList.toggle("inputActive");
-    if(RnnNorthMapCheck.checked){
-      store = [];
-      store = dataRnn.features.filter((el) => filterLatNorth(el.bbox[1]))
+    
+    // If the check is active, un new tableau is create with the filter and generateClusters with a new filter
+    if (RnnNorthMapCheck.checked) {
+      const filteredData = {
+        features: storeRnn.features.filter(el => filterLatNorth(el.bbox[1]))
+      };
+      generateClusters(filteredData)
     } else {
-      store= dataRnn.features
+      generateClusters(storeRnn)
     }
-    generateClusters(store, map);
-  }); 
+  });
 }
+
+filterNorth();

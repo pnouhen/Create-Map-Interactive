@@ -3,16 +3,16 @@ import L from "leaflet";
 // Initial value
 let currentPolygon = null;
 
-export function generatePolygon(marker, store, map) {
+export function generatePolygon(marker, map) {
   // Delete the preview  polygon
   if (currentPolygon) {
     map.removeLayer(currentPolygon);
     currentPolygon = null;
   }
 
-  // Search the id in store
+  // Search the id in data
   const id = marker.target.id;
-  const markerSelect = store.find((item) => item.id === id);
+  const markerSelect = data.features.find((item) => item.id === id);
 
   // Create the tableau in the object
   const latLng = markerSelect.geometry.coordinates[0][0].map((coord) => [
