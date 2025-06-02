@@ -3,14 +3,14 @@ import L from "leaflet";
 // Initial value
 let currentPolygon = null;
 
-export function generatePolygon(marker, map) {
+export function generatePolygonRnn(data, marker, map) {
   // Delete the preview  polygon
   if (currentPolygon) {
     map.removeLayer(currentPolygon);
     currentPolygon = null;
   }
 
-  // Search the id in data
+  //  // Search the id in data
   const id = marker.target.id;
   const markerSelect = data.features.find((item) => item.id === id);
 
