@@ -8,23 +8,35 @@
   </head>
   <body>
     <main>
-      <div id="map"></div>
-      <div class="filter">
-        <h2>
-          Filtres
-        </h2>
+      <h1>Carte des réserves naturelles de France</h1>
+      <div id="map">
+        <div class="filter">
+        <h2>Filtres</h2>
         <form action="">
-        <div class="rnnNorth">
-          <label for="labelInput" id="RnnNorthLabel">Réserves naturelles situées au nord</label>
-          <input type="checkbox" id="RnnNorthInput" />
-        </div>
-        <div class="labelInput">
-          <label for="putRegion" id="putRegionLabel">Afficher les régions</label>
-          <input type="checkbox" id="putRegionInput" />
-        </div>
+          <div class="labelInput">
+            <label for="RnnNorthInput" id="RnnNorthLabel"
+              >Réserves naturelles situées au nord</label
+            >
+            <input type="checkbox" id="RnnNorthInput" />
+          </div>
+          <div class="labelInput">
+            <label for="putRegionInput" id="putRegionLabel"
+              >Afficher les régions</label
+            >
+            <input type="checkbox" id="putRegionInput" />
+          </div>
+          <div class="labelSelect">
+            <label for="selectedRegions">
+              Selectionner la région souhaitée :
+            </label>
+            <select name="selectedRegions" id="selectedRegions">
+              <option value="">TOUTES LES REGIONS</option>
+            </select>
+          </div>
+        </form>
+      </div>
       </div>
       
-      </form>
     </main>
   </body>
 </html>

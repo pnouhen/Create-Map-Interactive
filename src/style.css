@@ -1,5 +1,6 @@
 #map {
-  height: 100vh;
+  position: relative;
+  height: 80vh;
 }
 
 .filter {
@@ -7,7 +8,7 @@
   z-index: 1000;
   top: 20px;
   right: 20px;
-  background-color: rgba(253, 253, 253, .6);
+  background-color: rgba(253, 253, 253, .8);
   border: 1px solid black;
   padding: 20px;
   border-radius: 10px;
@@ -37,4 +38,14 @@ input {
 
 .inputActive{ 
   font-weight: 800;
+}
+
+.labelSelect {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.labelSelect select {
+  padding: 10px 5px;
 }

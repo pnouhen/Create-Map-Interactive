@@ -1,7 +1,4 @@
 import { getData } from "./getData";
-import { generateMap } from "./generateMap";
-
-import L from "leaflet";
 
 export const storeRegion = await getData(
   "https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/regions-et-collectivites-doutre-mer-france@toursmetropole/records?limit=20&refine=year%3A%222025%22",

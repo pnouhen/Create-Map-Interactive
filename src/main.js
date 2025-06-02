@@ -1,8 +1,9 @@
 // File js
 import "./generateClusters"
 import "./filterNorth"
-import "./generatePolygonRegion";
 import "./putRegions"
+import "./regionsList"
+import "./linkRnnRegion"
 
 // File css
 import "./style.css";
