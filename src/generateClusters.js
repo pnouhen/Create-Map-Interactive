@@ -24,4 +24,4 @@ export function generateClusters(data) {
   map.addLayer(clusterGroup);
 }
 
-generateClusters(storeRnn)
+generateClusters(storeRnn.features)

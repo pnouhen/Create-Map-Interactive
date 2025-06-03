@@ -6,7 +6,7 @@ import { generatePolygonRnn } from "./generatePolygonRnn";
 export function generateMarker(data, map) {
   let markers = [];
 
-  data.features.forEach((el) => {
+  data.forEach((el) => {
     const latLng = coordinateMarker(el);
     const marker = L.marker(latLng);
 
