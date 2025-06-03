@@ -3,7 +3,6 @@ import "./generateClusters"
 import "./filterNorth"
 import "./putRegions"
 import "./regionsList"
-import "./linkRnnRegion"
 import "./filterRegion"
 
 // File css

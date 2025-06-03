@@ -7,36 +7,57 @@
     <script type="module" src="/src/main.js"></script>
   </head>
   <body>
-    <main>
-      <h1>Carte des réserves naturelles de France</h1>
-      <div id="map">
-        <div class="filter">
-        <h2>Filtres</h2>
-        <form action="">
-          <div class="labelInput">
-            <label for="RnnNorthInput" id="RnnNorthLabel"
-              >Réserves naturelles situées au nord</label
-            >
-            <input type="checkbox" id="RnnNorthInput" />
-          </div>
-          <div class="labelInput">
-            <label for="putRegionInput" id="putRegionLabel"
-              >Afficher les régions</label
-            >
-            <input type="checkbox" id="putRegionInput" />
-          </div>
-          <div class="labelSelect">
-            <label for="selectedRegions">
-              Selectionner la région pour afficher les réserves :
-            </label>
-            <select name="selectedRegions" id="selectedRegions">
-              <option value="allRegion">TOUTES LES REGIONS</option>
-            </select>
-          </div>
-        </form>
+    <main class="flex flex-col items-center p-[20px]">
+      <h1 class="text-3xl font-bold w-[100%] p-[20px]">
+        Carte des réserves naturelles de France
+      </h1>
+      <div id="map" class="h-[90vh] w-[100%] relative">
+        <div id="filter"
+          class="absolute z-1000 top-[20px] right-[20px] bg-white p-[20px] rounded-[10px] min-h-[300px]"
+        >
+          <h2 class="text-2xl font-semibold w-[100%] p-[20px]">Filtres</h2>
+          <form action="" class="h-[100%] flex flex-col gap-[20px]">
+            <div class="relative">
+              <label
+                for="RnnNorthInput"
+                id="RnnNorthLabel"
+                class="text-[1.25rem]"
+                >Réserves naturelles situées au nord</label
+              >
+              <input
+                type="checkbox"
+                id="RnnNorthInput"
+                class="absolute left-0 w-[100%] h-[100%] opacity-0 cursor-pointer"
+              />
+            </div>
+            <div class="relative">
+              <label
+                for="putRegionInput"
+                id="putRegionLabel"
+                class="text-[1.25rem]"
+                >Afficher les régions</label
+              >
+              <input
+                type="checkbox"
+                id="putRegionInput"
+                class="absolute left-0 w-[100%] h-[100%] opacity-0 cursor-pointer"
+              />
+            </div>
+            <div class="flex flex-col gap-[5px]">
+              <label for="selectedRegions" class="text-[1.25rem]">
+                Selectionner la région pour afficher les réserves :
+              </label>
+              <select
+                name="selectedRegions"
+                id="selectedRegions"
+                class="py-[10px] px-[5px] border-[1px] rounded-[5px] text-[1rem]"
+              >
+                <option value="allRegion">TOUTES LES REGIONS</option>
+              </select>
+            </div>
+          </form>
+        </div>
       </div>
-      </div>
-      
     </main>
   </body>
 </html>

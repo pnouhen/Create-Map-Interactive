@@ -1,5 +1,5 @@
+import { changeLabel } from "./changeLabel";
 import { generatePolygonRegion } from "./generatePolygonRegion";
-import { generateMap } from "./generateMap";
 
 let regionChecked = [];
 
@@ -8,7 +8,7 @@ export function putRegions() {
   const putRegionLabel = document.getElementById("putRegionLabel");
 
   putRegionCheck.addEventListener("click", () => {
-    putRegionLabel.classList.toggle("inputActive");
+    changeLabel(putRegionLabel);
 
     if (putRegionCheck.checked) {
       regionChecked = generatePolygonRegion();

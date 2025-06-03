@@ -1,3 +1,4 @@
+import { changeLabel } from "./changeLabel";
 import { storeRnn } from "./storeRnn";
 import { generateClusters } from "./generateClusters";
 
@@ -10,7 +11,7 @@ export function filterNorth() {
   }
 
   rnnNorthMapCheck.addEventListener("click", () => {
-    rnnNorthMapLabel.classList.toggle("inputActive");
+    changeLabel(rnnNorthMapLabel)
     
     // If the check is active, un new tableau is create with the filter and generateClusters with a new filter
     if (rnnNorthMapCheck.checked) {
