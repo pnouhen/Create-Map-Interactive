@@ -1,4 +1,4 @@
-import { storeRnn } from "./storeRnn";
+import { storeRnF } from "./storeRnF";;
 import { coordinateMarker } from "./coordinateMarker";
 import { regionMinMax } from "./regionMinMax";
 
@@ -6,11 +6,13 @@ export function linkRnnRegion() {
   let rnnRegion = [];
 
   // Store coordinate, id and bbox in rnnRegion for each marker
-  storeRnn.features.map((el) => {
+  storeRnF.map((el) => {
     const rnnData = {
       coordinate: coordinateMarker(el),
       id: el.id,
       bbox: el.bbox,
+      properties: el.properties,
+      geometry: el.geometry
     };
 
     rnnRegion.push(rnnData);

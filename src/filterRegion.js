@@ -1,7 +1,7 @@
 import { linkRnnRegion } from "./linkRnnRegion";
 import { generateClusters } from "./generateClusters";
 
-import { storeRnn } from "./storeRnn";
+import { storeRnF } from "./storeRnF";;
 
 function filterRegion() {
   const selectedRegion = document.getElementById("selectedRegions");
@@ -12,7 +12,7 @@ function filterRegion() {
     const value = selectedRegion.value;
 
     if (value === "allRegion") {
-      generateClusters(storeRnn);
+      generateClusters(storeRnF);
     } else {
       const filteredRegion = rnnRegion.filter((el) => value === el.region);
       generateClusters(filteredRegion);
@@ -21,3 +21,4 @@ function filterRegion() {
 }
 
 filterRegion();
+

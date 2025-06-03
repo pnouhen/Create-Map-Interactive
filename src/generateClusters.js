@@ -1,4 +1,4 @@
-import { storeRnn } from "./storeRnn";
+import { storeRnF } from "./storeRnF";
 import {generateMap} from "./generateMap"
 import { generateMarker } from "./generateMarker";
 
@@ -10,8 +10,8 @@ import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 // Initial value
 let clusterGroup = null;
 
-export function generateClusters(data) {
-  const map = generateMap()
+export function generateClusters(data, map) {
+ map = generateMap()
     // Delete the preview cluster if it exists for map and clusterGroup
   if (clusterGroup) {
     map.removeLayer(clusterGroup);
@@ -24,4 +24,4 @@ export function generateClusters(data) {
   map.addLayer(clusterGroup);
 }
 
-generateClusters(storeRnn.features)
+generateClusters(storeRnF)

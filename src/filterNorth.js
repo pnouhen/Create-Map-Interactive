@@ -1,5 +1,5 @@
 import { changeLabel } from "./changeLabel";
-import { storeRnn } from "./storeRnn";
+import { storeRnF } from "./storeRnF";;
 import { generateClusters } from "./generateClusters";
 
 export function filterNorth() {
@@ -15,10 +15,10 @@ export function filterNorth() {
     
     // If the check is active, un new tableau is create with the filter and generateClusters with a new filter
     if (rnnNorthMapCheck.checked) {
-      const filteredData = storeRnn.features.filter(el => filterLatNorth(el.bbox[1]))
+      const filteredData = storeRnF.filter(el => filterLatNorth(el.bbox[1]))
       generateClusters(filteredData)
     } else {
-      generateClusters(storeRnn.features)
+      generateClusters(storeRnF)
     }
   });
 }
