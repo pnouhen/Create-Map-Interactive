@@ -4,6 +4,7 @@ import "./filterNorth"
 import "./putRegions"
 import "./regionsList"
 import "./linkRnnRegion"
+import "./filterRegion"
 
 // File css
 import "./style.css";

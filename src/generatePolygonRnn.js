@@ -12,7 +12,7 @@ export function generatePolygonRnn(data, marker, map) {
 
   //  // Search the id in data
   const id = marker.target.id;
-  const markerSelect = data.features.find((item) => item.id === id);
+  const markerSelect = data.find((item) => item.id === id);
 
   // Create the tableau in the object
   const latLng = markerSelect.geometry.coordinates[0][0].map((coord) => [

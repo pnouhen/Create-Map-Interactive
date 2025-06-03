@@ -15,7 +15,7 @@ export function regionMinMax() {
     let lngMinMax = [Math.min(...lng), Math.max(...lng)];
 
     const regionData = {
-      name: region.reg_name_upper,
+      name: region.reg_name_upper.replace(/\s+/g, "-"),
       latMinMax: latMinMax,
       lngMinMax: lngMinMax,
     };

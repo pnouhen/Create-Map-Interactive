@@ -18,6 +18,8 @@ storeRnn.features.map((el) => {
 
 const regionMinMaxTableau = regionMinMax();
 
+console.log(regionMinMaxTableau)
+
 rnnRegion.map((el) => {
   regionMinMaxTableau.forEach((region) => {
     if (
