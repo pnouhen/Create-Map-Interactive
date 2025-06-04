@@ -1,10 +1,12 @@
-import { linkRnnRegion } from "./linkRnnRegion";
-import { generateClusters } from "./generateClusters";
+import { linkRnnRegion } from "../elements/linkRnnRegion";
+import { generateClusters } from "../generate/generateClusters";
 
-import { storeRnF } from "./storeRnF";;
+import { storeRnF } from "../data/storeRnF";;
 
 function filterRegion() {
   const selectedRegion = document.getElementById("selectedRegions");
+
+  if(!selectedRegion) return null
 
   const rnnRegion = linkRnnRegion();
 
@@ -14,7 +16,7 @@ function filterRegion() {
     if (value === "allRegion") {
       generateClusters(storeRnF);
     } else {
-      const filteredRegion = rnnRegion.filter((el) => value === el.region);
+      const filteredRegion = rnnRegion.filter((el) => el.region[0]?.name === value);
       generateClusters(filteredRegion);
     }
   });

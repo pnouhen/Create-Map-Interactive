@@ -1,5 +1,5 @@
-import { storeRegion } from "./storeRegion";
-import { generateMap } from "./generateMap";
+import { storeRegion } from "../data/storeRegion";
+import { generateMap } from "../generate/generateMap";
 
 import L from "leaflet";
 

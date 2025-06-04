@@ -1,5 +1,5 @@
-import { storeRegion } from "./storeRegion";
-import { generateCoordMinMax } from "./generateCoordMinMax";
+import { storeRegion } from "../data/storeRegion";
+import { generateCoordMinMax } from "../generate/generateCoordMinMax";
 
 export function regionMinMax() {
   let regionMinMax = [];
@@ -25,3 +25,5 @@ export function regionMinMax() {
 
   return regionMinMax;
 }
+
+// Remplacer via geo data
