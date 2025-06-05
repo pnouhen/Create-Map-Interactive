@@ -1,5 +1,6 @@
 import { generatePolygons } from "./generatePolygon";
 
+let currentPolygons = [];
 
 export function generatePolygonRnn(data, marker, map) {
   //  // Search the id in data
@@ -9,5 +10,5 @@ export function generatePolygonRnn(data, marker, map) {
   // Create the tableau in the object
   const coords = markerSelect.geometry;
 
-generatePolygons(coords, map)
+generatePolygons(coords, currentPolygons)
 }

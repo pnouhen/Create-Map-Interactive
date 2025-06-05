@@ -7,8 +7,7 @@ rnfData = linkRnnRegion()
 
 rnfData.forEach((rnf) => {
     if(rnf.region.length === 0){
-        
-        console.log("vide")
+        linkRnnRegion2(rnf)
     }
 })
-linkRnnRegion2()
+

@@ -9,6 +9,7 @@ Pour accèder au projet il faut installer :
 
 
 Idée de développement :
+map de linkRnnRegion a retravailler : faire autrement qu'un map return
 - Améliorer le CSS (charte graphique, filtres, markers et polygons)
 - Zoom pour région et RnF
 - réussir à lier les ploygons qui ne s'affiche pas a cause de l'api 
