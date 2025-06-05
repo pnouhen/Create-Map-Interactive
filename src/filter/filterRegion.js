@@ -1,6 +1,12 @@
 import { linkRnnRegion } from "../elements/linkRnnRegion";
 import { generateClusters } from "../generate/generateClusters";
 import { storeRnF } from "../data/storeRnF";
+import {
+  latDefault,
+  lngDefault,
+  zoomDefault,
+} from "../elements/mapSetviewDefault";
+import { generatePolygons } from "../generate/generatePolygon";
 
 
 function filterRegion() {
@@ -8,28 +14,37 @@ function filterRegion() {
 
   if (!selectedRegion) return null;
 
-  const rnnRegion = linkRnnRegion();
-
   selectedRegion.addEventListener("change", () => {
     const value = selectedRegion.value;
+    let newSetview = [];
 
     if (value === "allRegion") {
-      const latFr = 46.387255
-      const lngFr = 3.044397
-      const zoom = 6
-      generateClusters(storeRnF, latFr,lngFr, zoom);
-      
+      // Get coordinates for the filtered region
+      newSetview = {
+        lat: latDefault,
+        lng: lngDefault,
+        zoom: zoomDefault,
+      };
+
+      generateClusters(storeRnF, newSetview);
     } else {
+      const rnnRegion = linkRnnRegion();
       const filteredRegion = rnnRegion.filter(
         (el) => el.region[0]?.reg_name_upper.replace(/\s+/g, "-") === value
       );
 
       if (filteredRegion.length > 0) {
         // Get coordinates for the filtered region
-        const latRegion = filteredRegion[0].region[0].geo_point_2d.lat;
-        const lngRegion = filteredRegion[0].region[0].geo_point_2d.lon;
-        const zoom = 7
-        generateClusters(filteredRegion, latRegion, lngRegion, zoom);
+        newSetview = {
+          lat: filteredRegion[0].region[0].geo_point_2d.lat,
+          lng: filteredRegion[0].region[0].geo_point_2d.lon,
+          zoom: 7,
+        };
+
+        generateClusters(filteredRegion, newSetview);
+
+        const region = filteredRegion[0].region[0].geo_shape.geometry;
+        generatePolygons(region)
       }
     }
   });

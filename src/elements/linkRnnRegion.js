@@ -20,7 +20,7 @@ export function linkRnnRegion() {
       region: region
     };
   });
-  console.log(storeRegion)
+
   return rnfRegion;
 }
 
