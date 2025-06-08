@@ -2,7 +2,7 @@ import { generatePolygons } from "./generatePolygon";
 
 let currentPolygons = [];
 
-export function generatePolygonRnn(data, marker, map) {
+export function generatePolygonRnn(data, marker) {
   //  // Search the id in data
   const id = marker.target.id;
   const markerSelect = data.find((item) => item.id === id);
