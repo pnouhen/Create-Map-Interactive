@@ -4,13 +4,14 @@ import { storeRnF } from "../data/storeRnF"
 export function linkRnnRegion2(data){
 
 const rnfCoords = data.coordinate
-const regionCoords = storeRegion.results
-// console.log(rnfCoords)
-    // if(region.geometry.type === "Polygon"){
+const regionCoords = storeRegion.results[0]
+console.log(rnfCoords)
+console.log(regionCoords)
+    if(regionCoords.geo_shape_geometry.type === "Polygon"){
         
 
         
-    // } if(region.geometry.type === "MultiPolygon") {
-    //     console.log("MultiPolygon")
-    // }
+    } if(regionCoords.geometry.type === "MultiPolygon") {
+        console.log("MultiPolygon")
+    }
 }
