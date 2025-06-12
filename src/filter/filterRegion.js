@@ -8,6 +8,7 @@ import {
 } from "../elements/mapSetviewDefault";
 import { generatePolygons } from "../generate/generatePolygon";
 import { clearPolygons } from "../elements/clearPloygons";
+import { zoomPolygon } from "../projetEnCours/selectFunctions/calculZoom";
 
   // Initial value region
 let currentPolygon = [];
@@ -35,12 +36,12 @@ selectedRegion.addEventListener("change", () => {
     const filteredRegion = rnnRegion.filter(
       (el) => el.region[0]?.reg_code[0] === value
     );
-
+    console.log(filteredRegion[0].region[0].geo_point_2d[0])
     if (filteredRegion.length > 0) {
       newSetview = {
         lat: filteredRegion[0].region[0].geo_point_2d.lat,
         lng: filteredRegion[0].region[0].geo_point_2d.lon,
-        zoom: 7,
+        zoom: zoomPolygon(filteredRegion[0].region[0]),
       };
 
       generateClusters(filteredRegion, newSetview);

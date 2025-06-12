@@ -1,3 +1,3 @@
-export function cleanGeneratedOptions(select) {
+export function removeOptions(select) {
   [...select.options].forEach((option) => option.remove());
 }

@@ -1,4 +1,4 @@
-export function removeAllOption(select, value) {
+export function removeOptionAll(select, value) {
   const data = [...select.options];
 
   if (data.length === 2) {

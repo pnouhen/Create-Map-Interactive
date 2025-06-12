@@ -1,15 +1,15 @@
 import { storeListDep } from "../data/storeListDep";
-import { cleanGeneratedOptions } from "./selectUtils/cleanGeneratedOptions";
+import { removeOptions } from "./selectUtils/removeOptions";
 import { createOptionAll } from "./selectUtils/createOptionAll";
-import { removeAllOption } from "./selectUtils/removeAllOption";
+import { removeOptionAll } from "./selectUtils/removeOptionAll";
+import { valueOptionAllDep } from "./selectUtils/valueOptionAll";
 
 export function generateListDep(data) {
   const selectedDepartments = document.getElementById("selectedDepartments");
-  const value = "allDeps";
 
-  cleanGeneratedOptions(selectedDepartments, "");
+  removeOptions(selectedDepartments, "");
 
-  createOptionAll(selectedDepartments, "TOUS LES DEPARTEMENTS", value);
+  createOptionAll(selectedDepartments, "TOUS LES DEPARTEMENTS", valueOptionAllDep);
 
   data.forEach((dep) => {
     const option = document.createElement("option");
@@ -19,7 +19,7 @@ export function generateListDep(data) {
     selectedDepartments.appendChild(option);
   });
 
-  removeAllOption(selectedDepartments, value);
+  removeOptionAll(selectedDepartments, valueOptionAllDep);
 }
 
 generateListDep(storeListDep);

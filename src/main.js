@@ -5,9 +5,9 @@ import "./elements/generateRegionList"
 import "./filter/filterRegion"
 import "./data/rnfData"
 
-import "./projetEnCours/data"
 import "./projetEnCours/generateListDep"
 import "./projetEnCours/selectUtils/associateDepReg"
+import "./projetEnCours/filter/filterDep"
 // File css
 import "./style.css";
 import 'leaflet/dist/leaflet.css';
