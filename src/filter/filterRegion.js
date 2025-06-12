@@ -20,8 +20,7 @@ function filterRegion() {
 selectedRegion.addEventListener("change", () => {
   const value = selectedRegion.value;
   let newSetview = [];
-
-  if (value === "allRegion") {
+  if (value === "allRegions") {
     newSetview = {
       lat: latDefault,
       lng: lngDefault,
@@ -34,7 +33,7 @@ selectedRegion.addEventListener("change", () => {
   } else {
     const rnnRegion = linkRnnRegion();
     const filteredRegion = rnnRegion.filter(
-      (el) => el.region[0]?.reg_name_upper.replace(/\s+/g, "-") === value
+      (el) => el.region[0]?.reg_code[0] === value
     );
 
     if (filteredRegion.length > 0) {
