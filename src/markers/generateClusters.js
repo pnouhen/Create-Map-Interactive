@@ -1,6 +1,6 @@
-import { storeRnF } from "../data/storeRnF";
-import { generateMap } from "../generate/generateMap";
-import { generateMarker } from "../generate/generateMarker";
+import { storeRnF } from "../datas/storeRnF";
+import { generateMap } from "../maps/generateMap";
+import { generateMarker } from "./generateMarker";
 
 import L from "leaflet";
 import "leaflet.markercluster/dist/leaflet.markercluster.js";

@@ -1,4 +1,4 @@
-import { generatePolygons } from "./generatePolygon";
+import { generatePolygons } from "../polygons/generatePolygon";
 
 let currentPolygons = [];
 

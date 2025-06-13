@@ -1,58 +1,37 @@
-import { linkRnnRegion } from "../elements/linkRnnRegion";
-import { generateClusters } from "../generate/generateClusters";
-import { storeRnF } from "../data/storeRnF";
-import {
-  latDefault,
-  lngDefault,
-  zoomDefault,
-} from "../elements/mapSetviewDefault";
-import { generatePolygons } from "../generate/generatePolygon";
-import { clearPolygons } from "../elements/clearPloygons";
-import { zoomPolygon } from "../projetEnCours/selectFunctions/calculZoom";
+import { storeRegion } from "../datas/storeRegion";
+import { clearPolygons } from "../polygons/clearPloygons";
+import { generatePolygons } from "../polygons/generatePolygon";
+import { currentPolygonDep, filterDep } from "./filterDep";
+import { centerPolygon } from "../zooms/centerPolygon";
 
-  // Initial value region
-let currentPolygon = [];
+const selectedRegion = document.getElementById("selectedRegions");
+
+// Initial value region
+let currentPolygonReg = [];
 
 function filterRegion() {
-  const selectedRegion = document.getElementById("selectedRegions");
+  selectedRegion.addEventListener("change", () => {
+    const value = selectedRegion.value;
 
-  if (!selectedRegion) return null;
+    if (value === "allRegions") {
+      clearPolygons(currentPolygonReg)
 
-selectedRegion.addEventListener("change", () => {
-  const value = selectedRegion.value;
-  let newSetview = [];
-  if (value === "allRegions") {
-    newSetview = {
-      lat: latDefault,
-      lng: lngDefault,
-      zoom: zoomDefault,
-    };
-    generateClusters(storeRnF, newSetview);
+      clearPolygons(currentPolygonDep)
 
-    clearPolygons(currentPolygon)
+    } else {
+      filterDep()
 
-  } else {
-    const rnnRegion = linkRnnRegion();
-    const filteredRegion = rnnRegion.filter(
-      (el) => el.region[0]?.reg_code[0] === value
-    );
-    console.log(filteredRegion[0].region[0].geo_point_2d[0])
-    if (filteredRegion.length > 0) {
-      newSetview = {
-        lat: filteredRegion[0].region[0].geo_point_2d.lat,
-        lng: filteredRegion[0].region[0].geo_point_2d.lon,
-        zoom: zoomPolygon(filteredRegion[0].region[0]),
-      };
+      clearPolygons(currentPolygonDep)
 
-      generateClusters(filteredRegion, newSetview);
+      const reg = storeRegion.results.filter((reg) => reg.reg_code[0] === value)
+      
+      const polygon = reg[0].geo_shape.geometry
+      generatePolygons(polygon, currentPolygonReg)
 
-      const region = filteredRegion[0].region[0].geo_shape.geometry;
-
-      generatePolygons(region, currentPolygon);
+      const zoom = reg[0]
+      centerPolygon(zoom)
     }
-  }
-});
-
+  });
 }
 
 filterRegion();

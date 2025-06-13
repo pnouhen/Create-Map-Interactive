@@ -1,8 +1,8 @@
-import { storeListDep } from "../data/storeListDep";
-import { removeOptions } from "./selectUtils/removeOptions";
-import { createOptionAll } from "./selectUtils/createOptionAll";
-import { removeOptionAll } from "./selectUtils/removeOptionAll";
-import { valueOptionAllDep } from "./selectUtils/valueOptionAll";
+import { storeListDep } from "../datas/storeListDep";
+import { removeOptions } from "../selectOptions/removeOptions";
+import { createOptionAll } from "../selectOptions/createOptionAll";
+import { removeOptionAll } from "../selectOptions/removeOptionAll";
+import { valueOptionAllDep } from "../selectOptions/valueOptionAll";
 
 export function generateListDep(data) {
   const selectedDepartments = document.getElementById("selectedDepartments");

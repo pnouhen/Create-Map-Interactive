@@ -1,5 +1,5 @@
 import { recoverDepMap } from "./recoverDepMap";
-import { storeListDep } from "../data/storeListDep";
+import { storeListDep } from "./storeListDep";
 
 // Limitation of the API to 100 departments and there are 101 of them
 

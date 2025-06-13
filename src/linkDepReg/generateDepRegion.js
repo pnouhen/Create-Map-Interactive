@@ -1,5 +1,5 @@
-import { storeListDep } from "../../data/storeListDep";
-import { generateListDep } from "../generateListDep";
+import { storeListDep } from "../datas/storeListDep";
+import { generateListDep } from "../lists/generateListDep";
 
 // Generate all the departments using a region
 

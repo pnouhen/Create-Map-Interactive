@@ -1,7 +1,7 @@
 // Generate nature reserve with a grid
-import { coordinateMarker } from "../elements/coordinateMarker";
-import { generateToolTip } from "../generate/generateToolTip";
-import { generatePolygonRnn } from "../generate/generatePolygonRnn";
+import { coordinateMarker } from "./coordinateMarker";
+import { generateToolTip } from "./generateToolTip";
+import { generatePolygonRnn } from "./generatePolygonRnn";
 
 export function generateMarker(data, map) {
   let markers = [];

@@ -1,7 +1,7 @@
-import { generateMap } from "../../generate/generateMap";
+import { generateMap } from "../maps/generateMap";
 import { generateGapMinMax } from "./generateGapMinMax";
 
-export function zoomPolygon(data) {
+export function calculZoom(data) {
 const map = generateMap()
 
   const latMinMax = generateGapMinMax(data, 1);
@@ -13,6 +13,6 @@ const map = generateMap()
   ]);
 
   const optimalZoom = map.getBoundsZoom(bounds);
-  console.log(optimalZoom);
+
   return optimalZoom;
 }

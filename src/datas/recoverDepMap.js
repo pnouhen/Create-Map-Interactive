@@ -1,4 +1,4 @@
-import { fetchDepartment } from "../data/fetchDepartment";
+import { fetchDepartment } from "./fetchDepartment";
 
 export async function recoverDepMap(data) {
 let nameDepartement = null

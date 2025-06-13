@@ -1,4 +1,4 @@
-import { storeRegion } from "../data/storeRegion";
+import { storeRegion } from "../datas/storeRegion";
 
 const selectedRegion = document.getElementById("selectedRegions");
 

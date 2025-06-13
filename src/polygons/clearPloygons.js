@@ -1,4 +1,4 @@
-import { generateMap } from "../generate/generateMap";
+import { generateMap } from "../maps/generateMap";
 
 export function clearPolygons(currentPolygon) {
   const map = generateMap();
