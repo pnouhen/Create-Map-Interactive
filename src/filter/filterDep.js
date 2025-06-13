@@ -3,19 +3,27 @@ import { valueOptionAllDep } from "../selectOptions/valueOptionAll";
 import { storeDepartments } from "../datas/storeDepartments";
 import { centerPolygon } from "../zooms/centerPolygon";
 import { clearPolygons } from "../polygons/clearPloygons";
+import { currentPolygonReg } from "./filterRegion";
+import { centerAll } from "../zooms/centerAll";
+import { getMapInstance } from "../maps/getMapInstance";
 
 const selectedDepartments = document.getElementById("selectedDepartments");
-
-  // Initial value region
 export let currentPolygonDep = [];
 
-export function filterDep() {
+export function filterDep() {  
   selectedDepartments.addEventListener("change", () => {
+    const map = getMapInstance();
+
     const value = selectedDepartments.value;
 
     if (value === valueOptionAllDep) {
-      clearPolygons(currentPolygonDep); 
+      clearPolygons(currentPolygonDep);
       
+      if(currentPolygonReg.length === 0){
+        centerAll()
+      } else{
+        centerPolygon(currentPolygonReg)
+      }
     } else {
       const dep = storeDepartments.filter(
         (dep) => dep.results[0].dep_code[0] === value
@@ -25,10 +33,11 @@ export function filterDep() {
       generatePolygons(polygon, currentPolygonDep);
 
       const zoom = dep[0].results[0]
-      centerPolygon(zoom)
-
+      centerPolygon(zoom, map)
     }
   });
+  
 }
 
+// Initialisation autonome
 filterDep();

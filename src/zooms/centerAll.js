@@ -1,11 +1,14 @@
-import { generateClusters } from "../markers/generateClusters";
+import {
+  latDefault,
+  lngDefault,
+  newSetview,
+  zoomDefault,
+} from "../maps/mapSetviewDefault";
 
-export function centerAll(data){
-   const newSetview = {
-       lat: 3.6446980358673993,
-       lng: 3.7168641603516406,
-       zoom: 3
-     };
-   
-     generateClusters(data, newSetview) 
+export function centerAll() {
+  const lat = latDefault;
+  const lng = lngDefault;
+  const zoom = zoomDefault;
+
+  newSetview(lat, lng, zoom);
 }

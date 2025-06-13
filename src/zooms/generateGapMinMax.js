@@ -1,29 +1,22 @@
 export function generateGapMinMax(data, coordinates) {
   const geometry = data.geo_shape.geometry;
- 
-  let minMax = [];
 
-  if (geometry.type === "MultiPolygon" && geometry.coordinates[0][0].length > 2) {
-    const values = []
+  let bounds = [];
 
-    for(let i =0; i < geometry.coordinates.length; i++){
-        const ring = geometry.coordinates[i][0].map((point) => point[coordinates])
-        values.push(...ring)
-    }
+  if (
+    geometry.type === "MultiPolygon" &&
+    geometry.coordinates[0][0].length > 2
+  ) {
+    const values = geometry.coordinates.flatMap((markers) => markers[0]);
 
-    const min = Math.min(...values);
-    const max = Math.max(...values);
-    
-    minMax.push(min, max)
+    const polygon = L.polygon(values);
 
+    bounds = polygon.getBounds();
   } else {
-    const values = geometry.coordinates[0].map((point) => point[coordinates]);
+    const polygon = L.polygon(geometry.coordinates[0]);
 
-    const min = Math.min(...values);
-    const max = Math.max(...values);
-    
-    minMax.push(min, max)
+    bounds = polygon.getBounds();
   }
-   
-  return minMax
+
+  return bounds;
 }

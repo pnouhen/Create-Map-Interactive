@@ -15,7 +15,7 @@ export function generateMarker(data, map) {
     // Generate ToolTip
     marker.on("click", (marker) => {
       generateToolTip(data, marker, map);
-      generatePolygonRnn(data, marker, map);
+      generatePolygonRnn(data, marker, latLng);
     });
 
     // Push marker in markers

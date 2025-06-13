@@ -11,15 +11,10 @@ import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 let map = null;
 let clusterGroup = null;
 
-export function generateClusters(data, newSetview) {
+export function generateClusters(data) {
   map = generateMap();
   if (!map) {
     map = generateMap();
-  }
-
-  // Set view if coordinates are provided
-  if (newSetview) {
-    map.setView(new L.LatLng(newSetview.lat, newSetview.lng), newSetview.zoom); // Added zoom level
   }
 
   // Delete the preview cluster if it exists for map and clusterGroup

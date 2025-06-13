@@ -1,4 +1,5 @@
 import { generatePolygons } from "../polygons/generatePolygon";
+import { centerPolygon } from "../zooms/centerPolygon";
 
 let currentPolygons = [];
 
@@ -10,5 +11,9 @@ export function generatePolygonRnn(data, marker) {
   // Create the tableau in the object
   const coords = markerSelect.geometry;
 
-generatePolygons(coords, currentPolygons)
+  generatePolygons(coords, currentPolygons);
+
+  console.log(markerSelect)
+
+  centerPolygon(markerSelect)
 }
