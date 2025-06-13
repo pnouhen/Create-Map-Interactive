@@ -1,9 +1,10 @@
 import { generatePolygons } from "../polygons/generatePolygon";
-import { centerPolygon } from "../zooms/centerPolygon";
+import { centerPolygon } from "../regDep/centerPolygon";
+import { centerMarkers } from "./centerMarkers";
 
 let currentPolygons = [];
 
-export function generatePolygonRnn(data, marker) {
+export function generatePolygonRnf(data, marker,map, latLng) {
   //  // Search the id in data
   const id = marker.target.id;
   const markerSelect = data.find((item) => item.id === id);
@@ -13,7 +14,5 @@ export function generatePolygonRnn(data, marker) {
 
   generatePolygons(coords, currentPolygons);
 
-  console.log(markerSelect)
-
-  centerPolygon(markerSelect)
+  centerMarkers(markerSelect, map, latLng)
 }

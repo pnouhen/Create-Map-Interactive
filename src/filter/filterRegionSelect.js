@@ -1,9 +1,9 @@
 import { storeRegion } from "../datas/storeRegion";
 import { clearPolygons } from "../polygons/clearPloygons";
 import { generatePolygons } from "../polygons/generatePolygon";
-import { currentPolygonDep } from "./filterDep";
-import { centerPolygon } from "../zooms/centerPolygon";
-import { centerAll } from "../zooms/centerAll";
+import { currentPolygonDep } from "./filterDepSelect";
+import { centerPolygon } from "../regDep/centerPolygon";
+import { centerAll } from "../regDep/centerAll";
 import { getMapInstance } from "../maps/getMapInstance";
 
 const selectedRegion = document.getElementById("selectedRegions");
@@ -11,7 +11,7 @@ const selectedRegion = document.getElementById("selectedRegions");
 // Initial value region
 export let currentPolygonReg = [];
 
-function filterRegion() {
+function filterRegionSelect() {
   selectedRegion.addEventListener("change", () => {
     const map = getMapInstance();
     const value = selectedRegion.value;
@@ -36,4 +36,4 @@ function filterRegion() {
   });
 }
 
-filterRegion();
+filterRegionSelect();

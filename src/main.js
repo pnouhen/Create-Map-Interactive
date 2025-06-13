@@ -1,16 +1,17 @@
 // File js
-import "./lists/generateRegionList"
+// import "./lists/generateRegionList"
 import "./lists/generateListDep"
 import "./linkDepReg/associateDepReg"
 
 import "./markers/generateClusters"
 
-import "./filter/filterRegion"
-import "./filter/filterDep"
+// import "./filter/filterRegionSelect"
+import "./filter/filterDepSelect"
 
 // File css
 import "./style.css";
 import 'leaflet/dist/leaflet.css';
 
 
-// Reste a faire : zoom sur les markers
+// Pour travailler le storevgeneral
+import "./datas/storeRnfLocalisation"

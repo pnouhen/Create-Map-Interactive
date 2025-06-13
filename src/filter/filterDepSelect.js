@@ -1,16 +1,16 @@
 import { generatePolygons } from "../polygons/generatePolygon";
 import { valueOptionAllDep } from "../selectOptions/valueOptionAll";
 import { storeDepartments } from "../datas/storeDepartments";
-import { centerPolygon } from "../zooms/centerPolygon";
+import { centerPolygon } from "../regDep/centerPolygon";
 import { clearPolygons } from "../polygons/clearPloygons";
-import { currentPolygonReg } from "./filterRegion";
-import { centerAll } from "../zooms/centerAll";
+import { currentPolygonReg } from "./filterRegionSelect";
+import { centerAll } from "../regDep/centerAll";
 import { getMapInstance } from "../maps/getMapInstance";
 
 const selectedDepartments = document.getElementById("selectedDepartments");
 export let currentPolygonDep = [];
 
-export function filterDep() {  
+export function filterDepSelect() {  
   selectedDepartments.addEventListener("change", () => {
     const map = getMapInstance();
 
@@ -39,5 +39,4 @@ export function filterDep() {
   
 }
 
-// Initialisation autonome
-filterDep();
+filterDepSelect();
