@@ -1,4 +1,7 @@
 import { getData } from "./getData";
+import { associateMarkersInPoly } from "../storeRnfLocFunctions/associateMarkersInPoly";
+import {searchName} from "../storeRnfLocFunctions/searchName"
+import { associateMarkersInPoint } from "../storeRnfLocFunctions/associateMarkersInPoint";
 
 const storeRnc = await getData(
   "https://apicarto.ign.fr/api/nature/rnc",
@@ -9,4 +12,25 @@ const storeRnn = await getData(
   "dataRnn"
 );
 
-export const storeRnF = [...storeRnn.features, ...storeRnc.features];
+export let storeRnF = [...storeRnn.features, ...storeRnc.features];
+
+associateMarkersInPoly(storeRnF);
+
+searchName(storeRnF)
+
+associateMarkersInPoint(storeRnF)
+
+/* Faux :
+Créer une région attention pour dessiner les polygons des départements / région
+
+- Collectivités :
+Saint-Barthélemy 977
+Saint-Martin 978
+
+- Terres autrales :
+Terres australes françaises
+Archipel des Glorieuses
+
+Mauvais département : 
+Estuaire De La Seine 
+*/ 
