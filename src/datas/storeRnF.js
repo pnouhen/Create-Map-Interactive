@@ -16,6 +16,8 @@ export let storeRnF = [...storeRnn.features, ...storeRnc.features];
 
 associateMarkersInPoly(storeRnF);
 
+
+
 searchName(storeRnF)
 
 associateMarkersInPoint(storeRnF)
@@ -24,7 +26,7 @@ associateMarkersInPoint(storeRnF)
 Créer une région attention pour dessiner les polygons des départements / région
 
 - Collectivités :
-Saint-Barthélemy 977
+Se servier de la fonction de saint Barthélemy en créant des stores
 Saint-Martin 978
 
 - Terres autrales :

@@ -6,7 +6,6 @@ export function searchMarkerInPoly(data, geometry) {
   const latLng = coordinateMarker(data);
 
   const pt = turf.point([latLng[1], latLng[0]]);
-
   let resultat = "";
 
   if (geometry.type === "MultiPolygon" && geometry.coordinates[0][0].length > 2) {

@@ -3,13 +3,20 @@ import { removeOptions } from "../selectOptions/removeOptions";
 import { createOptionAll } from "../selectOptions/createOptionAll";
 import { removeOptionAll } from "../selectOptions/removeOptionAll";
 import { valueOptionAllDep } from "../selectOptions/valueOptionAll";
+import { addListDep } from "./addListDep";
 
-export function generateListDep(data) {
+export function generateListDep() {
   const selectedDepartments = document.getElementById("selectedDepartments");
 
+  let data = [...storeListDep]
+  
   removeOptions(selectedDepartments, "");
 
   createOptionAll(selectedDepartments, "TOUS LES DEPARTEMENTS", valueOptionAllDep);
+
+  data.push(
+    addListDep(977, "Saint-Barthélemy")
+  )
 
   data.forEach((dep) => {
     const option = document.createElement("option");
@@ -22,4 +29,4 @@ export function generateListDep(data) {
   removeOptionAll(selectedDepartments, valueOptionAllDep);
 }
 
-generateListDep(storeListDep);
+generateListDep();
