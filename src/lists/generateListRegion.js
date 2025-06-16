@@ -2,7 +2,7 @@ import { storeRegion } from "../datas/storeRegion";
 
 const selectedRegion = document.getElementById("selectedRegions");
 
-let regionList = storeRegion.results.sort((a, b) =>
+let regionList = await storeRegion.sort((a, b) =>
   a.reg_name_upper.localeCompare(b.reg_name_upper)
 );
 

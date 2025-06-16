@@ -1,24 +1,16 @@
-import { addStoreDep } from "../storeDepadd/addStoreDep";
 import { recoverDepMap } from "./recoverDepMap";
+import { depSaintBarthelemy, depSaintMartin } from "./storeDepartmentsManuel";
 import { storeListDep } from "./storeListDep";
 
 // Limitation of the API to 100 departments and there are 101 of them
 
 export const storeDepartments = await (async () => {
   const deps = await Promise.all(
-    storeListDep.map(async (dep) => {
-      return recoverDepMap(dep);
-    })
+    storeListDep.slice(0, 100).map(async (dep) => recoverDepMap(dep))
   );
+  
+  deps.push(depSaintBarthelemy);
+  deps.push(depSaintMartin);
 
-  deps.push(
-    addStoreDep(
-      "977",
-      "SAINT-BARTHÉLEMY",
-      "Saint-Barthélemy",
-      17.8967693,
-      -62.825598
-    )
-  );
   return deps;
 })();

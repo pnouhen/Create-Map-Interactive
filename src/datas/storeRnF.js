@@ -25,9 +25,6 @@ associateMarkersInPoint(storeRnF)
 /* Faux :
 Créer une région attention pour dessiner les polygons des départements / région
 
-- Collectivités :
-Se servier de la fonction de saint Barthélemy en créant des stores
-Saint-Martin 978
 
 - Terres autrales :
 Terres australes françaises

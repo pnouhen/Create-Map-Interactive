@@ -5,7 +5,7 @@ export function associateMarkersInPoly(data) {
   data.map((rnf) => {
     storeDepartments.forEach((dep) => {
       // To not use manually added dep
-      if (dep.results[0].geo_shape != undefined) {
+      if (dep.geo_shape != undefined) {
         const geometry = dep.results[0].geo_shape.geometry;
         const shearch = searchMarkerInPoly(rnf, geometry);
 

@@ -8,7 +8,7 @@ export function distanceMarkersInPoint(data) {
   const rnfCoords = coordinateMarker(data);
       let distanceMarkersDep = storeDepartments
         .map((dep) => {
-          const depCoords = dep.results[0].geo_point_2d;            
+          const depCoords = dep.results[0].geo_point_2d;    
           const from = turf.point([rnfCoords[1], rnfCoords[0]]);
           const to = turf.point([depCoords.lon, depCoords.lat]);
           const distance = turf.distance(from, to);
