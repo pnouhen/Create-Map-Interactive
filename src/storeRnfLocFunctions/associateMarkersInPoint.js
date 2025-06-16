@@ -6,6 +6,7 @@ export function associateMarkersInPoint(data) {
     if (rnf.dep_code === undefined) {
       const distance = distanceMarkersInPoint(rnf)
       rnf.dep_code = distance[0].code_dep[0]
+      rnf.reg_code = distance[0].code_reg;
     }
   });
 }

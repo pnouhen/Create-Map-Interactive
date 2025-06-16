@@ -1,5 +1,5 @@
 import { getData } from "./getData";
-import { depSaintBarthelemy, depSaintMartin } from "./storeDepartmentsManuel";
+import { saintBarthelemy, saintMartin, terresAustrales } from "./storeDepartmentsManuel";
 
   const apiResponse = await getData(
   "https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/regions-et-collectivites-doutre-mer-france@toursmetropole/records?limit=20&refine=year%3A%222025%22",
@@ -8,8 +8,9 @@ import { depSaintBarthelemy, depSaintMartin } from "./storeDepartmentsManuel";
 
 const regions = apiResponse.results;
 
-regions.push(depSaintBarthelemy.results[0]);
+regions.push(saintBarthelemy.results[0]);
 
-regions.push(depSaintMartin.results[0]);
+regions.push(saintMartin.results[0]);
+regions.push(terresAustrales.results[0]);
 
 export const storeRegion = regions;

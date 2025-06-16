@@ -3,8 +3,6 @@ import { removeOptions } from "../selectOptions/removeOptions";
 import { createOptionAll } from "../selectOptions/createOptionAll";
 import { removeOptionAll } from "../selectOptions/removeOptionAll";
 import { valueOptionAllDep } from "../selectOptions/valueOptionAll";
-import { addListDep } from "./addListDep";
-import { depSaintBarthelemy, depSaintMartin } from "../datas/storeDepartmentsManuel";
 
 export function generateListDep(store) {
   const selectedDepartments = document.getElementById("selectedDepartments");

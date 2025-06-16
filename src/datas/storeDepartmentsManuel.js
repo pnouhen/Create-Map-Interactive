@@ -1,4 +1,4 @@
-export const depSaintBarthelemy = {
+export const saintBarthelemy = {
     results: [
       {
         manuel: true,
@@ -29,7 +29,7 @@ export const depSaintBarthelemy = {
     ],
 }
 
-export const depSaintMartin = {
+export const saintMartin = {
   results: [
     {
       manuel: true,
@@ -52,6 +52,37 @@ export const depSaintMartin = {
               [-63.15, 18.02],
               [-63.15, 18.12],
             ],
+          ],
+          type: "Polygon",
+        },
+      },
+    },
+  ],
+};
+
+export const terresAustrales = {
+  results: [
+    {
+      manuel: true,
+      dep_code: ["1000"],
+      reg_code: ["1000"],
+      dep_name_upper: "TERRES AUSTRALES",
+      reg_name_upper: "TERRES AUSTRALES",
+      dep_name: ["Terres autrales"],
+      geo_point_2d: {
+        lat: -27.78388679,
+        lon: 55.35792200,
+      },
+      geo_shape: {
+        geometry: {
+          coordinates: [
+            [
+  [-43.83976923, 47.12638913],
+  [-43.83976923, 63.58945486],
+  [-11.72800434, 63.58945486],
+  [-11.72800434, 47.12638913],
+  [-43.83976923, 47.12638913]
+],
           ],
           type: "Polygon",
         },

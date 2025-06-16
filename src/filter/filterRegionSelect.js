@@ -5,12 +5,15 @@ import { centerPolygon } from "../regDep/centerPolygon";
 import { centerAll } from "../regDep/centerAll";
 import { getMapInstance } from "../maps/getMapInstance";
 import { searchRegion } from "../regDep/searchRegion";
+import { storeRnF } from "../datas/storeRnF";
+import { generateClusters } from "../markers/generateClusters";
 
 const selectedRegion = document.getElementById("selectedRegions");
 
 // Initial value region
  let currentPolygonReg = [];
   export let regionValue = ""
+  export let markersRegion = []
 
 function filterRegionSelect() {
   selectedRegion.addEventListener("change", () => {
@@ -18,8 +21,10 @@ function filterRegionSelect() {
      regionValue = selectedRegion.value;
 
     if (regionValue === "allRegions") {
+      regionValue = ""
       clearPolygons(currentPolygonReg);
       clearPolygons(currentPolygonDep);
+      generateClusters(storeRnF)
       centerAll();
     } else {
       clearPolygons(currentPolygonDep);
@@ -32,6 +37,9 @@ function filterRegionSelect() {
       }
       const zoom = regionSelect[0];
       centerPolygon(zoom, map);
+     
+      markersRegion = storeRnF.filter((rnf) => rnf.reg_code[0] === regionValue)
+      generateClusters(markersRegion)
     }
   });
 }
