@@ -6,10 +6,8 @@ import "./markers/generateClusters"
 
 import "./filter/filterRegionSelect"
 import "./filter/filterDepSelect"
+import "./filter/searchRnf"
 
 // File css
 import "./style.css";
 import 'leaflet/dist/leaflet.css';
-
-import "./datas/storeRnF"
-import "./datas/storeDepartments"

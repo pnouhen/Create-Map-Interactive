@@ -17,7 +17,23 @@
           <form action="" class="h-full flex flex-col gap-5">
             <div class="flex items-center justify-between gap-4">
               <label for="selectedegions" class="text-[1.25rem]">
-                Selectionner la région pour afficher les réserves :
+                Rechercher la réserve :
+              </label>
+              <div>
+                <input
+                name="searchRnf"
+                id="searchRnf"
+                type="text"
+                placeholder="Entrez son nom"
+                class="py-2.5 px-1.5 border-2 rounded-lg text-[1rem]"
+              >
+            </input >
+            <ul id="searchRnfAutoComplete"></ul>
+              </div>
+            </div>
+            <div class="flex items-center justify-between gap-4">
+              <label for="selectedegions" class="text-[1.25rem]">
+                Choisissez la région :
               </label>
               <select
                 name="selectedRegions"
@@ -30,7 +46,7 @@
 
             <div class="flex items-center justify-between gap-4">
               <label for="selectedDepartments" class="text-[1.25rem]">
-                Selectionner le département pour afficher les réserves :
+                Choisissez le département :
               </label>
               <select
                 name="selectedDepartments"

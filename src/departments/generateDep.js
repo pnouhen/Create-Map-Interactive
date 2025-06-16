@@ -7,7 +7,7 @@ export function generateDep(value, currentPolygonDep, map){
     const dep = storeDepartments.filter(
         (dep) => dep.results[0].dep_code[0] === value
       );
-      console.log(value)
+
       if (dep[0].results[0].manuel === undefined) {
       const polygon = dep[0].results[0].geo_shape.geometry;
       generatePolygons(polygon, currentPolygonDep);
