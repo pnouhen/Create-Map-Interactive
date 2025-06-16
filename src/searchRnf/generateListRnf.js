@@ -1,17 +1,16 @@
-import { storeRnF } from "../datas/storeRnF";
 
 export const searchRnfAutoComplete = document.getElementById(
     "searchRnfAutoComplete"
   );
   
  // To generate the list for to propose Rnf
-export function generateListRnf(input) {
+export function generateListRnf(input, data) {
   searchRnfAutoComplete.innerHTML = "";
 
   // Minimun 3 letters
   if (input.value.length > 2) {
     // To create the list
-    const listRnf = storeRnF.map((rnf) => ({
+    const listRnf = data.map((rnf) => ({
       name_rnf: rnf.properties.nom,
       id: rnf.id,
     }));

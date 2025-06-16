@@ -1,6 +1,6 @@
 import { generateMarkerInput } from "./generateMarkerInput"
 
-export function activeSuggestionRnf(input){
+export function activeSuggestionRnf(input, data){
     const selectRnf = document.querySelectorAll(".selectRnf")
     if(input.value.length > 2){
         selectRnf.forEach((li) => {
@@ -8,7 +8,7 @@ export function activeSuggestionRnf(input){
             input.value = ""
             input.value = li.textContent
 
-            generateMarkerInput(li.textContent) 
+            generateMarkerInput(li.textContent, data) 
         })
         })
 

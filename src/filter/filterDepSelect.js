@@ -8,6 +8,7 @@ import { searchRegion } from "../regDep/searchRegion";
 import { generateDep } from "../departments/generateDep";
 import { storeRnF } from "../datas/storeRnF";
 import { generateClusters } from "../markers/generateClusters";
+import { searchRnf } from "./searchRnf";
 
 const selectedDepartments = document.getElementById("selectedDepartments");
 
@@ -21,6 +22,7 @@ export function filterDepSelect() {
     if (value === valueOptionAllDep) {
       clearPolygons(currentPolygonDep);
       generateClusters(storeRnF)
+      searchRnf(storeRnF)
       if(regionValue === ""){
         centerAll()
       } else{
@@ -34,6 +36,8 @@ export function filterDepSelect() {
 
       const markers = storeRnF.filter((rnf) => rnf.dep_code === value)
       generateClusters(markers)
+
+      searchRnf(markers)
     }
   });
   

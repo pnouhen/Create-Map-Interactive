@@ -3,13 +3,18 @@ import { generateMarkerInput } from "../searchRnf/generateMarkerInput.js";
 import { activeSuggestionRnf } from "../searchRnf/activeSuggestionRnf.js";
 import { generateListRnf } from "../searchRnf/generateListRnf.js";
 
-const searchRnf = document.getElementById("searchRnf");
-const input = searchRnf;
+const searchRnfInupt = document.getElementById("searchRnf");
 
-searchRnf.addEventListener("input", () => {
-  generateListRnf(input);
+export function searchRnf(data) {
+  searchRnfInupt.addEventListener("input", () => {
+    generateListRnf(searchRnfInupt, data);
 
-  activeSuggestionRnf(input);
+    activeSuggestionRnf(searchRnfInupt, data);
 
-  generateMarkerInput(input.value);
-});
+    generateMarkerInput(searchRnfInupt.value, data);
+  });
+}
+
+if (storeRnF) {
+  searchRnf(storeRnF);
+}
