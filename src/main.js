@@ -6,7 +6,8 @@ import "./markers/generateClusters"
 
 import "./filter/filterRegionSelect"
 import "./filter/filterDepSelect"
-import "./filter/searchRnf"
+import "./filter/searchRnfName"
+import "./filter/searchRnfArea"
 
 // File css
 import "./style.css";

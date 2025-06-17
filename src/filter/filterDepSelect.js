@@ -8,39 +8,42 @@ import { searchRegion } from "../regDep/searchRegion";
 import { generateDep } from "../departments/generateDep";
 import { storeRnF } from "../datas/storeRnF";
 import { generateClusters } from "../markers/generateClusters";
-import { searchRnf } from "./searchRnf";
+import { searchRnfName } from "./searchRnfName";
 
 const selectedDepartments = document.getElementById("selectedDepartments");
 
 export let currentPolygonDep = [];
 
-export function filterDepSelect() {  
+export function filterDepSelect() {
   selectedDepartments.addEventListener("change", () => {
     const map = getMapInstance();
     const value = selectedDepartments.value;
 
     if (value === valueOptionAllDep) {
       clearPolygons(currentPolygonDep);
-      generateClusters(storeRnF)
-      searchRnf(storeRnF)
-      if(regionValue === ""){
-        centerAll()
-      } else{
+
+      generateClusters(storeRnF);
+
+      searchRnfName(storeRnF);
+
+      if (regionValue === "") {
+        centerAll();
+      } else {
         const regionSelect = searchRegion();
-        centerPolygon(regionSelect[0], map)
-        generateClusters(markersRegion)
+
+        centerPolygon(regionSelect[0], map);
+
+        generateClusters(markersRegion);
       }
-
     } else {
-      generateDep(value, currentPolygonDep, map)
+      generateDep(value, currentPolygonDep, map);
 
-      const markers = storeRnF.filter((rnf) => rnf.dep_code === value)
-      generateClusters(markers)
+      const markers = storeRnF.filter((rnf) => rnf.dep_code === value);
+      generateClusters(markers);
 
-      searchRnf(markers)
+      searchRnf(markers);
     }
   });
-  
 }
 
 filterDepSelect();

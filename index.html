@@ -16,7 +16,7 @@
           <h2 class="text-2xl font-semibold w-full p-5">Filtres</h2>
           <form action="" class="h-full grid grid-cols-2 gap-4">
             <div class="col-start-1 col-end-2 flex items-center  gap-4">
-              <label for="selectedegions" class="text-[1.25rem]">
+              <label for="searchRnf" class="text-[1.25rem]">
                 Rechercher la réserve :
               </label>
               <div>
@@ -31,8 +31,34 @@
             <ul id="searchRnfAutoComplete"></ul>
               </div>
             </div>
-            <div class="col-start-2 col-end-3 flex items-center justify-between gap-4">
-              <label for="selectedegions" class="text-[1.25rem]">
+            <div class="col-start-1 col-end-2 flex flex-col items-center  gap-4">
+              <p>Polygon dont la surface est comprise entre :</p>
+
+              <div class="flex items-center  gap-4">
+                <label class="text-[1.25rem]" for="areaMinRnf" class="text-[1.25rem]">
+              </label>
+                <input
+                name="areaMinRnf"
+                id="areaMinRnf"
+                type="number"
+                class="py-2.5 px-1.5 border-2 rounded-lg text-[1rem]"
+              >
+            </input >
+            <p>et</p>
+            <label class="text-[1.25rem]" for="areaMaxRnf" class="text-[1.25rem]">
+              </label>
+                <input
+                name="areaMaxRnf"
+                id="areaMaxRnf"
+                type="number"
+                class="py-2.5 px-1.5 border-2 rounded-lg text-[1rem]"
+              >
+            </input >
+              </div>
+              
+            </div>
+            <div class="col-start-2 col-end-3 flex flex-col items-center justify-between gap-4">
+              <label for="selectedRegions" class="text-[1.25rem]">
                 Choisissez la région :
               </label>
               <select
@@ -44,7 +70,7 @@
               </select>
             </div>
 
-            <div class="col-start-2 col-end-3 flex items-center justify-between gap-4">
+            <div class="col-start-2 col-end-3 flex flex-col items-center justify-between gap-4">
               <label for="selectedDepartments" class="text-[1.25rem]">
                 Choisissez le département :
               </label>

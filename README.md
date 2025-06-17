@@ -11,7 +11,6 @@ Pour accèder au projet il faut installer :
 Idée de développement :
 
 - trouver de nouveaux filtres : 
-    - Recherche la RNF avec l'écriture intuitif -> afficher la région et le dep
-    - Surface des réserves (lié a région)
+    - Surface des réserves (lié a région) avec de input nombre entre et indiquer les extremes en pre
 
 - Améliorer le CSS (charte graphique, filtres, markers et polygons)

@@ -7,7 +7,7 @@ import { getMapInstance } from "../maps/getMapInstance";
 import { searchRegion } from "../regDep/searchRegion";
 import { storeRnF } from "../datas/storeRnF";
 import { generateClusters } from "../markers/generateClusters";
-import { searchRnf } from "./searchRnf";
+import { searchRnfName } from "./searchRnfName";
 
 const selectedRegion = document.getElementById("selectedRegions");
 
@@ -29,7 +29,7 @@ function filterRegionSelect() {
 
       generateClusters(storeRnF)
 
-      searchRnf(storeRnF)
+      searchRnfName(storeRnF)
       
       centerAll();
     } else {
