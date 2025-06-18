@@ -1,6 +1,7 @@
 import { findRnfArea } from "./findRnfArea";
+import {generateClusters} from "../markers/generateClusters"
+import { valueMinMax } from "../filter/searchRnfArea";
 
-let valueMinMax = { min: 0, max: 0 };
 
 export function identifyRnfArea(value, condition) {
   if (condition === "min") {
@@ -10,5 +11,7 @@ export function identifyRnfArea(value, condition) {
     valueMinMax.max = value;
   }
   
-  findRnfArea(valueMinMax)
+  const storeRnfArea = findRnfArea(valueMinMax)
+
+  generateClusters(storeRnfArea)
 }
