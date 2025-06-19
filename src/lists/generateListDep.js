@@ -3,6 +3,7 @@ import { removeOptions } from "../selectOptions/removeOptions";
 import { createOptionAll } from "../selectOptions/createOptionAll";
 import { removeOptionAll } from "../selectOptions/removeOptionAll";
 import { valueOptionAllDep } from "../selectOptions/valueOptionAll";
+import { createOptionTitle } from "../selectOptions/createOptionTitle";
 
 export function generateListDep(store) {
   const selectedDepartments = document.getElementById("selectedDepartments");
@@ -12,6 +13,8 @@ export function generateListDep(store) {
   removeOptions(selectedDepartments, "");
 
   createOptionAll(selectedDepartments, "TOUS LES DEPARTEMENTS", valueOptionAllDep);
+
+  createOptionTitle(selectedDepartments, "Choisissez le département")
 
   data.forEach((dep) => {
     const option = document.createElement("option");

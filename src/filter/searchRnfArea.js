@@ -1,7 +1,6 @@
 import { identifyRnfArea } from "../searchRnfArea/identifyRnfArea";
 import { findRnfAreaMinMax } from "../searchRnfArea/findRnfAreaMiMax";
 import { storeRnF } from "../datas/storeRnF";
-import { navigateNumberArray } from "../searchRnfArea/navigateNumberArray";
 
 const areaMinRnf = document.getElementById("areaMinRnf");
 const areaMaxRnf = document.getElementById("areaMaxRnf");
@@ -30,4 +29,3 @@ export function searchRnfArea(data) {
 }
 
 searchRnfArea(storeRnF);
- navigateNumberArray(areaMinRnf,storeRnF)

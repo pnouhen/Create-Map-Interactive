@@ -10,81 +10,101 @@
     <main class="flex flex-col items-center p-5">
       <h1 class="text-3xl font-bold p-5">
         Carte des réserves naturelles de France
-      </h1><div id="filter"
-          class="bg-white p-5 rounded-bl-xl"
+      </h1>
+      <div id="map" class="relative h-[85vh] w-full">
+        <div
+          id="filter"
+          class="absolute z-1000 top-4 right-4 bg-white p-5 rounded-xl"
         >
           <h2 class="text-2xl font-semibold w-full p-5">Filtres</h2>
-          <form action="" class="h-full grid grid-cols-2 gap-4">
-            <div class="col-start-1 col-end-2 flex items-center  gap-4">
-              <label for="searchRnf" class="text-[1.25rem]">
-                Rechercher la réserve :
-              </label>
-              <div>
+          <form action="submit" class="h-full flex flex-col gap-8">
+            <div class="relative flex justify-center">
+              <label for="searchRnf" class="absolute"></label>
+              <div class="relative w-80">
                 <input
-                name="searchRnf"
-                id="searchRnf"
-                type="text"
-                placeholder="Entrez son nom"
-                class="py-2.5 px-1.5 border-2 rounded-lg text-[1rem]"
-              >
-            </input >
-            <ul id="searchRnfAutoComplete"></ul>
-              </div>
-            </div>
-            <div class="col-start-1 col-end-2 flex flex-col items-center  gap-4">
-              <p>Polygon dont la surface est comprise entre :</p>
+                  name="searchRnf"
+                  id="searchRnf"
+                  type="text"
+                  placeholder="Recherchez la réserve naturelle"
+                  class="w-full py-2.5 px-1.5 border-2 rounded-lg text-xl"
+                />
 
-              <div class="flex items-center  gap-4">
-                <label class="text-[1.25rem]" for="areaMinRnf" class="text-[1.25rem]">
-              </label>
-                <input
-                name="areaMinRnf"
-                id="areaMinRnf"
-                type="number"
-                class="py-2.5 px-1.5 border-2 rounded-lg text-[1rem] text-end"
-              >
-            </input >
-            <p>et</p>
-            <label class="text-[1.25rem]" for="areaMaxRnf" class="text-[1.25rem]">
-              </label>
-                <input
-                name="areaMaxRnf"
-                id="areaMaxRnf"
-                type="number"
-                class="py-2.5 px-1.5 border-2 rounded-lg text-[1rem] text-end"
-              >
-            </input >
+                <ul id="searchRnfAutoComplete" class="absolute z-10 w-full flex flex-col gap-2 p-2 bg-white rounded-b-lg text-xl"></ul>
               </div>
-              
             </div>
-            <div class="col-start-2 col-end-3 flex flex-col items-center justify-between gap-4">
-              <label for="selectedRegions" class="text-[1.25rem]">
-                Choisissez la région :
-              </label>
+
+            <div
+              class="relative flex justify-center"
+            >
+              <label for="selectedRegions" class="absolute"> </label>
               <select
                 name="selectedRegions"
                 id="selectedRegions"
-                class="py-2.5 px-1.5 border-2 rounded-lg text-[1rem]"
+                class="w-80 py-2.5 px-1.5 border-2 rounded-lg text-xl"
               >
+                <option value="" disabled selected hidden>
+                  Choisissez la région
+                </option>
                 <option value="allRegions">TOUTES LES REGIONS</option>
               </select>
             </div>
 
-            <div class="col-start-2 col-end-3 flex flex-col items-center justify-between gap-4">
-              <label for="selectedDepartments" class="text-[1.25rem]">
-                Choisissez le département :
+            <div
+              class="relative flex justify-center"
+            >
+              <label for="selectedDepartments" class="absolute">
               </label>
               <select
                 name="selectedDepartments"
                 id="selectedDepartments"
-                class="py-2.5 px-1.5 border-2 rounded-lg text-[1rem]"
+                class="w-80 py-2.5 px-1.5 border-2 rounded-lg text-xl"
               >
               </select>
             </div>
+
+            <div class="flex flex-col items-center gap-4">
+              <p class="text-xl p-1">
+                Faites votre recherche <br> grâce à leur surface (km²) : 
+              </p>
+
+              <div class="flex gap-4">
+                <div class="flex flex-col items-center gap-2">
+                  <label
+                  class="text-xl"
+                  for="areaMinRnf"
+                  class="text-xl"
+                > Valeur minimun :
+                </label>
+
+                <input
+                  name="areaMinRnf"
+                  id="areaMinRnf"
+                  type="number"
+                  class="w-32 py-2.5 px-1.5 border-2 rounded-lg text-xl text-end"
+                />
+                </div>
+
+                <div class="flex flex-col items-center gap-2">
+                  <label
+                  class="text-xl"
+                  for="areaMaxRnf"
+                  class="text-xl"
+                >Valeur maximun :
+                </label>
+
+                <input
+                  name="areaMaxRnf"
+                  id="areaMaxRnf"
+                  type="number"
+                  class="w-32 py-2.5 px-1.5 border-2 rounded-lg text-xl text-end"
+                />
+                </div>
+                
+              </div>
+            </div>
           </form>
         </div>
-      <div id="map" class="h-[60vh] w-full"></div>
-      
+      </div>
     </main>
   </body>
 </html>

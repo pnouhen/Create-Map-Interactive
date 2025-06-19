@@ -14,10 +14,10 @@ export function generateListRnf(input, data) {
       name_rnf: rnf.properties.nom,
       id: rnf.id,
     }));
-
     // To create the balise li
+    
     listRnf
-      .filter((rnf) => rnf.name_rnf.includes(input.value))
+      .filter((rnf) => rnf.name_rnf.toUpperCase().includes(input.value.toUpperCase()))
       .forEach((rnf) => {
         const li = document.createElement("li");
         li.textContent = rnf.name_rnf;

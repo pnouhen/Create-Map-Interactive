@@ -1,7 +1,6 @@
 import { findRnfArea } from "./findRnfArea";
 import { generateClusters } from "../markers/generateClusters";
 import { searchRnfName } from "../filter/searchRnfName";
-import { navigateNumberArray } from "./navigateNumberArray";
 
 export function identifyRnfArea(input, data,valueMinMax, value, condition) {
   if (condition === "min") {
