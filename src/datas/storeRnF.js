@@ -1,7 +1,8 @@
 import { getData } from "./getData";
-import { associateMarkersInPoly } from "../storeRnfLocFunctions/associateMarkersInPoly";
-import { searchName } from "../storeRnfLocFunctions/searchName";
-import { associateMarkersInPoint } from "../storeRnfLocFunctions/associateMarkersInPoint";
+import { associateMarkersInPoly } from "../storeRnfFunctions/associateMarkersInPoly";
+import { searchName } from "../storeRnfFunctions/searchName";
+import { associateMarkersInPoint } from "../storeRnfFunctions/associateMarkersInPoint";
+import { generateRnfArea } from "../storeRnfFunctions/generateRnfArea";
 
 const storeRnc = await getData(
   "https://apicarto.ign.fr/api/nature/rnc",
@@ -19,3 +20,5 @@ associateMarkersInPoly(storeRnF);
 searchName(storeRnF);
 
 associateMarkersInPoint(storeRnF);
+
+generateRnfArea(storeRnF)

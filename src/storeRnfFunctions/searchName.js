@@ -1,5 +1,4 @@
 import { storeDepartments } from "../datas/storeDepartments";
-import { storeRegion } from "../datas/storeRegion";
 
 export function searchName(data) {
   data.map((rnf) => {

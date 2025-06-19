@@ -8,11 +8,14 @@ import { centerAll } from "../regDep/centerAll.js";
 const searchRnfInupt = document.getElementById("searchRnf");
 
 export function searchRnfName(data) {
-  searchRnfInupt.addEventListener("input", () => {
-    if(searchRnfInupt.value === ""){
-      generateClusters(storeRnF)
+    if(data === storeRnF) {
       centerAll()
     }
+  searchRnfInupt.addEventListener("input", () => {
+    if(searchRnfInupt.value === ""){
+      generateClusters(data)
+    }
+
     generateListRnf(searchRnfInupt, data);
 
     activeSuggestionRnf(searchRnfInupt, data);

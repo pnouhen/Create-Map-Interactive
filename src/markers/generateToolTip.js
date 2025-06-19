@@ -13,7 +13,8 @@ export function generateToolTip(data, marker, map) {
     .setContent(
       markerSelect.properties.nom.toString() +
         "<br/>" +
-        markerSelect.properties.url.toString()
+        markerSelect.properties.url.toString() + "<br/>" + 
+        "Surface : " + Number(markerSelect.surface).toLocaleString() + " km2"
     )
     .addTo(map);
 }

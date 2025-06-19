@@ -1,11 +1,7 @@
-import { generateRnfArea } from "./generateRnfArea"
-
-export function findRnfArea(valueMinMax){
-    const rnfArea = generateRnfArea()
-
-    const rnfAreaMinMax = rnfArea
-    .filter((rnf)=> rnf.surface >= valueMinMax.min)
-    .filter((rnf)=> rnf.surface <= valueMinMax.max)
+export function findRnfArea(data, valueMinMax){
+    const rnfAreaMinMax = data
+    .filter((rnf)=> Number(rnf.surface) >= Number(valueMinMax.min))
+    .filter((rnf)=> Number(rnf.surface) <= Number(valueMinMax.max))
 
     return rnfAreaMinMax
 }

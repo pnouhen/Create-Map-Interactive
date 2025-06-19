@@ -1,6 +1,5 @@
 import { valueOptionAllDep } from "../selectOptions/valueOptionAll";
 import { centerPolygon } from "../regDep/centerPolygon";
-import { clearPolygons } from "../polygons/clearPloygons";
 import { centerAll } from "../regDep/centerAll";
 import { getMapInstance } from "../maps/getMapInstance";
 import { markersRegion, regionValue } from "./filterRegionSelect";
@@ -8,7 +7,8 @@ import { searchRegion } from "../regDep/searchRegion";
 import { generateDep } from "../departments/generateDep";
 import { storeRnF } from "../datas/storeRnF";
 import { generateClusters } from "../markers/generateClusters";
-import { searchRnfName } from "./searchRnfName";
+import { getTerritoire } from "../filterTerritoires/getTerritoires";
+import { getAll } from "../filterTerritoires/getAll";
 
 const selectedDepartments = document.getElementById("selectedDepartments");
 
@@ -20,11 +20,7 @@ export function filterDepSelect() {
     const value = selectedDepartments.value;
 
     if (value === valueOptionAllDep) {
-      clearPolygons(currentPolygonDep);
-
-      generateClusters(storeRnF);
-
-      searchRnfName(storeRnF);
+      getAll();
 
       if (regionValue === "") {
         centerAll();
@@ -39,9 +35,7 @@ export function filterDepSelect() {
       generateDep(value, currentPolygonDep, map);
 
       const markers = storeRnF.filter((rnf) => rnf.dep_code === value);
-      generateClusters(markers);
-
-      searchRnf(markers);
+      getTerritoire(markers);
     }
   });
 }

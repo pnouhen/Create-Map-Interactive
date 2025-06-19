@@ -6,8 +6,8 @@ import { centerAll } from "../regDep/centerAll";
 import { getMapInstance } from "../maps/getMapInstance";
 import { searchRegion } from "../regDep/searchRegion";
 import { storeRnF } from "../datas/storeRnF";
-import { generateClusters } from "../markers/generateClusters";
-import { searchRnfName } from "./searchRnfName";
+import { getTerritoire } from "../filterTerritoires/getTerritoires";
+import { getAll } from "../filterTerritoires/getAll";
 
 const selectedRegion = document.getElementById("selectedRegions");
 
@@ -25,11 +25,7 @@ function filterRegionSelect() {
       regionValue = ""
       clearPolygons(currentPolygonReg);
 
-      clearPolygons(currentPolygonDep);
-
-      generateClusters(storeRnF)
-
-      searchRnfName(storeRnF)
+      getAll()
       
       centerAll();
     } else {
@@ -45,9 +41,7 @@ function filterRegionSelect() {
       centerPolygon(zoom, map);
      
       markersRegion = storeRnF.filter((rnf) => rnf.reg_code[0] === regionValue)
-      generateClusters(markersRegion)
-
-      searchRnf(markersRegion)
+      getTerritoire(markersRegion)
     }
   });
 }
