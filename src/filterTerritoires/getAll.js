@@ -9,4 +9,6 @@ export function getAll() {
   clearPolygons(currentPolygonDep);
 
   generateClusters(storeRnF);
+
+  searchRnfArea(storeRnF);
 }

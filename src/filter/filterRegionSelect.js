@@ -13,7 +13,9 @@ const selectedRegion = document.getElementById("selectedRegions");
 
 // Initial value region
 let currentPolygonReg = [];
+
 export let regionValue = "";
+
 export let markersRegion = [];
 
 function filterRegionSelect() {
@@ -26,8 +28,6 @@ function filterRegionSelect() {
       clearPolygons(currentPolygonReg);
 
       getAll();
-
-      searchRnfArea(storeRnF);
 
       centerAll();
     } else {

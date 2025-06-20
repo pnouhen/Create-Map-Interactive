@@ -6,10 +6,8 @@ import { markersRegion, regionValue } from "./filterRegionSelect";
 import { searchRegion } from "../regDep/searchRegion";
 import { generateDep } from "../departments/generateDep";
 import { storeRnF } from "../datas/storeRnF";
-import { generateClusters } from "../markers/generateClusters";
 import { getTerritoire } from "../filterTerritoires/getTerritoires";
 import { getAll } from "../filterTerritoires/getAll";
-import { searchRnfArea } from "./searchRnfArea";
 
 const selectedDepartments = document.getElementById("selectedDepartments");
 
@@ -30,6 +28,8 @@ export function filterDepSelect() {
         const zoom = regionSelect[0];
 
         getTerritoire(markersRegion, zoom, map);
+
+        centerPolygon(zoom, map);
       }
     } else {
       const department = generateDep(value, currentPolygonDep, map);

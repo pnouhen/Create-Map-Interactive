@@ -23,9 +23,6 @@ html {
     font-size: clamp(16px, calc(18 * 100dvw / 1600), 18px);
   }
 
-  @media (min-width: 1600px) {
-    font-size: 18px;
-  }
 
   @media print {
     font-size: 14px;

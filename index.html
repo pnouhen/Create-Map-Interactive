@@ -7,16 +7,16 @@
     <script type="module" src="/src/main.js"></script>
   </head>
   <body>
-    <main class="flex flex-col items-center p-12">
-      <h1 class="text-3xl font-bold p-5">
+    <main class="max-w-[1400px] mx-auto flex flex-col items-center gap-4 md:p-4">
+      <h1 class="text-3xl font-bold text-center">
         Carte des réserves naturelles de France
       </h1>
-      <div class="relative w-full flex gap-4">
-        <div id="map" class="w-full h-[52rem] border-2 rounded-md"></div>
+      <div class="w-full md:p-4 flex lg:flex-row flex-col-reverse items-center gap-4">
+        <div id="map" class="w-full h-[49rem] border-2 rounded-md"></div>
 
-          <div id="filter">
+        <div id="filter" class="w-96 mx-auto flex flex-col gap-4">
           <h2 class="text-2xl font-semibold">Filtres</h2>
-          <form action="submit" class="h-full flex flex-col gap-8">
+          <form action="submit" class="flex flex-col gap-8">
             <div class="relative flex justify-center">
               <label for="searchRnf" class="absolute"></label>
               <div class="relative w-96">
@@ -58,15 +58,13 @@
               ></select>
             </div>
 
-            <div class="flex flex-col items-center gap-4">
-              <p class="text-xl p-1">
-                Selectionnez les surfaces :
-              </p>
+            <div class="flex flex-col items-center gap-1">
+              <p class="text-xl p-1">Selectionnez les surfaces :</p>
 
-              <div class="w-full flex justify-between">
-                <div class="flex flex-col items-center gap-2">
-                  <label class="text-xl" for="areaMinRnf" class="text-xl">
-                    Minimun
+              <div class="w-full flex justify-center gap-4">
+                <div class="flex flex-col items-center gap-1">
+                  <label class="text-xl" for="areaMinRnf" class="text-xl"
+                    >Minimun
                   </label>
 
                   <input
