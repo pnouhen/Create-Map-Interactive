@@ -3,7 +3,7 @@ import { generatePolygons } from "../polygons/generatePolygon";
 import { centerPolygon } from "../regDep/centerPolygon";
 
 
-export function generateDep(value, currentPolygonDep, map){
+export function generateDep(value, currentPolygonDep){
     const dep = storeDepartments.filter(
         (dep) => dep.results[0].dep_code[0] === value
       );
@@ -12,6 +12,6 @@ export function generateDep(value, currentPolygonDep, map){
       const polygon = dep[0].results[0].geo_shape.geometry;
       generatePolygons(polygon, currentPolygonDep);
       }
-      const zoom = dep[0].results[0]
-      centerPolygon(zoom, map)
+      
+return dep
 }

@@ -12,26 +12,28 @@ import { getAll } from "../filterTerritoires/getAll";
 const selectedRegion = document.getElementById("selectedRegions");
 
 // Initial value region
- let currentPolygonReg = [];
-  export let regionValue = ""
-  export let markersRegion = []
+let currentPolygonReg = [];
+export let regionValue = "";
+export let markersRegion = [];
 
 function filterRegionSelect() {
   selectedRegion.addEventListener("change", () => {
     const map = getMapInstance();
-     regionValue = selectedRegion.value;
+    regionValue = selectedRegion.value;
 
     if (regionValue === "allRegions") {
-      regionValue = ""
+      regionValue = "";
       clearPolygons(currentPolygonReg);
 
-      getAll()
-      
+      getAll();
+
+      searchRnfArea(storeRnF);
+
       centerAll();
     } else {
       clearPolygons(currentPolygonDep);
 
-      const regionSelect = searchRegion()
+      const regionSelect = searchRegion();
 
       if (regionSelect[0].manuel === undefined) {
         const polygon = regionSelect[0].geo_shape.geometry;
@@ -39,9 +41,9 @@ function filterRegionSelect() {
       }
       const zoom = regionSelect[0];
       centerPolygon(zoom, map);
-     
-      markersRegion = storeRnF.filter((rnf) => rnf.reg_code[0] === regionValue)
-      getTerritoire(markersRegion)
+
+      markersRegion = storeRnF.filter((rnf) => rnf.reg_code[0] === regionValue);
+      getTerritoire(markersRegion, zoom, map);
     }
   });
 }

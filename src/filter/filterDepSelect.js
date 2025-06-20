@@ -9,6 +9,7 @@ import { storeRnF } from "../datas/storeRnF";
 import { generateClusters } from "../markers/generateClusters";
 import { getTerritoire } from "../filterTerritoires/getTerritoires";
 import { getAll } from "../filterTerritoires/getAll";
+import { searchRnfArea } from "./searchRnfArea";
 
 const selectedDepartments = document.getElementById("selectedDepartments");
 
@@ -21,21 +22,24 @@ export function filterDepSelect() {
 
     if (value === valueOptionAllDep) {
       getAll();
-
       if (regionValue === "") {
         centerAll();
       } else {
         const regionSelect = searchRegion();
 
-        centerPolygon(regionSelect[0], map);
+        const zoom = regionSelect[0];
 
-        generateClusters(markersRegion);
+        getTerritoire(markersRegion, zoom, map);
       }
     } else {
-      generateDep(value, currentPolygonDep, map);
+      const department = generateDep(value, currentPolygonDep, map);
+
+      const zoom = department[0].results[0]
+      centerPolygon(zoom, map)
 
       const markers = storeRnF.filter((rnf) => rnf.dep_code === value);
-      getTerritoire(markers);
+      getTerritoire(markers, zoom, map);
+
     }
   });
 }
