@@ -11,10 +11,14 @@ export function generateToolTip(data, marker, map) {
   popup
     .setLatLng(marker.latlng)
     .setContent(
-      markerSelect.properties.nom.toString() +
-        "<br/>" +
-        markerSelect.properties.url.toString() + "<br/>" + 
-        "Surface : " + Number(markerSelect.surface).toLocaleString() + " km2"
+      `<p class="title">
+        ${markerSelect.properties.nom.toString()}
+      </p> 
+      <div class="surface">
+        <p class="title">Surface : </p>
+        <p>${Number(markerSelect.surface).toLocaleString()}km2</p>
+      </div>
+        <a href="${markerSelect.properties.url.toString()}">Cliquez ici pour plus d'information</a>`
     )
     .addTo(map);
 }

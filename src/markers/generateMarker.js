@@ -2,13 +2,14 @@
 import { coordinateMarker } from "./coordinateMarker";
 import { generateToolTip } from "./generateToolTip";
 import { generatePolygonRnf } from "./generatePolygonRnf";
+import { greenIcon } from "./createIcon";
 
 export function generateMarker(data, map) {
   let markers = [];
 
   data.forEach((el) => {
     const latLng = coordinateMarker(el);
-    const marker = L.marker(latLng);
+    const marker = L.marker(latLng, {icon: greenIcon});
     // Associate dataRnn.features =>  marker
     marker["id"] = el.id;
 
