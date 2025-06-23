@@ -7,9 +7,9 @@ import { saintBarthelemy, saintMartin, terresAustrales } from "./storeDepartment
 
 
    apiListDep.push(
-     addListDep(saintBarthelemy.results[0].dep_code[0], saintBarthelemy.results[0].dep_name_upper),
-     addListDep(saintMartin.results[0].dep_code[0], saintMartin.results[0].dep_name_upper),
-     addListDep(terresAustrales.results[0].dep_code[0], terresAustrales.results[0].dep_name_upper)
+     addListDep(saintBarthelemy.dep_code[0], saintBarthelemy.dep_name_upper),
+     addListDep(saintMartin.dep_code[0], saintMartin.dep_name_upper),
+     addListDep(terresAustrales.dep_code[0], terresAustrales.dep_name_upper)
    )
    
 export const storeListDep = apiListDep

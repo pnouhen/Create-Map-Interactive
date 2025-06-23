@@ -10,7 +10,6 @@ export async function fetchAPI(apiUrl, dataName) {
     }
 
     const data = await response.json();
-    localStorage.setItem(dataName, JSON.stringify(data));
     return data;
 
   } catch (error) {

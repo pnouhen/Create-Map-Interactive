@@ -8,9 +8,9 @@ import { saintBarthelemy, saintMartin, terresAustrales } from "./storeDepartment
 
 const regions = apiResponse.results;
 
-regions.push(saintBarthelemy.results[0]);
+regions.push(saintBarthelemy);
 
-regions.push(saintMartin.results[0]);
-regions.push(terresAustrales.results[0]);
+regions.push(saintMartin);
+regions.push(terresAustrales);
 
 export const storeRegion = regions;

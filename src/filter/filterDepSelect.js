@@ -17,7 +17,6 @@ export function filterDepSelect() {
   selectedDepartments.addEventListener("change", () => {
     const map = getMapInstance();
     const value = selectedDepartments.value;
-
     if (value === valueOptionAllDep) {
       getAll();
       if (regionValue === "") {
@@ -32,9 +31,9 @@ export function filterDepSelect() {
         centerPolygon(zoom, map);
       }
     } else {
-      const department = generateDep(value, currentPolygonDep, map);
+      const department = generateDep(value, currentPolygonDep);
 
-      const zoom = department[0].results[0]
+      const zoom = department[0]
       centerPolygon(zoom, map)
 
       const markers = storeRnF.filter((rnf) => rnf.dep_code === value);

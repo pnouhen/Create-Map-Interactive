@@ -4,9 +4,9 @@ export function searchName(data) {
   data.map((rnf) => {
     if (rnf.dep_code === undefined) {
       storeDepartments.forEach((dep) => {
-        if (rnf.properties.nom.includes(dep.results[0].dep_name[0])) {
-          rnf.dep_code = dep.results[0].dep_code[0];
-          rnf.reg_code = dep.results[0].reg_code;
+        if (rnf.properties.nom.includes(dep.dep_name[0])) {
+          rnf.dep_code = dep.dep_code[0];
+          rnf.reg_code = dep.reg_code;
         }
       });
     }

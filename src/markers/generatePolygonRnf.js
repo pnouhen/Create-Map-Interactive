@@ -1,5 +1,5 @@
+import { colorRnf } from "../polygons/colorPolygons";
 import { generatePolygons } from "../polygons/generatePolygon";
-import { centerPolygon } from "../regDep/centerPolygon";
 import { centerMarkers } from "./centerMarkers";
 
 let currentPolygons = [];
@@ -12,7 +12,7 @@ export function generatePolygonRnf(data, marker,map, latLng) {
   // Create the tableau in the object
   const coords = markerSelect.geometry;
 
-  generatePolygons(coords, currentPolygons);
+  generatePolygons(coords, currentPolygons, colorRnf);
 
   centerMarkers(markerSelect, map, latLng)
 }

@@ -8,6 +8,7 @@ import { searchRegion } from "../regDep/searchRegion";
 import { storeRnF } from "../datas/storeRnF";
 import { getTerritoire } from "../filterTerritoires/getTerritoires";
 import { getAll } from "../filterTerritoires/getAll";
+import { colorRegion } from "../polygons/colorPolygons";
 
 const selectedRegion = document.getElementById("selectedRegions");
 
@@ -37,7 +38,7 @@ function filterRegionSelect() {
 
       if (regionSelect[0].manuel === undefined) {
         const polygon = regionSelect[0].geo_shape.geometry;
-        generatePolygons(polygon, currentPolygonReg);
+        generatePolygons(polygon, currentPolygonReg, colorRegion);
       }
       const zoom = regionSelect[0];
       centerPolygon(zoom, map);
