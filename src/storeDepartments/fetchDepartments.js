@@ -1,7 +1,6 @@
 // Data is generated in localStorage for to avoid making a call to the retrieval API for  each item
 
-export async function fetchAPI(apiUrl, dataName) {
-
+export async function fetchDepartments(apiUrl, dataName) {
   try {
     const response = await fetch(apiUrl);
 
@@ -11,7 +10,6 @@ export async function fetchAPI(apiUrl, dataName) {
 
     const data = await response.json();
     return data;
-
   } catch (error) {
     console.error("Catch :", error.message);
   }

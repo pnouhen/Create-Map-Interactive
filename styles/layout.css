@@ -1,32 +1,5 @@
 @import "tailwindcss";
-
-html {
-  font-size: 16px;
-
-  @media (max-width: 374px) {
-    font-size: clamp(12px, calc(14 * 100dvw / 374), 14px);
-  }
-
-  @media (min-width: 375px) and (max-width: 767px) {
-    font-size: clamp(12px, calc(16 * 100dvw / 1440), 14px);
-  }
-
-  @media (min-width: 768px) and (max-width: 1023px) {
-    font-size: clamp(12px, calc(16 * 100dvw / 1440), 14px);
-  }
-
-  @media (min-width: 1024px) and (max-width: 1439px) {
-    font-size: clamp(12px, calc(16 * 100dvw / 1440), 16px);
-  }
-
-  @media (min-width: 1441px) and (max-width: 1599px) {
-    font-size: clamp(16px, calc(18 * 100dvw / 1600), 18px);
-  }
-
-  @media print {
-    font-size: 14px;
-  }
-}
+@import "./config.css";
 
 .marker-cluster-small,
 .marker-cluster-medium,
@@ -41,17 +14,17 @@ html {
 }
 
 .marker-cluster-small {
-  background-color: rgba(255, 195, 0, 1);   /* Jaune doré */
+  background-color: rgba(255, 195, 0, 1);
   color: white;
 }
 
 .marker-cluster-medium {
-  background-color: rgba(138, 43, 226, 1);  /* Violet profond */
+  background-color: rgba(138, 43, 226, 1);
   color: white;
 }
 
 .marker-cluster-large {
-  background-color: rgba(255, 87, 34, 1);   /* Orange vif */
+  background-color: rgba(255, 87, 34, 1);
   color: white;
 }
 
@@ -82,7 +55,7 @@ a {
 
 .leaflet-popup-content .title {
   text-align: center;
-  font-family: 1.125rem;
+  font-size: 1.125rem;
   font-weight: bold;
 }
 
@@ -93,4 +66,34 @@ a {
 
 .leaflet-popup-close-button span {
   font-size: 25px;
+}
+
+@keyframes bounce-custom {
+  0%,
+  100% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(-12px);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.bounce-1,
+.bounce-2,
+.bounce-3 {
+  animation: bounce-custom 1s linear infinite;
+}
+
+.bounce-1 {
+  animation-delay: 0s;
+}
+
+.bounce-2 {
+  animation-delay: 0.2s;
+}
+
+.bounce-3 {
+  animation-delay: 0.4s;
 }

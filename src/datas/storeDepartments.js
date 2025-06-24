@@ -1,4 +1,3 @@
-import { fetchAPI } from "./fetchAPI";
 import {
   saintBarthelemy,
   saintMartin,
@@ -6,15 +5,15 @@ import {
 } from "./storeDepartmentsManuel";
 import { searchDepMissing } from "../storeDepartments/searchDepMissing";
 import { recoverDepMap } from "../storeDepartments/recoverDepMap";
+import { fetchDepartments } from "../storeDepartments/fetchDepartments";
 
 // Limitation of the API to 100 departments and there are 101 of them
 
 export const storeDepartments = await (async () => {
   let store = [];
 
-  store = await fetchAPI(
-    "https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/departements-et-collectivites-doutre-mer-france@toursmetropole/records?limit=100",
-    "department"
+  store = await fetchDepartments(
+    "https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/departements-et-collectivites-doutre-mer-france@toursmetropole/records?limit=100"
   );
 
   const depMissing = searchDepMissing(store);
@@ -25,7 +24,7 @@ export const storeDepartments = await (async () => {
       .filter((dep) => dep.manuel !== true)
       .map(async (dep) => recoverDepMap(dep))
   );
-  
+
   store.results.push(deps[0]);
 
   store.results.push(saintBarthelemy);
@@ -34,5 +33,3 @@ export const storeDepartments = await (async () => {
 
   return store.results;
 })();
-
-console.log(storeDepartments);

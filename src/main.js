@@ -10,5 +10,5 @@ import "./filter/searchRnfName"
 import "./filter/searchRnfArea"
 
 // File css
-import "./style.css";
+import "/styles/layout.css";
 import 'leaflet/dist/leaflet.css';

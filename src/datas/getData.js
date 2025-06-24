@@ -1,15 +1,11 @@
-import { fetchAPI } from "./fetchAPI";
+import { fetchLs } from "./fetchLs";
 
 export async function getData(apiUrl, dataName) {
-  // For recover data
-  const data = await fetchAPI(apiUrl, dataName);
-  localStorage.setItem(dataName, JSON.stringify(data));
-
-  let local = [];
-  if (!localStorage.getItem(dataName)) {
-    local = data
-  } else {
-    local = JSON.parse(localStorage.getItem(dataName));
-  }
-  return local;
+  let local = []
+      if(!localStorage.getItem(dataName)){
+        local = await fetchLs(apiUrl, dataName)
+      } else {
+        local = JSON.parse(localStorage.getItem(dataName))
+      }
+      return local
 }

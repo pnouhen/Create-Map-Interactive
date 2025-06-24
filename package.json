@@ -12,10 +12,10 @@
     "vite": "^6.3.5"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.1.8",
+    "@tailwindcss/vite": "^4.1.10",
     "@turf/turf": "^7.2.0",
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
-    "tailwindcss": "^4.1.8"
+    "tailwindcss": "^4.1.10"
   }
 }
