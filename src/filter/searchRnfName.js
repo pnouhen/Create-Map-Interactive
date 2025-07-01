@@ -14,11 +14,9 @@ export function searchRnfName(data, zoom, map) {
   if(searchRnfValue){
     searchRnfInupt.removeEventListener("input", searchRnfValue)
   }
-
   searchRnfValue = () => {
     if(searchRnfInupt.value === ""){
       generateClusters(data)
-
       if(data === storeRnF) {
       centerAll()
     } else {

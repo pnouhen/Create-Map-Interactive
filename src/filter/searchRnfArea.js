@@ -10,21 +10,20 @@ let minRnfValue = null;
 let maxRnfValue = null;
 
 export function searchRnfArea(data, zoom, map) {
-
   let valueMinMax = findRnfAreaMinMax(data);
 
   areaMinRnf.value = valueMinMax.min;
   areaMaxRnf.value = valueMinMax.max;
-  
+
   // Helper function to setup listeners
   const setupListener = (input, rnfValue, type) => {
     if (rnfValue) {
       input.removeEventListener("input", rnfValue);
     }
-
     const newValue = () => {
       let value = input.value;
-      identifyRnfArea(data, zoom, map, valueMinMax, value, type);
+      identifyRnfArea(data, zoom, valueMinMax, value, type);
+
     };
 
     input.addEventListener("input", newValue);

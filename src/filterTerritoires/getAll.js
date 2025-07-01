@@ -4,6 +4,7 @@ import { searchRnfArea } from "../filter/searchRnfArea";
 import { currentPolygonDep } from "../filter/filterDepSelect";
 import { storeRnF } from "../datas/storeRnF";
 import { clearPolygons } from "../polygons/clearPloygons";
+import { searchRnfName } from "../filter/searchRnfName";
 
 export function getAll() {
   clearPolygons(currentPolygonDep);
@@ -11,4 +12,6 @@ export function getAll() {
   generateClusters(storeRnF);
 
   searchRnfArea(storeRnF);
+
+  searchRnfName(storeRnF)
 }

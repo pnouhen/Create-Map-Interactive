@@ -6,20 +6,21 @@
     <title>Carte Interactive</title>
     <script type="module" src="/src/main.js"></script>
   </head>
-  <body>
-    <main class="max-w-[1400px] mx-auto flex flex-col items-center gap-4 md:p-4">
+  <body class="max-w-[1440px] mx-auto">
+    <main class="flex flex-col items-center gap-4 md:p-4">
       <h1 class="text-3xl font-bold text-center">
         Carte des réserves naturelles de France
       </h1>
       <div class="w-full md:p-4 flex lg:flex-row flex-col-reverse items-center gap-4">
-        <div id="" class="w-full h-[49rem] flex justify-center items-center border-2 rounded-md">
-          <div class="flex relative -z-10 items-baseline gap-3">
+        <div id="map" class="w-full h-[49rem] flex justify-center items-center border-2 rounded-md">
+          <div class="relative -z-10 flex items-baseline gap-3">
             <p class="text-3xl text-center">Chargement en cours</p>
-            
           <div class="w-2.5 h-2.5 rounded-full bg-purple-400 bounce-1"></div>
           <div class="w-2.5 h-2.5 rounded-full bg-orange-400 bounce-2"></div>
           <div class="w-2.5 h-2.5 rounded-full bg-yellow-400 bounce-3"></div>
           </div>
+          
+
         </div>
 
         <div id="filter" class="w-96 mx-auto flex flex-col gap-4">
