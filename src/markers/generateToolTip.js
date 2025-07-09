@@ -16,7 +16,7 @@ export function generateToolTip(data, marker, map) {
       </p> 
       <div class="surface">
         <p class="title">Surface : </p>
-        <p>${Number(markerSelect.surface).toLocaleString()}km2</p>
+        <p>${Number(markerSelect.surface).toLocaleString()} km²</p>
       </div>
         <a href="${markerSelect.properties.url.toString()}">Cliquez ici pour plus d'information</a>`
     )

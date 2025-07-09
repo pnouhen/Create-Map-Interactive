@@ -1,40 +1,24 @@
-import { identifyRnfArea } from "../searchRnfArea/identifyRnfArea";
 import { findRnfAreaMinMax } from "../searchRnfArea/findRnfAreaMiMax";
+import { changeValue } from "../searchRnfArea/changeValue";
 import { storeRnF } from "../datas/storeRnF";
 
 const areaMinRnf = document.getElementById("areaMinRnf");
 const areaMaxRnf = document.getElementById("areaMaxRnf");
 
-// Store callback function references
-let minRnfValue = null;
-let maxRnfValue = null;
+const inputAreaMinRnf = areaMinRnf.querySelector("input");
+const inputAreaMaxRnf = areaMaxRnf.querySelector("input");
 
-export function searchRnfArea(data, zoom, map) {
+export function searchRnfArea(data, zoom) {
   let valueMinMax = findRnfAreaMinMax(data);
+  let minValue = valueMinMax.min;
 
-  areaMinRnf.value = valueMinMax.min;
-  areaMaxRnf.value = valueMinMax.max;
+  let maxValue = valueMinMax.max;
 
-  // Helper function to setup listeners
-  const setupListener = (input, rnfValue, type) => {
-    if (rnfValue) {
-      input.removeEventListener("input", rnfValue);
-    }
-    const newValue = () => {
-      let value = input.value;
-      identifyRnfArea(data, zoom, valueMinMax, value, type);
+  inputAreaMinRnf.value = Number(minValue).toLocaleString();
+  inputAreaMaxRnf.value = Number(maxValue).toLocaleString();
 
-    };
-
-    input.addEventListener("input", newValue);
-
-    // One for each input 
-    return newValue;
-  };
-  
-  // Setup listeners
-  minRnfValue = setupListener(areaMinRnf, minRnfValue, "min");
-  maxRnfValue = setupListener(areaMaxRnf, maxRnfValue, "max");
+  changeValue(data, zoom, areaMinRnf, inputAreaMinRnf, valueMinMax, "min");
+  changeValue(data, zoom, areaMaxRnf, inputAreaMaxRnf, valueMinMax, "max");
 }
 
 searchRnfArea(storeRnF);

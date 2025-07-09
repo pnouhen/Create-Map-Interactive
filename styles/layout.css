@@ -1,6 +1,27 @@
 @import "tailwindcss";
 @import "./config.css";
 
+@layer utilities {
+  .area-container {
+    @apply  flex flex-col items-center gap-2;
+  }
+  .input {
+    @apply py-2.5 px-1.5 border-2 rounded-lg text-xl;
+  }
+
+  .input-stepper {
+    @apply w-44 flex justify-center;
+  }
+
+  .input-button {
+    @apply px-2 text-2xl cursor-pointer;
+  }
+
+  .input-number {
+    @apply w-24 text-end focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-inner-spin-button]:m-0;
+  }
+}
+
 .marker-cluster-small,
 .marker-cluster-medium,
 .marker-cluster-large {
@@ -53,6 +74,12 @@ a {
   margin: 0;
 }
 
+.leaflet-popup-content p {
+  display: flex;
+  align-items: end;
+  justify-content: center;
+}
+
 .leaflet-popup-content .title {
   text-align: center;
   font-size: 1.125rem;
@@ -61,10 +88,10 @@ a {
 
 .leaflet-popup-content .surface {
   display: flex;
-  gap: 2px;
+  gap: 5px;
 }
 
-.leaflet-popup-close-button span {
+.leaflet-popup-close-button button {
   font-size: 25px;
 }
 
