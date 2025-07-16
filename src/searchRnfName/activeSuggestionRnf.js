@@ -1,16 +1,18 @@
-import { generateMarkerInput } from "./generateMarkerInput"
+import { disableList } from "../utils/disableList";
+import { generateMarkerInput } from "./generateMarkerInput";
 
-export function activeSuggestionRnf(input, data){
-    const selectRnf = document.querySelectorAll(".selectRnf")
-    if(input.value.length > 2){
-        selectRnf.forEach((li) => {
-            li.addEventListener("click", () => {
-            input.value = ""
-            input.value = li.textContent
+export function activeSuggestionRnf(input, data, autoComplete) {
+  const selectRnf = autoComplete.querySelectorAll(".li");
+    selectRnf.forEach((li) => {
+      li.addEventListener("click", () => {
+        input.value = "";
+        input.value = li.textContent;
 
-            generateMarkerInput(li.textContent, data) 
-        })
-        })
+        generateMarkerInput(li.textContent, data, autoComplete);
+      });
+    });
 
+    if(selectRnf.length === 0) {
+      disableList(autoComplete)
     }
 }

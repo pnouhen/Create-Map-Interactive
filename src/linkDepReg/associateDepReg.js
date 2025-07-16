@@ -4,10 +4,10 @@ import { storeListDep } from "../datas/storeListDep";
 
 // Associate all the depatments for the region
 
-const selectedRegions = document.getElementById("selectedRegions");
+const searchRegionautoComplete = document.getElementById("searchTerritoireAutoComplete");
 
-selectedRegions.addEventListener("change", () => {
-  const value = selectedRegions.value;
+searchRegionautoComplete.addEventListener("change", () => {
+  const value = searchRegionautoComplete.value;
   if (value === "allRegions") {
     generateListDep(storeListDep);
   } else {

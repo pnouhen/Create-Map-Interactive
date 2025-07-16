@@ -1,7 +1,7 @@
-import { storeRegion } from "../datas/storeRegion";
-import { regionValue } from "../filter/filterRegionSelect";
+import { regionValue } from "../filterTerritoires/generateRegion";
 
-
-export function searchRegion(){
+export function searchRegion(storeRegion) {
+  if (storeRegion) {
     return storeRegion.filter((reg) => reg.reg_code[0] === regionValue);
+  }
 }

@@ -5,7 +5,7 @@ import { centerPolygon } from "./selectFunctions/centerPolygon";
 export function generateAllSelect(data) {
   const selectedRegion = document.getElementById("selectedRegions");
 
-  if (selectedRegion.value === "allRegions") {
+  if (selectedRegion.value === "allRegions" && storeRegion) {
     centerAll(data);
   } else {
     const coordinates = storeRegion.results.filter(

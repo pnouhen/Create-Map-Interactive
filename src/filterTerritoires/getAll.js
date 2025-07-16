@@ -2,16 +2,16 @@ import { generateClusters } from "../markers/generateClusters";
 import { searchRnfArea } from "../filter/searchRnfArea";
 
 import { currentPolygonDep } from "../filter/filterDepSelect";
-import { storeRnF } from "../datas/storeRnF";
+import { storeRnf } from "../datas/storeRnf";
 import { clearPolygons } from "../polygons/clearPloygons";
 import { searchRnfName } from "../filter/searchRnfName";
 
 export function getAll() {
   clearPolygons(currentPolygonDep);
 
-  generateClusters(storeRnF);
+  generateClusters(storeRnf);
 
-  searchRnfArea(storeRnF);
+  searchRnfArea(storeRnf);
 
-  searchRnfName(storeRnF)
+  searchRnfName(storeRnf)
 }

@@ -1,29 +1,32 @@
+import { activeSuggestionRnf } from "../searchRnfName/activeSuggestionRnf.js";
+import { activeList } from "../utils/activeList.js";
+import { disableList } from "../utils/disableList.js";
+import { handleOutsideClick } from "../utils/handleOutsideClick.js";
 
-export const searchRnfAutoComplete = document.getElementById(
-    "searchRnfAutoComplete"
-  );
-  
- // To generate the list for to propose Rnf
-export function generateListRnf(input, data) {
-  searchRnfAutoComplete.innerHTML = "";
+// To generate the list for to propose Rnf
+export function generateListRnf(autoComplete, input, data) {
+  autoComplete.innerHTML = "";
 
-  // Minimun 3 letters
-  if (input.value.length > 2) {
+  // Minimun 2 letters
+  if (input.value.length > 1) {
     // To create the list
-    const listRnf = data.map((rnf) => ({
-      name_rnf: rnf.properties.nom,
-      id: rnf.id,
-    }));
-    // To create the balise li
-    
-    listRnf
-      .filter((rnf) => rnf.name_rnf.toUpperCase().includes(input.value.toUpperCase()))
+    data
+      .filter((rnf) =>
+        rnf.properties.nom.toUpperCase().includes(input.value.toUpperCase())
+      )
       .forEach((rnf) => {
         const li = document.createElement("li");
-        li.textContent = rnf.name_rnf;
-        li.classList.add("selectRnf", "cursor-pointer");
-        searchRnfAutoComplete.appendChild(li);
-        
+        li.textContent = rnf.properties.nom;
+        li.classList.add("li");
+        autoComplete.appendChild(li);
       });
-  }  
+
+    activeSuggestionRnf(input, data, searchRnfautoComplete);
+
+    activeList(autoComplete);
+  } else {
+    disableList(autoComplete)
+  }
+  
+  handleOutsideClick(autoComplete);
 }

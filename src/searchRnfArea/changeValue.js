@@ -6,8 +6,7 @@ export function changeValue(data, zoom, areaRnf, input, valueMinMax, type) {
   const less = areaRnf.querySelector(".less");
 
   let value = parseInt(input.value.replace(/\s/g, ""));
-
-  const valueMax = valueMinMax.max
+  const valueMax = valueMinMax.max;
 
   areaRnf.addEventListener("input", () => {
     value = parseInt(input.value.replace(/\s/g, ""));
@@ -17,48 +16,60 @@ export function changeValue(data, zoom, areaRnf, input, valueMinMax, type) {
       numeralThousandsGroupStyle: "thousand",
       delimiter: " ",
     });
+
+    identifyRnfArea(data, zoom, valueMinMax, value, type);
   });
 
   const lessValue = () => {
     if (value > 0) {
-      value = value - 1;
-      input.value = parseInt(input.value.replace(/\s/g, "")) - 1;
+      value--;
+      input.value = value;
 
       new Cleave(input, {
         numeral: true,
         numeralThousandsGroupStyle: "thousand",
         delimiter: " ",
       });
+
       identifyRnfArea(data, zoom, valueMinMax, value, type);
     }
   };
 
   const moreValue = () => {
     if (value < valueMax) {
-      value = value + 1;
-      input.value = parseInt(input.value.replace(/\s/g, "")) + 1;
+      value++;
+      input.value = value;
 
       new Cleave(input, {
         numeral: true,
         numeralThousandsGroupStyle: "thousand",
         delimiter: " ",
       });
+
       identifyRnfArea(data, zoom, valueMinMax, value, type);
     }
   };
 
-  more.onclick = () => moreValue();
-  less.onclick = () => lessValue();
+  more.onclick = moreValue;
+  less.onclick = lessValue;
 
-  // input.addEventListener("keydown", (e) => {
-  //   if (e.key === "ArrowDown") {
-  //     e.preventDefault();
-  //     lessValue();
-  //   }
+  if (input._customKeydownHandler) {
+    input.removeEventListener("keydown", input._customKeydownHandler);
+  }
 
-  //   if (e.key === "ArrowUp") {
-  //     e.preventDefault();
-  //     moreValue();
-  //   }
-  // });
+  const handler = (e) => {
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      lessValue();
+    }
+
+    if (e.key === "ArrowUp") {
+      e.preventDefault();
+      moreValue();
+    }
+  };
+
+  input._customKeydownHandler = handler;
+
+  input.addEventListener("keydown", handler);
 }

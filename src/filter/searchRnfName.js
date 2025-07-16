@@ -1,36 +1,38 @@
-import { storeRnF } from "../datas/storeRnF.js";
-import { generateMarkerInput } from "../searchRnfName/generateMarkerInput.js";
-import { activeSuggestionRnf } from "../searchRnfName/activeSuggestionRnf.js";
+import { storeRnf } from "../datas/storeRnf.js";
 import { generateListRnf } from "../searchRnfName/generateListRnf.js";
 import { generateClusters } from "../markers/generateClusters.js";
 import { centerAll } from "../regDep/centerAll.js";
 import { centerPolygon } from "../regDep/centerPolygon.js";
+import { generateMarkerInput } from "../searchRnfName/generateMarkerInput.js";
+import { cleanInputList } from "../utils/cleanInputList.js";
+import { searchWithInput } from "../utils/searchWithInput.js";
 
-const searchRnfInupt = document.getElementById("searchRnf");
+const searchRnfInput = document.getElementById("searchRnf");
+const searchRnfautoComplete = document.getElementById("searchRnfautoComplete");
 
-  let searchRnfValue = null
+let previousData = storeRnf;
 
 export function searchRnfName(data, zoom, map) {
-  if(searchRnfValue){
-    searchRnfInupt.removeEventListener("input", searchRnfValue)
-  }
-  searchRnfValue = () => {
-    if(searchRnfInupt.value === ""){
-      generateClusters(data)
-      if(data === storeRnF) {
-      centerAll()
-    } else {
-      centerPolygon(zoom, map)
+  cleanInputList(previousData, data, searchRnfautoComplete, searchRnfInput)
+
+  // Function for EventListener
+  const searchRnfValue = (e) => {
+    e.stopPropagation();
+
+    if (searchRnfInput.value === "") {
+      generateClusters(data);
+      if (data === storeRnf) {
+        centerAll();
+      } else {
+        centerPolygon(zoom, map);
+      }
     }
-    }
-    generateListRnf(searchRnfInupt, data);
+    generateListRnf(searchRnfautoComplete, searchRnfInput, data);
 
-    activeSuggestionRnf(searchRnfInupt, data);
-
-    generateMarkerInput(searchRnfInupt.value, data);
-  }
-
-  searchRnfInupt.addEventListener("input", searchRnfValue);
+    generateMarkerInput(searchRnfInput.value, data);
+  };
+  
+  searchWithInput(searchRnfInput,searchRnfValue, searchRnfautoComplete)
 }
 
-  searchRnfName(storeRnF);
+searchRnfName(storeRnf);

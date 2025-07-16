@@ -1,6 +1,6 @@
 import { getData } from "./getData";
 import { addListDep } from "../lists/addListDep";
-import { saintBarthelemy, saintMartin, terresAustrales } from "./storeDepartmentsManuel";
+import { saintBarthelemy, saintMartin, terresAustrales } from "./storeTerritoiresManuel";
 
 
  const apiListDep = await getData("https://geo.api.gouv.fr/departements", "listeDep")

@@ -1,16 +1,17 @@
-import { storeRegion } from "../datas/storeRegion";
+import { generateLiAll } from "./generateLiAll";
 
-const selectedRegion = document.getElementById("selectedRegions");
+export async function generateListRegion(autoComplete, storeRegion, text) {
+    generateLiAll(autoComplete, "TOUTES LES REGIONS", "allRegions")
 
-let regionList = await storeRegion.sort((a, b) =>
-  a.reg_name_upper.localeCompare(b.reg_name_upper)
-);
+    await storeRegion
+      .sort((a, b) => a.reg_name_upper.localeCompare(b.reg_name_upper))
+      .forEach((region) => {
+        const li = document.createElement("li");
+        li.classList.add("li");
+        li.textContent = region.reg_name_upper;
+        li.value = region.reg_code;
+        li.id = region.reg_code;
 
-regionList.forEach((region) => {
-  const option = document.createElement("option");
-  option.textContent = region.reg_name_upper;
-  option.value = region.reg_code;
-  option.id = region.reg_code;
-
-  selectedRegion.appendChild(option);
-});
+        autoComplete.appendChild(li);
+      });
+}

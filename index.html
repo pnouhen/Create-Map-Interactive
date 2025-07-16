@@ -5,25 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Carte Interactive</title>
     <script type="module" src="/src/main.js"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
-  <body class="max-w-[1440px] mx-auto">
+  <body class="max-w-[1440px] lg:mx-auto mx-4">
     <main class="flex flex-col items-center gap-4 md:p-4">
       <h1 class="text-3xl font-bold text-center">
         Carte des réserves naturelles de France
       </h1>
-      <div class="w-full md:p-4 flex lg:flex-row flex-col-reverse items-center gap-4">
-        <div id="map" class="w-full h-[49rem] flex justify-center items-center border-2 rounded-md">
+      <div
+        class="w-full lg:h-full h-[72rem] md:p-4 flex lg:flex-row flex-col-reverse items-center gap-4"
+      >
+        <div
+          id="map"
+          class="w-full h-[48rem] flex justify-center items-center border-2 rounded-md"
+        >
           <div class="relative -z-10 flex items-baseline gap-3">
             <p class="text-3xl text-center">Chargement en cours</p>
-          <div class="w-2.5 h-2.5 rounded-full bg-purple-400 bounce-1"></div>
-          <div class="w-2.5 h-2.5 rounded-full bg-orange-400 bounce-2"></div>
-          <div class="w-2.5 h-2.5 rounded-full bg-yellow-400 bounce-3"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-purple-400 bounce-1"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-orange-400 bounce-2"></div>
+            <div class="w-2.5 h-2.5 rounded-full bg-yellow-400 bounce-3"></div>
           </div>
-          
-
         </div>
 
-        <div id="filter" class="w-96 mx-auto flex flex-col gap-4">
+        <div id="filter" class="lg:w-96 mx-auto flex flex-col gap-4">
           <h2 class="text-2xl font-semibold">Filtres</h2>
           <div class="flex flex-col gap-8">
             <div class="relative flex justify-center">
@@ -34,28 +41,24 @@
                   id="searchRnf"
                   type="text"
                   placeholder="Recherchez la réserve naturelle"
-                  class="w-full input"
+                  class="w-full input input-stepper justify-center gap-2"
                 />
 
-                <ul
-                  id="searchRnfAutoComplete"
-                  class="absolute z-10 flex flex-col gap-2 p-2 bg-white rounded-b-lg text-xl"
-                ></ul>
+                <ul id="searchRnfautoComplete" class="ul"></ul>
               </div>
             </div>
 
             <div class="relative flex justify-center">
-              <label for="selectedRegions" class="absolute"> </label>
-              <select
-                name="selectedRegions"
-                id="selectedRegions"
-                class="w-full input"
-              >
-                <option value="" disabled selected hidden>
-                  Choisissez la région
-                </option>
-                <option value="allRegions">TOUTES LES REGIONS</option>
-              </select>
+              <label for="searchRegion" class="absolute"></label>
+              <div id="searchRegion" class="relative w-96">
+                <button
+                  class="w-full input input-stepper justify-between items-center cursor-pointer"
+                >
+                  <p class="p">Cliquez ici pour choisir une région</p>
+                  <i class="fa-solid fa-chevron-down mr-2"></i>
+                </button>
+                <ul class="searchTerritoireAutoComplete ul"></ul>
+              </div>
             </div>
 
             <div class="relative flex justify-center">
@@ -63,45 +66,54 @@
               <select
                 name="selectedDepartments"
                 id="selectedDepartments"
-                class="w-full input"
+                class="w-full input input-stepper justify-center gap-2"
               ></select>
             </div>
 
-            <div class="flex flex-col items-center gap-1">
-              <p class="text-xl p-1">Selectionnez les surfaces (en km²) :</p>
+            <div
+              class="flex flex-wrap lg:justify-between justify-center gap-y-2 lg:gap-x-0 gap-x-4"
+            >
+              <p class="w-full text-xl font-bold text-center p-1">
+                Selectionnez les surfaces (en km²) :
+              </p>
 
-              <div class="w-full flex justify-center gap-2">
-                <div class="area-container">
-                  <label class="text-xl" for="areaMinRnf" class="text-xl"
-                    >Minimun
-                  </label>
-                 <div id="areaMinRnf" class="input input-stepper">
-                    <button class="less input-button">-</button>
+              <div class="area-container">
+                <p class="area-container-p">Minimun :</p>
+                <div id="areaMinRnf" class="input-stepper justify-center gap-2">
+                  <button class="less input-button">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <label for="areaMinRnfInput" class="absolute"> </label>
                   <input
-                    name="areaMinRnf"                    
+                    id="areaMinRnfInput"
+                    name="areaMinRnf"
                     type="text"
-                    class="input-number"
+                    class="input w-24 text-end"
                   />
 
-                    <button class="more input-button">+</button>
-                  </div>
+                  <button class="more input-button">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
                 </div>
+              </div>
 
-                <div class="area-container">
-                  <label class="text-xl" for="areaMaxRnf" class="text-xl"
-                    >Maximun
-                  </label>
-
-                  <div id="areaMaxRnf" class="input input-stepper">
-                    <button class="less input-button">-</button>
+              <div class="area-container">
+                <p class="area-container-p">Maximun :</p>
+                <div id="areaMaxRnf" class="input-stepper justify-center gap-2">
+                  <button class="less input-button">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <label for="areaMaxRnfInput" class="absolute"> </label>
                   <input
-                    name="areaMaxRnf"                    
+                    id="areaMaxRnfInput"
+                    name="areaMaxRnfInput"
                     type="text"
-                    class="input-number"
+                    class="input w-24 text-end"
                   />
 
-                    <button class="more input-button">+</button>
-                  </div>
+                  <button class="more input-button">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
                 </div>
               </div>
             </div>

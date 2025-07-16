@@ -1,7 +1,7 @@
 export const saintBarthelemy = {
   manuel: true,
   dep_code: ["977"],
-  reg_code: ["977"],
+  reg_code: "977",
   dep_name_upper: "SAINT-BARTHÉLEMY",
   reg_name_upper: "SAINT-BARTHÉLEMY",
   dep_name: ["Saint-Barthélemy"],
@@ -28,7 +28,7 @@ export const saintBarthelemy = {
 export const saintMartin = {
   manuel: true,
   dep_code: ["978"],
-  reg_code: ["978"],
+  reg_code: "978",
   dep_name_upper: "SAINT-MARTIN",
   reg_name_upper: "SAINT-MARTIN",
   dep_name: ["Saint-Martin"],
@@ -54,8 +54,8 @@ export const saintMartin = {
 
 export const terresAustrales = {
   manuel: true,
-  dep_code: ["1000"],
-  reg_code: ["1000"],
+  dep_code: ["984"],
+  reg_code: "984",
   dep_name_upper: "TERRES AUSTRALES",
   reg_name_upper: "TERRES AUSTRALES",
   dep_name: ["Terres autrales"],

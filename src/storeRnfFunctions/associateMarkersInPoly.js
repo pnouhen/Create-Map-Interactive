@@ -1,16 +1,18 @@
-import { storeDepartments } from "../datas/storeDepartments";
 import { searchMarkerInPoly } from "./searchMarkerInPoly";
 
-export function associateMarkersInPoly(data) {
+export function associateMarkersInPoly(data, territoires) {
   data.map((rnf) => {
-    storeDepartments.forEach((dep) => {
+    territoires.forEach((territoire) => {
       // To not use manually added dep
-      if (dep.manuel !== true) {
-        const geometry = dep.geo_shape.geometry;
+      if (territoire.manuel !== true) {
+        const geometry = territoire.geo_shape.geometry;
         const shearch = searchMarkerInPoly(rnf, geometry);
         if (shearch === true) {
-          rnf.dep_code = dep.dep_code[0];
-          rnf.reg_code = dep.reg_code;
+          if (territoire.dep_code) {
+            rnf.dep_code = territoire.dep_code[0];
+          } else {
+            rnf.reg_code = territoire.reg_code[0];
+          }
         }
       }
     });

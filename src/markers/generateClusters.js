@@ -1,4 +1,4 @@
-import { storeRnF } from "../datas/storeRnF";
+import { storeRnf } from "../datas/storeRnf";
 import { generateMap } from "../maps/generateMap";
 import { generateMarker } from "./generateMarker";
 
@@ -29,4 +29,4 @@ export function generateClusters(data) {
   map.addLayer(clusterGroup);
 }
 
-generateClusters(storeRnF);
+generateClusters(storeRnf);

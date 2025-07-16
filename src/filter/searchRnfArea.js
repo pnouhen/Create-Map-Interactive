@@ -1,6 +1,6 @@
 import { findRnfAreaMinMax } from "../searchRnfArea/findRnfAreaMiMax";
 import { changeValue } from "../searchRnfArea/changeValue";
-import { storeRnF } from "../datas/storeRnF";
+import { storeRnf } from "../datas/storeRnf";
 
 const areaMinRnf = document.getElementById("areaMinRnf");
 const areaMaxRnf = document.getElementById("areaMaxRnf");
@@ -21,4 +21,4 @@ export function searchRnfArea(data, zoom) {
   changeValue(data, zoom, areaMaxRnf, inputAreaMaxRnf, valueMinMax, "max");
 }
 
-searchRnfArea(storeRnF);
+searchRnfArea(storeRnf);

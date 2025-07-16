@@ -4,9 +4,9 @@ import "./lists/generateListDep"
 import "./linkDepReg/associateDepReg"
 import "./markers/generateClusters"
 
-import "./filter/filterRegionSelect"
 import "./filter/filterDepSelect"
 import "./filter/searchRnfName"
+import "./filter/filterRegions"
 import "./filter/searchRnfArea"
 
 // File css
