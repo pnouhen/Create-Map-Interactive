@@ -1,7 +1,6 @@
 // File js
 import "./lists/generateListRegion"
 import "./lists/generateListDep"
-import "./linkDepReg/associateDepReg"
 import "./markers/generateClusters"
 
 import "./filter/filterDepSelect"

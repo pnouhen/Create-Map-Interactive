@@ -41,24 +41,19 @@
                   id="searchRnf"
                   type="text"
                   placeholder="Recherchez la réserve naturelle"
-                  class="w-full input input-stepper justify-center gap-2"
+                  class="w-full input input-stepper flex justify-center gap-2"
                 />
 
                 <ul id="searchRnfautoComplete" class="ul"></ul>
               </div>
             </div>
 
-            <div class="relative flex justify-center">
-              <label for="searchRegion" class="absolute"></label>
-              <div id="searchRegion" class="relative w-96">
-                <button
-                  class="w-full input input-stepper justify-between items-center cursor-pointer"
-                >
-                  <p class="p">Cliquez ici pour choisir une région</p>
-                  <i class="fa-solid fa-chevron-down mr-2"></i>
-                </button>
-                <ul class="searchTerritoireAutoComplete ul"></ul>
-              </div>
+            <div id="searchRegion" class="relative w-96 flex justify-center">
+              <button class="w-full input input-stepper button-territoire">
+                <p class="p">Cliquez ici pour choisir une région</p>
+                <i class="fa-solid fa-chevron-down mr-2"></i>
+              </button>
+              <ul class="searchTerritoireAutoComplete ul"></ul>
             </div>
 
             <div class="relative flex justify-center">
@@ -66,7 +61,7 @@
               <select
                 name="selectedDepartments"
                 id="selectedDepartments"
-                class="w-full input input-stepper justify-center gap-2"
+                class="w-full input input-stepper flex justify-center gap-2"
               ></select>
             </div>
 
@@ -79,11 +74,14 @@
 
               <div class="area-container">
                 <p class="area-container-p">Minimun :</p>
-                <div id="areaMinRnf" class="input-stepper justify-center gap-2">
+                <div
+                  id="areaMinRnf"
+                  class="input-stepper flex justify-center gap-2"
+                >
                   <button class="less input-button">
                     <i class="fa-solid fa-minus"></i>
                   </button>
-                  <label for="areaMinRnfInput" class="absolute"> </label>
+                  <label for="areaMinRnfInput" class="absolute"></label>
                   <input
                     id="areaMinRnfInput"
                     name="areaMinRnf"
@@ -99,7 +97,10 @@
 
               <div class="area-container">
                 <p class="area-container-p">Maximun :</p>
-                <div id="areaMaxRnf" class="input-stepper justify-center gap-2">
+                <div
+                  id="areaMaxRnf"
+                  class="input-stepper flex justify-center gap-2"
+                >
                   <button class="less input-button">
                     <i class="fa-solid fa-minus"></i>
                   </button>

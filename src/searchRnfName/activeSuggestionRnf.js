@@ -1,4 +1,4 @@
-import { disableList } from "../utils/disableList";
+import { disableList } from "../lists/disableList";
 import { generateMarkerInput } from "./generateMarkerInput";
 
 export function activeSuggestionRnf(input, data, autoComplete) {

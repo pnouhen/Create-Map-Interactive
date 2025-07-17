@@ -28,8 +28,8 @@ export function generateRegion(text, storeRegion) {
     centerAll();
   } else {
     clearPolygons(currentPolygonDep);
-
-    const regionSelect = searchRegion(storeRegion);
+    console.log(regionValue)
+    const regionSelect = searchRegion(storeRegion, regionValue);
 
     if (regionSelect[0].manuel === undefined) {
       const polygon = regionSelect[0].geo_shape.geometry;
@@ -38,9 +38,7 @@ export function generateRegion(text, storeRegion) {
     const zoom = regionSelect[0];
     centerPolygon(zoom, map);
 
-    markersRegion = storeRnf.filter((rnf) => rnf.reg_code === regionValue);
-    console.log(regionValue);
-    console.log(markersRegion);
+    markersRegion = storeRnf.filter((rnf) => rnf.reg_code[0] === regionValue);
     getTerritoire(markersRegion, zoom, map);
   }
 }

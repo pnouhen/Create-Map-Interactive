@@ -29,9 +29,8 @@ associateRnfTerritoiresManuel(storeRnf)
 //   associateMarkersInPoint(storeRnf);
 // }
 
-if (storeRegion) {
+if (storeRegion.length > 0) {
   associateMarkersInPoly(storeRnf, storeRegion);
 
   associateMarkersInPoint(storeRnf, storeRegion)
-
 }

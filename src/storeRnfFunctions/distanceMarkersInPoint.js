@@ -11,19 +11,19 @@ export function distanceMarkersInPoint(data, territoires) {
       const to = turf.point([territoireCoords.lon, territoireCoords.lat]);
       const distance = turf.distance(from, to);
 
-      let code_dep = ""
-      let code_reg = ""
+      let dep_code = ""
+      let reg_code = ""
 
       if (territoire.dep_code) {
-            code_dep = territoire.dep_code[0];
+            dep_code = territoire.dep_code[0];
           } else {
-            code_reg = territoire.reg_code[0];
+            reg_code = territoire.reg_code[0];
           }
 
       return {
         distance: distance,
-        code_dep: territoire.dep_code,
-        code_reg: territoire.reg_code,
+        dep_code: territoire.dep_code,
+        reg_code: territoire.reg_code,
       };
     })
     .sort((a, b) => a.distance - b.distance);

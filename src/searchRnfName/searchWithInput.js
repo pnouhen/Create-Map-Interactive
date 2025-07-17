@@ -1,5 +1,5 @@
-import { activeList } from "../utils/activeList.js";
-import { disableList } from "./disableList.js";
+import { activeList } from "../lists/activeList.js";
+import { disableList } from "../lists/disableList.js";
 
 const searchTerritoireAutoComplete = document.querySelectorAll(".searchTerritoireAutoComplete")
 

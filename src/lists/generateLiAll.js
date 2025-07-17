@@ -3,6 +3,7 @@ export function generateLiAll(autoComplete, LiName, LiID) {
   li.classList.add("li");
   li.textContent = LiName;
   li.id = LiID;
+  li.value = 0
 
   autoComplete.appendChild(li);
 }

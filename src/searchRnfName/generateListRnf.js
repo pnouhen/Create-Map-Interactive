@@ -1,7 +1,7 @@
 import { activeSuggestionRnf } from "../searchRnfName/activeSuggestionRnf.js";
-import { activeList } from "../utils/activeList.js";
-import { disableList } from "../utils/disableList.js";
-import { handleOutsideClick } from "../utils/handleOutsideClick.js";
+import { activeList } from "../lists/activeList.js";
+import { disableList } from "../lists/disableList.js";
+import { handleOutside } from "../utils/handleOutside.js";
 
 // To generate the list for to propose Rnf
 export function generateListRnf(autoComplete, input, data) {
@@ -28,5 +28,5 @@ export function generateListRnf(autoComplete, input, data) {
     disableList(autoComplete)
   }
   
-  handleOutsideClick(autoComplete);
+  handleOutside(autoComplete);
 }

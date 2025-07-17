@@ -1,5 +1,5 @@
-import { activeList } from "../utils/activeList"
-import { disableList } from "../utils/disableList"
+import { activeList } from "../lists/activeList"
+import { disableList } from "../lists/disableList"
 
 export function handleButtonAnimation(input, state, autocomplete) {
 input.addEventListener("click", (e) => {

@@ -1,9 +1,11 @@
 export const saintBarthelemy = {
   manuel: true,
   dep_code: ["977"],
-  reg_code: "977",
+  reg_code: ["977"],
   dep_name_upper: "SAINT-BARTHÉLEMY",
+  reg_name: ["Saint-Barthélemy"],
   reg_name_upper: "SAINT-BARTHÉLEMY",
+  dep_name: ["Saint-Barthélemy"],
   dep_name: ["Saint-Barthélemy"],
   geo_point_2d: {
     lat: 17.8967693,
@@ -28,8 +30,10 @@ export const saintBarthelemy = {
 export const saintMartin = {
   manuel: true,
   dep_code: ["978"],
-  reg_code: "978",
+  reg_code: ["978"],
+  dep_name: ["Saint-Martin"],
   dep_name_upper: "SAINT-MARTIN",
+  reg_name: ["Saint-Martin"],
   reg_name_upper: "SAINT-MARTIN",
   dep_name: ["Saint-Martin"],
   geo_point_2d: {
@@ -55,8 +59,10 @@ export const saintMartin = {
 export const terresAustrales = {
   manuel: true,
   dep_code: ["984"],
-  reg_code: "984",
+  reg_code: ["984"],
+  dep_name: ["Terres Australes"],
   dep_name_upper: "TERRES AUSTRALES",
+  reg_name: ["Terres Australes"],
   reg_name_upper: "TERRES AUSTRALES",
   dep_name: ["Terres autrales"],
   geo_point_2d: {

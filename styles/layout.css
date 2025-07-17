@@ -7,11 +7,15 @@
   }
   
   .ulActive{
-    @apply absolute z-10 max-h-80 w-full bg-white text-xl border-l-2 border-b-2 border-r-2 border-black overflow-y-auto;
+    @apply absolute top-14 z-10 max-h-80 w-full bg-white text-xl border-l-2 border-b-2 border-r-2 border-black overflow-y-auto;
   }
 
   .li {
-    @apply p-1 hover:bg-blue-500 hover:text-white cursor-pointer;
+    @apply p-1 cursor-pointer;
+  }
+
+  .li-color {
+    @apply bg-blue-500 text-white;
   }
 
   .input {
@@ -19,7 +23,7 @@
   }
 
   .input-stepper {
-    @apply p-2 flex border-2 border-black rounded-2xl;
+    @apply p-2 border-2 border-black rounded-2xl;
   }
 
   .area-container {
@@ -32,6 +36,61 @@
 
   .input-button{
     @apply px-1.5 flex items-center justify-center text-sm border-2 border-black rounded-sm cursor-pointer;
+  }
+  .button-territoire {
+    @apply flex justify-between items-center ;
+  }
+
+  .button-territoire-active {
+    @apply cursor-pointer;
+  }
+
+  .button-territoire-inactive {
+    @apply bg-gray-400;
+  }
+
+  .toolType-content {
+    @apply flex flex-col gap-2 text-base;
+  }
+  .toolType-title {
+    @apply w-11/12 mx-auto mb-2 text-center text-lg font-extrabold;
+  }
+  .toolType-info {
+    @apply flex gap-1.5;
+  }
+
+  .toolType-sbTitle {
+    @apply font-semibold;
+  }
+}
+
+.bounce-1,
+.bounce-2,
+.bounce-3 {
+  animation: bounce-custom 1s linear infinite;
+}
+
+.bounce-1 {
+  animation-delay: 0s;
+}
+
+.bounce-2 {
+  animation-delay: 0.2s;
+}
+
+.bounce-3 {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce-custom {
+  0%,
+  100% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(-12px);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
   }
 }
 
@@ -74,66 +133,16 @@
   font-size: 1.125rem;
 }
 
-.leaflet-popup-content {
-  width: 15rem;
-  font-size: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
 .leaflet-popup-content p,
 a {
   margin: 0;
 }
 
-.leaflet-popup-content p {
-  display: flex;
-  align-items: end;
-  justify-content: center;
+.leaflet-popup-close-button {
+  top: 5px !important;
+  right: 5px !important;
 }
 
-.leaflet-popup-content .title {
-  text-align: center;
-  font-size: 1.125rem;
-  font-weight: bold;
-}
-
-.leaflet-popup-content .surface {
-  display: flex;
-  gap: 5px;
-}
-
-.leaflet-popup-close-button button {
-  font-size: 25px;
-}
-
-@keyframes bounce-custom {
-  0%,
-  100% {
-    transform: translateY(0);
-    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-  }
-  50% {
-    transform: translateY(-12px);
-    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  }
-}
-
-.bounce-1,
-.bounce-2,
-.bounce-3 {
-  animation: bounce-custom 1s linear infinite;
-}
-
-.bounce-1 {
-  animation-delay: 0s;
-}
-
-.bounce-2 {
-  animation-delay: 0.2s;
-}
-
-.bounce-3 {
-  animation-delay: 0.4s;
+.leaflet-popup-close-button span {
+  font-size: 1.5rem;
 }

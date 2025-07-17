@@ -4,8 +4,8 @@ import { generateClusters } from "../markers/generateClusters.js";
 import { centerAll } from "../regDep/centerAll.js";
 import { centerPolygon } from "../regDep/centerPolygon.js";
 import { generateMarkerInput } from "../searchRnfName/generateMarkerInput.js";
-import { cleanInputList } from "../utils/cleanInputList.js";
-import { searchWithInput } from "../utils/searchWithInput.js";
+import { cleanInputList } from "../searchRnfName/cleanInputList.js";
+import { searchWithInput } from "../searchRnfName/searchWithInput.js";
 
 const searchRnfInput = document.getElementById("searchRnf");
 const searchRnfautoComplete = document.getElementById("searchRnfautoComplete");
