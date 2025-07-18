@@ -13,7 +13,7 @@ export function handleOutside(autoComplete, state) {
   });
 
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
+    if (e.key === "Escape" || e.key === "Tab") {
       closeAutocomplete();
     }
   });

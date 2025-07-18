@@ -1,9 +1,9 @@
-import { generateRegion } from "./generateRegion";
+import { generateRegion } from "../filterTerritoires/generateRegion";
 
-export function navigateListTerritoire(button, arrayLi, autoComplete, text, store) {
+export function navigateList(button, arrayLi, autoComplete, text, store) {
   let indexLi = -1;
   let mouseEnabled = true;
-  
+
   // Réactivation de la souris au prochain vrai mouvement
   window.addEventListener("mousemove", () => {
     mouseEnabled = true;
@@ -57,8 +57,9 @@ export function navigateListTerritoire(button, arrayLi, autoComplete, text, stor
   }
 
   function changeText() {
+    if (store && autoComplete.classList.contains("ul")) {
     text.textContent = arrayLi[indexLi].textContent;
-    text.id = arrayLi[indexLi].id;
+    text.id = arrayLi[indexLi].id;    }
   }
 
   function scrollIntoView() {

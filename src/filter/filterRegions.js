@@ -4,7 +4,7 @@ import { handleButtonAnimation } from "../filterTerritoires/handleButtonAnimatio
 import { handleButtonText } from "../filterTerritoires/handleButtonText";
 import { generateRegion } from "../filterTerritoires/generateRegion";
 import { handleOutside } from "../utils/handleOutside";
-import { navigateListTerritoire } from "../filterTerritoires/navigateListTerritoire";
+import { navigateList } from "../lists/navigateList";
 
 const searchRegion = document.getElementById("searchRegion");
 const searchRegionButton = searchRegion.querySelector("button");
@@ -37,7 +37,7 @@ async function filterRegions() {
       });
     });
 
-    navigateListTerritoire(
+    navigateList(
       searchRegionButton,
       arrayLi,
       searchRegionAutoComplete,

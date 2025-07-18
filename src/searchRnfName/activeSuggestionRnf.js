@@ -1,8 +1,7 @@
 import { disableList } from "../lists/disableList";
 import { generateMarkerInput } from "./generateMarkerInput";
 
-export function activeSuggestionRnf(input, data, autoComplete) {
-  const selectRnf = autoComplete.querySelectorAll(".li");
+export function activeSuggestionRnf(selectRnf, input, data, autoComplete) {
     selectRnf.forEach((li) => {
       li.addEventListener("click", () => {
         input.value = "";

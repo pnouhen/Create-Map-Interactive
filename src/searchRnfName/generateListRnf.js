@@ -2,6 +2,7 @@ import { activeSuggestionRnf } from "../searchRnfName/activeSuggestionRnf.js";
 import { activeList } from "../lists/activeList.js";
 import { disableList } from "../lists/disableList.js";
 import { handleOutside } from "../utils/handleOutside.js";
+import { navigateList } from "../lists/navigateList.js";
 
 // To generate the list for to propose Rnf
 export function generateListRnf(autoComplete, input, data) {
@@ -21,12 +22,15 @@ export function generateListRnf(autoComplete, input, data) {
         autoComplete.appendChild(li);
       });
 
-    activeSuggestionRnf(input, data, searchRnfautoComplete);
+    const selectRnf = autoComplete.querySelectorAll(".li");
+
+    activeSuggestionRnf(selectRnf, input, data, autoComplete);
 
     activeList(autoComplete);
+
+    navigateList(input, selectRnf, autoComplete, input.value);
   } else {
-    disableList(autoComplete)
+    disableList(autoComplete);
   }
-  
   handleOutside(autoComplete);
 }
