@@ -1,23 +1,18 @@
-import { valueOptionAllDep } from "../selectOptions/valueOptionAll";
-import { centerPolygon } from "../regDep/centerPolygon";
-import { centerAll } from "../regDep/centerAll";
 import { getMapInstance } from "../maps/getMapInstance";
+import { centerAll } from "../regDep/centerAll";
+import { centerPolygon } from "../regDep/centerPolygon";
 import { searchRegion } from "../regDep/searchRegion";
-import { generateDep } from "../departments/generateDep";
-import { storeRnf } from "../datas/storeRnf";
-import { getTerritoire } from "../filterTerritoires/getTerritoires";
-import { getAll } from "../filterTerritoires/getAll";
-import { markersRegion, regionValue } from "../filterTerritoires/generateRegion";
-
-const selectedDepartments = document.getElementById("selectedDepartments");
+import { regionValue } from "./generateRegion";
+import { getAll } from "./getAll";
+import { getTerritoire } from "./getTerritoires";
 
 export let currentPolygonDep = [];
 
-export function filterDepSelect() {
-  selectedDepartments.addEventListener("change", () => {
+export function generateDepartments(button,) {
+  button.addEventListener("click", () => {
     const map = getMapInstance();
     const value = selectedDepartments.value;
-    if (value === valueOptionAllDep) {
+    if (value === "allDepartments") {
       getAll();
       if (regionValue === "") {
         centerAll();
@@ -42,5 +37,3 @@ export function filterDepSelect() {
     }
   });
 }
-
-filterDepSelect();

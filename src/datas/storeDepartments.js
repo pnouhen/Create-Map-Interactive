@@ -5,19 +5,18 @@ import {
 } from "./storeTerritoiresManuel";
 import { searchDepMissing } from "../storeDepartments/searchDepMissing";
 import { recoverDepMap } from "../storeDepartments/recoverDepMap";
-import { fetchDepartments } from "../storeDepartments/fetchDepartments";
+import { getData } from "./getData";
+import { storeListDep } from "./storeListDep";
 
-// Limitation of the API to 100 departments and there are 101 of them
-
-export const storeDepartments = await (async () => {
+async function generateDep() {
   let store = [];
-  store = await fetchDepartments(
-    "https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/departements-et-collectivites-doutre-mer-france@toursmetropole/records?limit=100"
+  store = await getData(
+    "https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/departements-et-collectivites-doutre-mer-france@toursmetropole/records?limit=100",
+    "dep"
   );
-
   if (store) {
-    const depMissing = searchDepMissing(store);
-
+    const listDep = await storeListDep();
+    const depMissing = searchDepMissing(store, listDep);
     const deps = await Promise.all(
       // Filtrer departments whitch aren't in the API
       depMissing
@@ -31,6 +30,8 @@ export const storeDepartments = await (async () => {
     store.results.push(saintMartin);
     store.results.push(terresAustrales);
 
-    return store.results;
+    return store.results
   }
-})();
+}
+
+export const storeDepartments = await generateDep();

@@ -20,7 +20,7 @@
       >
         <div
           id="map"
-          class="w-full h-[48rem] flex justify-center items-center border-2 rounded-md"
+          class="w-[calc(100%_-_26rem)] h-[48rem] flex justify-center items-center border-2 rounded-md"
         >
           <div class="relative -z-10 flex items-baseline gap-3">
             <p class="text-3xl text-center">Chargement en cours</p>
@@ -30,12 +30,12 @@
           </div>
         </div>
 
-        <div id="filter" class="lg:w-96 mx-auto flex flex-col gap-4">
+        <div id="filter" class="lg:w-[26rem] mx-auto flex flex-col gap-4">
           <h2 class="text-2xl font-semibold">Filtres</h2>
           <div class="flex flex-col gap-8">
-            <div class="relative flex justify-center">
+            <div class="w-full relative flex justify-center">
               <label for="searchRnf" class="absolute"></label>
-              <div class="relative w-96">
+              <div class="w-full relative">
                 <input
                   name="searchRnf"
                   id="searchRnf"
@@ -49,7 +49,7 @@
               </div>
             </div>
 
-            <div id="searchRegion" class="relative w-96 flex justify-center">
+            <div id="searchRegion" class="w-full relative flex justify-center">
               <button class="w-full input input-stepper button-territoire">
                 <p class="p">Cliquez ici pour choisir une région</p>
                 <i class="fa-solid fa-chevron-down mr-2"></i>
@@ -57,13 +57,12 @@
               <ul class="searchTerritoireAutoComplete ul"></ul>
             </div>
 
-            <div class="relative flex justify-center">
-              <label for="selectedDepartments" class="absolute"> </label>
-              <select
-                name="selectedDepartments"
-                id="selectedDepartments"
-                class="w-full input input-stepper flex justify-center gap-2"
-              ></select>
+           <div id="searchDepartment" class="w-full relative flex justify-center">
+              <button class="w-full input input-stepper button-territoire">
+                <p class="p">Cliquez ici pour choisir un département</p>
+                <i class="fa-solid fa-chevron-down mr-2"></i>
+              </button>
+              <ul class="searchTerritoireAutoComplete ul"></ul>
             </div>
 
             <div

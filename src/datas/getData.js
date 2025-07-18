@@ -1,11 +1,11 @@
-import { fetchLs } from "./fetchLs";
+import { fetchData } from "./fetchData";
 
 export async function getData(apiUrl, dataName) {
   let local = []
-      if(!localStorage.getItem(dataName)){
-        local = await fetchLs(apiUrl, dataName)
+      if(!sessionStorage.getItem(dataName)){
+        local = await fetchData(apiUrl, dataName)
       } else {
-        local = JSON.parse(localStorage.getItem(dataName))
+        local = JSON.parse(sessionStorage.getItem(dataName))
       }
       return local
 }

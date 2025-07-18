@@ -1,10 +1,7 @@
 import { storeRegion } from "../datas/storeRegion";
-import { generateListRegion } from "../lists/generateListRegion";
-import { handleButtonAnimation } from "../filterTerritoires/handleButtonAnimation";
-import { handleButtonText } from "../filterTerritoires/handleButtonText";
+import { filterTerritoires } from "../filterTerritoires/filterTerritoires";
 import { generateRegion } from "../filterTerritoires/generateRegion";
-import { handleOutside } from "../utils/handleOutside";
-import { navigateList } from "../lists/navigateList";
+import { generateListRegion } from "../lists/generateListRegion";
 
 const searchRegion = document.getElementById("searchRegion");
 const searchRegionButton = searchRegion.querySelector("button");
@@ -13,40 +10,23 @@ const searchRegionAutoComplete = searchRegion.querySelector(
   ".searchTerritoireAutoComplete"
 );
 
-let state = { open: false };
-
 async function filterRegions() {
   if (storeRegion.length > 0) {
-    await generateListRegion(
-      searchRegionAutoComplete,
-      storeRegion,
-      searchRegionText
-    );
+await generateListRegion(searchRegionAutoComplete, storeRegion)
 
-    searchRegionButton.classList.add("button-territoire-active");
-    handleButtonAnimation(searchRegion, state, searchRegionAutoComplete);
-    handleOutside(searchRegionAutoComplete, state);
+const onClickTerritoire = () => generateRegion(searchRegionText, storeRegion)
 
-    const arrayLi = searchRegionAutoComplete.querySelectorAll(".li");
-    arrayLi.forEach((territoire) => {
-      handleButtonAnimation(territoire, state, searchRegionAutoComplete);
-      handleButtonText(territoire, searchRegionText);
-
-      territoire.addEventListener("click", () => {
-        generateRegion(searchRegionText, storeRegion);
-      });
-    });
-
-    navigateList(
-      searchRegionButton,
-      arrayLi,
-      searchRegionAutoComplete,
-      searchRegionText,
-      storeRegion
-    );
-  } else {
-    searchRegionButton.classList.add("button-territoire-inactive");
-  }
+  filterTerritoires(
+    storeRegion,
+    searchRegion,
+    searchRegionButton,
+    searchRegionText,
+    searchRegionAutoComplete,
+    onClickTerritoire
+  );
+} else {
+  button.classList.add("button-territoire-inactive");
+}
 }
 
-filterRegions();
+filterRegions()

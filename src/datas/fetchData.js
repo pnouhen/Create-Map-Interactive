@@ -1,6 +1,4 @@
-// Data is generated in localStorage for to avoid making a call to the retrieval API for  each item
-
-export async function fetchDepartments(apiUrl, dataName) {
+export async function fetchData(apiUrl, dataName) {
   try {
     const response = await fetch(apiUrl);
 
@@ -9,6 +7,9 @@ export async function fetchDepartments(apiUrl, dataName) {
     }
 
     const data = await response.json();
+    if (dataName !== "region") {
+      sessionStorage.setItem(dataName, JSON.stringify(data));
+    }
     return data;
   } catch (error) {
     console.error("Catch :", error.message);
