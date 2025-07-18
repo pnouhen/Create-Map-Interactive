@@ -3,8 +3,8 @@ import { generateListRegion } from "../lists/generateListRegion";
 import { handleButtonAnimation } from "../filterTerritoires/handleButtonAnimation";
 import { handleButtonText } from "../filterTerritoires/handleButtonText";
 import { generateRegion } from "../filterTerritoires/generateRegion";
-import { useArrowKeydown } from "../listNavigation/useArrowKeydown";
 import { handleOutside } from "../utils/handleOutside";
+import { navigateListTerritoire } from "../filterTerritoires/navigateListTerritoire";
 
 const searchRegion = document.getElementById("searchRegion");
 const searchRegionButton = searchRegion.querySelector("button");
@@ -37,9 +37,12 @@ async function filterRegions() {
       });
     });
 
-    useArrowKeydown(
+    navigateListTerritoire(
       searchRegionButton,
-      arrayLi
+      arrayLi,
+      searchRegionAutoComplete,
+      searchRegionText,
+      storeRegion
     );
   } else {
     searchRegionButton.classList.add("button-territoire-inactive");

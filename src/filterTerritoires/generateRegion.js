@@ -28,7 +28,7 @@ export function generateRegion(text, storeRegion) {
     centerAll();
   } else {
     clearPolygons(currentPolygonDep);
-    console.log(regionValue)
+
     const regionSelect = searchRegion(storeRegion, regionValue);
 
     if (regionSelect[0].manuel === undefined) {

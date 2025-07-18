@@ -14,8 +14,7 @@ export function generateToolTip(data, marker, map) {
       (region) => region.reg_code[0] === markerSelect.reg_code[0]
     );
   }
-  console.log(marker)
-  console.log(regionName)
+  
   // Create ToolTip
   const popup = L.popup();
   popup
