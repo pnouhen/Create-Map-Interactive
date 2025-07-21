@@ -1,7 +1,7 @@
-import { generateLiAll } from "./generateLiAll";
+import { generateLiAll } from "../lists/generateLiAll";
 
 export async function generateListRegion(autoComplete, territoires) {
-    generateLiAll(autoComplete, "TOUTES LES REGIONS", "allRegions")
+    generateLiAll(autoComplete, "TOUTES LES REGIONS")
 
     await territoires
       .sort((a, b) => a.reg_name_upper.localeCompare(b.reg_name_upper))

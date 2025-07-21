@@ -1,6 +1,4 @@
 import { activeSuggestionRnf } from "../searchRnfName/activeSuggestionRnf.js";
-import { activeList } from "../lists/activeList.js";
-import { disableList } from "../lists/disableList.js";
 import { handleOutside } from "../utils/handleOutside.js";
 import { navigateList } from "../lists/navigateList.js";
 
@@ -26,11 +24,9 @@ export function generateListRnf(autoComplete, input, data) {
 
     activeSuggestionRnf(selectRnf, input, data, autoComplete);
 
-    activeList(autoComplete);
-
     navigateList(input, selectRnf, autoComplete, input.value);
   } else {
-    disableList(autoComplete);
+    autoComplete.classList.add("hidden");
   }
   handleOutside(autoComplete);
 }

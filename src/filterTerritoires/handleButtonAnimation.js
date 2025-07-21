@@ -1,15 +1,16 @@
-import { activeList } from "../lists/activeList"
-import { disableList } from "../lists/disableList"
+const searchTerritoireAutoCompleteAll = document.querySelectorAll(
+  ".searchTerritoireAutoComplete"
+);
 
-export function handleButtonAnimation(input, state, autocomplete) {
-input.addEventListener("click", (e) => {
-    e.stopPropagation()
-
-    state.open = !state.open
-    if(state.open) {
-        activeList(autocomplete)
-    } else {
-        disableList(autocomplete)
-    }
-})
+export function handleButtonAnimation(element, autocomplete) {
+  element.addEventListener("click", (e) => {
+    e.stopPropagation();
+    searchTerritoireAutoCompleteAll.forEach((searchTerritoireAutoComplete) => {
+      if (searchTerritoireAutoComplete === autocomplete) {
+        autocomplete.classList.toggle("hidden");
+      } else {
+        searchTerritoireAutoComplete.classList.add("hidden");
+      }
+    });
+  });
 }

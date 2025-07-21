@@ -14,6 +14,5 @@ export function generateMarkerInput(value, data, autoComplete) {
     centerMarkers(markerSelect[0], map, latLng);
 
     autoComplete.innerHTML = "";
-    autoComplete.classList.remove('ulActive')
   }
 }

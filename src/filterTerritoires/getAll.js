@@ -1,17 +1,23 @@
-import { generateClusters } from "../markers/generateClusters";
-import { searchRnfArea } from "../filter/searchRnfArea";
-
 import { storeRnf } from "../datas/storeRnf";
-import { clearPolygons } from "../polygons/clearPloygons";
+import { searchRnfArea } from "../filter/searchRnfArea";
 import { searchRnfName } from "../filter/searchRnfName";
-import { currentPolygonDep } from "./generateDepartments";
+import { currentPolygonDep } from "../filterDepartments/generateDepartments";
+import { generateClusters } from "../markers/generateClusters";
+import { clearPolygons } from "../polygons/clearPloygons";
+import { centerAll } from "./centerAll";
 
-export function getAll() {
+export function getAll(currentPolygonReg) {
   clearPolygons(currentPolygonDep);
+
+  if (currentPolygonReg) {
+    clearPolygons(currentPolygonReg);
+  }
 
   generateClusters(storeRnf);
 
   searchRnfArea(storeRnf);
 
-  searchRnfName(storeRnf)
+  searchRnfName(storeRnf);
+
+  centerAll();
 }

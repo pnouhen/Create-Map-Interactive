@@ -1,7 +1,9 @@
 import { storeDepartments } from "../datas/storeDepartments";
 import { generateListDep } from "../lists/generateListDepartment";
-import { filterTerritoires } from "../filterTerritoires/filterTerritoires";
-import { generateDepartments } from "../filterTerritoires/generateDepartments";
+import { onButtonClick } from "../filterTerritoires/onButtonClick";
+import { choiceListDepartment } from "../filterDepartments/choiceListDepartment";
+import { storeRegion } from "../datas/storeRegion";
+import { configureDepartmentFilter } from "../filterDepartments/configureDepartmentFilter";
 
 const searchDepartment = document.getElementById("searchDepartment");
 const searchDepartmentButton = searchDepartment.querySelector("button");
@@ -11,23 +13,33 @@ const searchDepartmentAutoComplete = searchDepartment.querySelector(
 );
 
 async function filterDepartments() {
+  if (storeDepartments) {
+    generateListDep(searchDepartmentAutoComplete, storeDepartments);
 
- if (storeDepartments.length > 0) {
-generateListDep(searchDepartmentAutoComplete, storeDepartments)
+    onButtonClick(
+      searchDepartmentButton,
+      searchDepartment,
+      searchDepartmentAutoComplete
+    );
 
-const onClickTerritoire = () => generateDepartments(searchDepartment)
+    configureDepartmentFilter(
+      storeDepartments,
+      searchDepartmentButton,
+      searchDepartmentText,
+      searchDepartmentAutoComplete
+    );
 
-  filterTerritoires(
-    storeDepartments,
-    searchDepartment,
-    searchDepartmentButton,
-    searchDepartmentText,
-    searchDepartmentAutoComplete,
-    onClickTerritoire
-  );
-} else {
-  button.classList.add("button-territoire-inactive");
+    if (storeRegion.length > 0) {
+      choiceListDepartment(
+        storeDepartments,
+        searchDepartmentButton,
+        searchDepartmentText,
+        searchDepartmentAutoComplete
+      );
+    }
+  } else {
+    searchDepartmentButton.classList.add("button-territoire-inactive");
+  }
 }
-}
 
-filterDepartments()
+filterDepartments();

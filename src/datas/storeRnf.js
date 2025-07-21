@@ -1,11 +1,12 @@
 import { getData } from "./getData";
 import { associateMarkersInPoly } from "../storeRnfFunctions/associateMarkersInPoly";
-import { associateMarkersInPoint } from "../storeRnfFunctions/associateMarkersInPoint";
 import { generateRnfArea } from "../storeRnfFunctions/generateRnfArea";
 import { storeRegion } from "./storeRegion";
 import { associateRnfTerritoiresManuel } from "../storeRnfFunctions/associateRnfTerritoiresManuel";
 import { storeDepartments } from "./storeDepartments";
 import { searchNameDep } from "../storeRnfFunctions/searchNameDep";
+import { associateMarkersInPointDep } from "../storeRnfFunctions/associateMarkersInPointDep";
+import { associateMarkersInPointReg } from "../storeRnfFunctions/associateMarkersInPointReg";
 
 const storeRnc = await getData(
   "https://apicarto.ign.fr/api/nature/rnc",
@@ -27,11 +28,11 @@ if (storeDepartments) {
 
   searchNameDep(storeRnf);
 
-  associateMarkersInPoint(storeRnf, storeDepartments);
+  associateMarkersInPointDep(storeRnf, storeDepartments);
 }
 
 if (storeRegion.length > 0) {
   associateMarkersInPoly(storeRnf, storeRegion);
 
-  associateMarkersInPoint(storeRnf, storeRegion)
+  associateMarkersInPointReg(storeRnf, storeRegion)
 }

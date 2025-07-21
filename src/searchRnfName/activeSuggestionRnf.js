@@ -1,7 +1,7 @@
-import { disableList } from "../lists/disableList";
 import { generateMarkerInput } from "./generateMarkerInput";
 
 export function activeSuggestionRnf(selectRnf, input, data, autoComplete) {
+  if (selectRnf.length > 0) {
     selectRnf.forEach((li) => {
       li.addEventListener("click", () => {
         input.value = "";
@@ -10,8 +10,8 @@ export function activeSuggestionRnf(selectRnf, input, data, autoComplete) {
         generateMarkerInput(li.textContent, data, autoComplete);
       });
     });
-
-    if(selectRnf.length === 0) {
-      disableList(autoComplete)
-    }
+    autoComplete.classList.remove("hidden");
+  } else {
+      autoComplete.classList.add("hidden");
+  }
 }

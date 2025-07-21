@@ -1,11 +1,6 @@
-import { disableList } from "../lists/disableList";
-
-export function handleOutside(autoComplete, state) {
+export function handleOutside(autoComplete) {
   const closeAutocomplete = () => {
-    disableList(autoComplete);
-    if (state) {
-      state.open = false;
-    }
+    autoComplete.classList.add("hidden")
   };
 
   document.addEventListener("click", () => {

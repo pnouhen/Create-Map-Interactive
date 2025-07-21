@@ -1,6 +1,6 @@
 
 import { newSetview } from "../maps/mapSetviewDefault"
-import { calculZoom } from "./calculZoom"
+import { calculZoom } from "../polygons/calculZoom"
 
 export function centerPolygon(data, map) {
   const geoShape = data.geo_shape

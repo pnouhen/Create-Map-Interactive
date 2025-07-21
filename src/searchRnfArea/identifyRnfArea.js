@@ -1,6 +1,6 @@
 import { findRnfArea } from "./findRnfArea";
 import { generateClusters } from "../markers/generateClusters";
-import { centerAll } from "../regDep/centerAll";
+import { centerAll } from "../filterTerritoires/centerAll";
 
 export function identifyRnfArea(data, zoom, valueMinMax, value, condition) {
   if (condition === "min") {

@@ -1,4 +1,4 @@
-import { generateRegion } from "../filterTerritoires/generateRegion";
+import { generateRegion } from "../filterRegions/generateRegion";
 
 export function navigateList(button, arrayLi, autoComplete, text, store) {
   let indexLi = -1;

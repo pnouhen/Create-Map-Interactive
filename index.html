@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Carte Interactive</title>
+    <title>Carte des réserves naturelles françaises</title>
     <script type="module" src="/src/main.js"></script>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -13,7 +13,7 @@
   <body class="max-w-[1440px] lg:mx-auto mx-4">
     <main class="flex flex-col items-center gap-4 md:p-4">
       <h1 class="text-3xl font-bold text-center">
-        Carte des réserves naturelles de France
+        Carte des réserves naturelles françaises
       </h1>
       <div
         class="w-full lg:h-full h-[72rem] md:p-4 flex lg:flex-row flex-col-reverse items-center gap-4"
@@ -45,7 +45,7 @@
                   class="w-full input input-stepper flex justify-center gap-2"
                 />
 
-                <ul id="searchRnfautoComplete" class="ul"></ul>
+                <ul id="searchRnfAutoComplete" class="ul hidden"></ul>
               </div>
             </div>
 
@@ -54,7 +54,7 @@
                 <p class="p">Cliquez ici pour choisir une région</p>
                 <i class="fa-solid fa-chevron-down mr-2"></i>
               </button>
-              <ul class="searchTerritoireAutoComplete ul"></ul>
+              <ul class="searchTerritoireAutoComplete ul hidden"></ul>
             </div>
 
            <div id="searchDepartment" class="w-full relative flex justify-center">
@@ -62,7 +62,7 @@
                 <p class="p">Cliquez ici pour choisir un département</p>
                 <i class="fa-solid fa-chevron-down mr-2"></i>
               </button>
-              <ul class="searchTerritoireAutoComplete ul"></ul>
+              <ul class="searchTerritoireAutoComplete ul hidden"></ul>
             </div>
 
             <div

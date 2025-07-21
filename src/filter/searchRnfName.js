@@ -1,19 +1,19 @@
 import { storeRnf } from "../datas/storeRnf.js";
 import { generateListRnf } from "../searchRnfName/generateListRnf.js";
 import { generateClusters } from "../markers/generateClusters.js";
-import { centerAll } from "../regDep/centerAll.js";
-import { centerPolygon } from "../regDep/centerPolygon.js";
+import { centerAll } from "../filterTerritoires/centerAll.js";
+import { centerPolygon } from "../polygons/centerPolygon.js";
 import { generateMarkerInput } from "../searchRnfName/generateMarkerInput.js";
 import { cleanInputList } from "../searchRnfName/cleanInputList.js";
 import { searchWithInput } from "../searchRnfName/searchWithInput.js";
 
 const searchRnfInput = document.getElementById("searchRnf");
-const searchRnfautoComplete = document.getElementById("searchRnfautoComplete");
+const searchRnfAutoComplete = document.getElementById("searchRnfAutoComplete");
 
 let previousData = storeRnf;
 
 export function searchRnfName(data, zoom, map) {
-  cleanInputList(previousData, data, searchRnfautoComplete, searchRnfInput)
+  cleanInputList(previousData, data, searchRnfAutoComplete, searchRnfInput)
 
   // Function for EventListener
   const searchRnfValue = (e) => {
@@ -27,12 +27,12 @@ export function searchRnfName(data, zoom, map) {
         centerPolygon(zoom, map);
       }
     }
-    generateListRnf(searchRnfautoComplete, searchRnfInput, data);
+    generateListRnf(searchRnfAutoComplete, searchRnfInput, data);
 
     generateMarkerInput(searchRnfInput.value, data);
   };
   
-  searchWithInput(searchRnfInput,searchRnfValue, searchRnfautoComplete)
+  searchWithInput(searchRnfInput,searchRnfValue)
 }
 
 searchRnfName(storeRnf);
