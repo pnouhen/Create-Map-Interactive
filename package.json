@@ -17,7 +17,6 @@
     "cleave.js": "^1.6.0",
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
-    "lz-string": "^1.5.0",
     "tailwindcss": "^4.1.10"
   }
 }

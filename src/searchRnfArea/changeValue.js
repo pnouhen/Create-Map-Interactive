@@ -9,7 +9,13 @@ export function changeValue(data, zoom, areaRnf, input, valueMinMax, type) {
   const valueMax = valueMinMax.max;
 
   areaRnf.addEventListener("input", () => {
-    value = parseInt(input.value.replace(/\s/g, ""));
+    // If the input is empty, then her value is 0 
+    if (!parseInt(input.value.replace(/\s/g, ""))) {
+      value = 0;
+      console.log(0)
+    } else {
+      value = parseInt(input.value.replace(/\s/g, ""));
+    }
 
     new Cleave(input, {
       numeral: true,

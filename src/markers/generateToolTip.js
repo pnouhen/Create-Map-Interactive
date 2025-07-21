@@ -1,6 +1,7 @@
 // Generate ToolTip in generatePoint.js
 import L from "leaflet";
 import { storeRegion } from "../datas/storeRegion";
+import { storeDepartments } from "../datas/storeDepartments";
 
 export function generateToolTip(data, marker, map) {
   // Search marker in data
@@ -14,7 +15,15 @@ export function generateToolTip(data, marker, map) {
       (region) => region.reg_code[0] === markerSelect.reg_code[0]
     );
   }
-  
+
+  // Search department in storeDepartment
+  let departmentName = "";
+  if (storeDepartments.length > 0) {
+    departmentName = storeDepartments.filter(
+      (department) => department.dep_code[0] === markerSelect.dep_code[0]
+    );
+  }
+
   // Create ToolTip
   const popup = L.popup();
   popup
@@ -25,10 +34,22 @@ export function generateToolTip(data, marker, map) {
         ${markerSelect.properties.nom.toString()}
       </h3>
 
-      <div class="toolType-info">
+      ${
+        regionName
+          ? `<div class="toolType-info">
       <p class="toolType-sbTitle">Région :</p>
       <p>${regionName[0].reg_name[0]}</p>
-      </div>
+      </div>`
+          : ""
+      }
+       ${
+        departmentName
+          ? `<div class="toolType-info">
+      <p class="toolType-sbTitle">Département :</p>
+      <p>${departmentName[0].dep_name[0]}</p>
+      </div>`
+          : ""
+      }
 
       <div class="toolType-info">
         <p class="toolType-sbTitle">Surface : </p>
