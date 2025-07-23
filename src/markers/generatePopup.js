@@ -3,7 +3,7 @@ import L from "leaflet";
 import { storeRegion } from "../datas/storeRegion";
 import { storeDepartments } from "../datas/storeDepartments";
 
-export function generateToolTip(data, marker, map) {
+export function generatePopup(data, marker, map) {
   // Search marker in data
   const id = marker.target.id;
   const markerSelect = data.find((item) => item.id === id);

@@ -16,6 +16,5 @@ export async function filterTerritoires(
       onClickTerritoire();
     });
   });
-
   navigateList(button, arrayLi, autoComplete, text, data, onClickTerritoire);
 }
