@@ -17,5 +17,5 @@ export async function filterTerritoires(
     });
   });
 
-  navigateList(button, arrayLi, autoComplete, text, data);
+  navigateList(button, arrayLi, autoComplete, text, data, onClickTerritoire);
 }

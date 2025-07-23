@@ -1,5 +1,5 @@
+import { addListDep } from "../filterDepartments/addListDep";
 import { getData } from "./getData";
-import { addListDep } from "../lists/addListDep";
 import {
   saintBarthelemy,
   saintMartin,

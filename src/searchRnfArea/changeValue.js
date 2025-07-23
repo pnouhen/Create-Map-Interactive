@@ -5,6 +5,10 @@ export function changeValue(data, zoom, areaRnf, input, valueMinMax, type) {
   const more = areaRnf.querySelector(".more");
   const less = areaRnf.querySelector(".less");
 
+if(data.length === 0) {
+  input.value = 0
+}
+
   let value = parseInt(input.value.replace(/\s/g, ""));
   const valueMax = valueMinMax.max;
 
@@ -12,7 +16,6 @@ export function changeValue(data, zoom, areaRnf, input, valueMinMax, type) {
     // If the input is empty, then her value is 0 
     if (!parseInt(input.value.replace(/\s/g, ""))) {
       value = 0;
-      console.log(0)
     } else {
       value = parseInt(input.value.replace(/\s/g, ""));
     }

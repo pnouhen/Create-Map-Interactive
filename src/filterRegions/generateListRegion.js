@@ -7,7 +7,7 @@ export async function generateListRegion(autoComplete, territoires) {
       .sort((a, b) => a.reg_name_upper.localeCompare(b.reg_name_upper))
       .forEach((region) => {
         const li = document.createElement("li");
-        li.classList.add("li");
+        li.classList.add("li", "text");
         li.textContent = region.reg_name_upper;
         li.id = region.reg_code;
 

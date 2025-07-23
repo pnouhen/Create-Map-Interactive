@@ -11,9 +11,8 @@ const inputAreaMaxRnf = areaMaxRnf.querySelector("input");
 export function searchRnfArea(data, zoom) {
   let valueMinMax = findRnfAreaMinMax(data);
   let minValue = valueMinMax.min;
-
   let maxValue = valueMinMax.max;
-
+  
   inputAreaMinRnf.value = Number(minValue).toLocaleString();
   inputAreaMaxRnf.value = Number(maxValue).toLocaleString();
 

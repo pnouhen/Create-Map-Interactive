@@ -1,3 +1,4 @@
+import { showAutoComplete } from "../utils/showAutoComplete";
 import { generateMarkerInput } from "./generateMarkerInput";
 
 export function activeSuggestionRnf(selectRnf, input, data, autoComplete) {
@@ -10,8 +11,7 @@ export function activeSuggestionRnf(selectRnf, input, data, autoComplete) {
         generateMarkerInput(li.textContent, data, autoComplete);
       });
     });
-    autoComplete.classList.remove("hidden");
-  } else {
-      autoComplete.classList.add("hidden");
+
+    showAutoComplete(autoComplete);
   }
 }

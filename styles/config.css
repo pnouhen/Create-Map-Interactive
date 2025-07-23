@@ -17,4 +17,10 @@ html {
   --color-yellow-400: rgba(255, 195, 0, 1);
   --color-purple-400: rgba(138, 43, 226, 1);
   --color-orange-400: rgba(255, 87, 34, 1);
+
+  --color-magnifying-glass: #c73c45;
+  --color-geo: #6D86C6;
+  --color-ruler: #F4C542;
+
+  --shadow-filter : 0px 0px 5px 7px rgba(0,0,0,0.2);
 }

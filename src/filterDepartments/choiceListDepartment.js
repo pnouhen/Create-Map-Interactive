@@ -1,7 +1,7 @@
 import { regionValue } from "../filterRegions/generateRegion";
 import { updateDepartmentsByRegion } from "../filterTerritoires/updateDepartmentsByRegion";
-import { generateListDep } from "../lists/generateListDepartment";
 import { configureDepartmentFilter } from "./configureDepartmentFilter";
+import { generateListDep } from "./generateListDepartment";
 
 const searchRegion = document.getElementById("searchRegion");
 

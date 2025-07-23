@@ -16,17 +16,16 @@ export function generateListRnf(autoComplete, input, data) {
       .forEach((rnf) => {
         const li = document.createElement("li");
         li.textContent = rnf.properties.nom;
-        li.classList.add("li");
+        li.classList.add("li", "text");
         autoComplete.appendChild(li);
       });
 
     const selectRnf = autoComplete.querySelectorAll(".li");
-
     activeSuggestionRnf(selectRnf, input, data, autoComplete);
 
     navigateList(input, selectRnf, autoComplete, input.value);
-  } else {
-    autoComplete.classList.add("hidden");
+
   }
+
   handleOutside(autoComplete);
 }

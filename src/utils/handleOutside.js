@@ -1,6 +1,8 @@
+import { disableAutoComplete } from "./disableAutoComplete";
+
 export function handleOutside(autoComplete) {
   const closeAutocomplete = () => {
-    autoComplete.classList.add("hidden")
+    disableAutoComplete(autoComplete);
   };
 
   document.addEventListener("click", () => {

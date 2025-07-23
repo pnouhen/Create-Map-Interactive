@@ -1,9 +1,9 @@
 import { storeDepartments } from "../datas/storeDepartments";
-import { generateListDep } from "../lists/generateListDepartment";
 import { onButtonClick } from "../filterTerritoires/onButtonClick";
 import { choiceListDepartment } from "../filterDepartments/choiceListDepartment";
 import { storeRegion } from "../datas/storeRegion";
 import { configureDepartmentFilter } from "../filterDepartments/configureDepartmentFilter";
+import { generateListDep } from "../filterDepartments/generateListDepartment";
 
 const searchDepartment = document.getElementById("searchDepartment");
 const searchDepartmentButton = searchDepartment.querySelector("button");
