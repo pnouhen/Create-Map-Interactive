@@ -6,7 +6,6 @@ import { getMapInstance } from "../maps/getMapInstance";
 export function generateMarkerInput(value, data, autoComplete) {
   const map = getMapInstance();
   const markerSelect = data.filter((rnf) => rnf.properties.nom === value);
-
   if (markerSelect.length > 0) {
     generateClusters(markerSelect);
 

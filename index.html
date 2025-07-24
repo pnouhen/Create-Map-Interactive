@@ -14,21 +14,22 @@
       rel="stylesheet"
     />
   </head>
-  <body class="max-w-[1440px] lg:mx-auto bg-gray-50">
-    <main class="flex flex-col items-center gap-4 md:p-4">
-      <h1 class="mt-2 text-4xl font-bold text-center">
+  <body class="max-w-[1440px] lg:mx-auto bg-gray-100">
+    <main class="relative flex flex-col items-center gap-4 p-4">
+      <h1 class="mt-2 md:text-4xl text-xl font-bold text-center">
         Explorer les réserves naturelles de France
       </h1>
-      <p class="text-xl text-center font-semibold italic">
-        Recherchez, filtrez et explorez les réserves naturelles françaises.
-        <br />Cliquez sur l'une d'entre elles pour obtenir des détails.
+      <p class="md:text-xl text-base text-center font-semibold italic">
+        Recherchez et filtrez les réserves naturelles françaises.
+        <br />Cliquez sur une réserve pour avoir des détails.
       </p>
+
       <div
-        class="w-full lg:h-[80vh] flex lg:flex-row flex-col-reverse items-center gap-8"
+        class="relative w-full lg:h-[80vh] h-[96vh] flex lg:flex-row flex-col items-center md:gap-8 gap-6"
       >
         <div
           id="map"
-          class="lg:w-full w-full h-full flex justify-center items-center border-2 rounded-md"
+          class="z-0 w-full h-full flex justify-center items-center border-2 rounded-md"
         >
           <div class="relative -z-10 flex items-baseline gap-3">
             <p class="text-2xl text-center">Chargement en cours</p>
@@ -38,134 +39,146 @@
           </div>
         </div>
 
-        <div
-          class="h-full mx-auto p-4 w-[36rem] lg:flex lg:flex-col grid grid-cols-2 items-center gap-6 bg-green-50 rounded-xl shadow-filter"
+        <button
+          class="js-buttonFilter filter h2 lg:hidden absolute z-50 right-0 m-4 px-4 py-2 bg-green-200 cursor-pointer"
         >
-          <h2 class="h2">Filtrer les réserves naturelles</h2>
+          Filtrer
+        </button>
 
-          <div class="filter-section relative">
-            <div class="text label">
-              <i
-                class="fa-solid fa-magnifying-glass icon text-magnifying-glass"
-              ></i>
-              <label for="searchRnf">Rechercher par leur nom :</label>
-            </div>
-
-            <input
-              name="searchRnf"
-              id="searchRnf"
-              type="text"
-              placeholder="Exemples : Val D'Allier, Py ..."
-              autocomplete="off"
-              class="w-full input text input-stepper"
-            />
-
-            <ul
-              id="searchRnfAutoComplete"
-              class="js-bottom top-24 opacity-0 pointer-events-none ul"
-            ></ul>
-          </div>
-
-          <div class="filter-section">
-            <div class="text label">
-              <i class="fa-solid fa-map icon text-geo"></i>
-              <h3>Filtrer par géographiques :</h3>
-            </div>
-
+          <div
+            class="js-bgBlack lg:relative absolute top-0 max-lg:w-full w-[36rem] h-full max-lg:bg-black-50 lg:opacity-100 opacity-0 lg:pointer-events-auto pointer-events-none"
+          >
             <div
-              id="searchRegion"
-              class="mb-1 w-full relative flex justify-center"
+              class="js-sectionFilter lg:relative absolute filter lg:top-0 md:top-40 top-20 left-1/2 -translate-x-1/2 lg:h-full h-auto lg:w-full md:w-[31.38rem] w-11/12 mx-auto p-4 flex flex-col md:gap-6 gap-4 bg-green-50"
             >
-              <button
-                title="Choisir"
-                class="w-full input text input-stepper button-territoire"
-              >
-                <p class="p">Sélectionner une région</p>
-                <i class="fa-solid fa-chevron-down mr-2"></i>
-              </button>
-              <ul
-                class="searchTerritoireAutoComplete js-bottom opacity-0 pointer-events-none ul top-14"
-              ></ul>
-            </div>
+              <h2 class="h2 w-full">Filtrer les réserves naturelles</h2>
 
-            <div
-              id="searchDepartment"
-              class="w-full relative flex justify-center"
-            >
-              <button
-                title="Choisir"
-                class="w-full input text input-stepper button-territoire"
-              >
-                <p class="p">Sélectionner un département</p>
-                <i class="fa-solid fa-chevron-down mr-2"></i>
-              </button>
-              <ul
-                class="searchTerritoireAutoComplete js-top ul -top-[18.44rem] opacity-0 pointer-events-none"
-              ></ul>
-            </div>
-          </div>
-
-          <div class="area-container">
-            <div class="text label w-full">
-              <i class="fa-solid fa-ruler icon text-ruler"></i>
-              <h3>Filtrer par surface :</h3>
-            </div>
-            
-            <div class="area-container">
-              <p class="area-container-p text">Minimum :</p>
-              <div
-                id="areaMinRnf"
-                class="input-stepper flex justify-center gap-2"
-              >
-                <button title="Diminuer" class="less input-button">
-                  <i class="fa-solid fa-minus"></i>
-                </button>
-                <div class="flex gap-1">
-                  <label for="areaMinRnfInput" class="absolute"></label>
-                  <input
-                    id="areaMinRnfInput"
-                    name="areaMinRnf"
-                    type="text"
-                    class="input text w-24 text-end"
-                  />
-
-                  <span class="text"> km²</span>
+              <div class="filter-section relative">
+                <div class="text label">
+                  <i
+                    class="fa-solid fa-magnifying-glass icon text-magnifying-glass"
+                  ></i>
+                  <label for="searchRnf">Rechercher par leur nom :</label>
                 </div>
 
-                <button title="Augmenter" class="more input-button">
-                  <i class="fa-solid fa-plus"></i>
-                </button>
+                <input
+                  name="searchRnf"
+                  id="searchRnf"
+                  type="text"
+                  placeholder="Exemples : Val D'Allier, Py ..."
+                  autocomplete="off"
+                  class="w-full input text input-stepper"
+                />
+
+                <ul
+                  id="searchRnfAutoComplete"
+                  class="js-bottom md:top-24 top-8 opacity-0 pointer-events-none ul"
+                ></ul>
               </div>
-            </div>
 
-            <div class="area-container">
-              <p class="area-container-p text">Maximum :</p>
-              <div
-                id="areaMaxRnf"
-                class="input-stepper flex justify-center gap-2"
-              >
-                <button title="Diminuer" class="less input-button">
-                  <i class="fa-solid fa-minus"></i>
-                </button>
-                <label for="areaMaxRnfInput" class="absolute"> </label>
-                <div class="felx gap-1">
-                  <input
-                    id="areaMaxRnfInput"
-                    name="areaMaxRnfInput"
-                    type="text"
-                    class="input text w-24 text-end"
-                  />
-
-                  <span class="text"> km²</span>
+              <div class="filter-section">
+                <div class="text label">
+                  <i class="fa-solid fa-map icon text-geo"></i>
+                  <h3>Filtrer par géographiques :</h3>
                 </div>
 
-                <button title="Augmenter" class="more input-button">
-                  <i class="fa-solid fa-plus"></i>
-                </button>
+                <div
+                  id="searchRegion"
+                  class="mb-1 w-full relative flex justify-center"
+                >
+                  <button
+                    title="Choisir"
+                    class="w-full input text input-stepper button-territoire"
+                  >
+                    <p class="p">Sélectionner une région</p>
+                    <i class="fa-solid fa-chevron-down mr-2"></i>
+                  </button>
+                  <ul
+                    class="searchTerritoireAutoComplete js-bottom opacity-0 pointer-events-none ul top-14"
+                  ></ul>
+                </div>
+
+                <div
+                  id="searchDepartment"
+                  class="w-full relative flex justify-center"
+                >
+                  <button
+                    title="Choisir"
+                    class="w-full input text input-stepper button-territoire"
+                  >
+                    <p class="p">Sélectionner un département</p>
+                    <i class="fa-solid fa-chevron-down mr-2"></i>
+                  </button>
+                  <ul
+                    class="searchTerritoireAutoComplete js-top ul md:-top-[18.44rem] -top-[14.44rem] opacity-0 pointer-events-none"
+                  ></ul>
+                </div>
+              </div>
+
+              <div
+                class="w-full flex lg:flex-col md:flex-row flex-wrap lg:justify-center justify-center gap-4"
+              >
+                <div class="text label w-full">
+                  <i class="fa-solid fa-ruler icon text-ruler"></i>
+                  <h3>Filtrer par surface :</h3>
+                </div>
+
+                <div class="area-container">
+                  <p class="area-container-p text">Minimum :</p>
+                  <div
+                    id="areaMinRnf"
+                    class="input-stepper flex justify-center gap-2"
+                  >
+                    <button title="Diminuer" class="less input-button">
+                      <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <div class="flex gap-1">
+                      <label for="areaMinRnfInput" class="absolute"></label>
+                      <input
+                        id="areaMinRnfInput"
+                        name="areaMinRnf"
+                        type="text"
+                        class="input text md:w-24 w-20 text-end"
+                      />
+
+                      <span class="text"> km²</span>
+                    </div>
+
+                    <button title="Augmenter" class="more input-button">
+                      <i class="fa-solid fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="area-container">
+                  <p class="area-container-p text">Maximum :</p>
+                  <div
+                    id="areaMaxRnf"
+                    class="input-stepper flex justify-center gap-2"
+                  >
+                    <button title="Diminuer" class="less input-button">
+                      <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <label for="areaMaxRnfInput" class="absolute"> </label>
+                    <div class="felx gap-1">
+                      <input
+                        id="areaMaxRnfInput"
+                        name="areaMaxRnfInput"
+                        type="text"
+                        class="input text md:w-24 w-20 text-end"
+                      />
+
+                      <span class="text"> km²</span>
+                    </div>
+
+                    <button title="Augmenter" class="more input-button">
+                      <i class="fa-solid fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
       </div>
     </main>
   </body>

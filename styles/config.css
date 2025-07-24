@@ -7,20 +7,19 @@ html {
     font-size: 14px;
   }
 
-  @media(max-width: 1440px) {
+  @media (max-width: 1440px) {
     font-size: 16px;
   }
-
 }
 
 @theme {
   --color-yellow-400: rgba(255, 195, 0, 1);
   --color-purple-400: rgba(138, 43, 226, 1);
   --color-orange-400: rgba(255, 87, 34, 1);
-
+  --color-black-50: rgba(0, 0, 0, 0.5);
   --color-magnifying-glass: #c73c45;
-  --color-geo: #6D86C6;
-  --color-ruler: #F4C542;
+  --color-geo: #6d86c6;
+  --color-ruler: #f4c542;
 
-  --shadow-filter : 0px 0px 5px 7px rgba(0,0,0,0.2);
+  --shadow-filter: 0px 0px 5px 7px rgba(0, 0, 0, 0.2);
 }

@@ -5,7 +5,6 @@ import { generatePolygonRnf } from "./generatePolygonRnf";
 import { greenIcon } from "./createIcon";
 import { clearPolygons } from "../polygons/clearPloygons";
 
-let currentPolygon = [];
 
 export function generateMarker(data, map) {
   let markers = [];
@@ -19,11 +18,7 @@ export function generateMarker(data, map) {
     // Generate ToolTip
     marker.on("click", (marker) => {
       generatePopup(data, marker, map);
-      generatePolygonRnf(data, marker, currentPolygon, map, latLng);
-    });
-
-    map.on("popupclose", () => {
-      clearPolygons(currentPolygon);
+      generatePolygonRnf(data, marker, map, latLng);
     });
 
     // Push marker in markers
