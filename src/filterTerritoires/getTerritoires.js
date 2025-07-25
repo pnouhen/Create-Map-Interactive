@@ -2,10 +2,10 @@ import { searchRnfArea } from "../filter/searchRnfArea";
 import { searchRnfName } from "../filter/searchRnfName";
 import { generateClusters } from "../markers/generateClusters";
 
-export function getTerritoire(data, zoom, map) {
+export function getTerritoire(data, zoom) {
   generateClusters(data);
 
-  searchRnfName(data, zoom, map);
+  searchRnfName(data, zoom);
 
-  searchRnfArea(data, zoom, map);
+  searchRnfArea(data, zoom);
 }

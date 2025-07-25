@@ -1,10 +1,8 @@
 import { centerMarkers } from "../markers/centerMarkers";
 import { coordinateMarker } from "../markers/coordinateMarker";
 import { generateClusters } from "../markers/generateClusters";
-import { getMapInstance } from "../maps/getMapInstance";
 
-export function generateMarkerInput(value, data, autoComplete) {
-  const map = getMapInstance();
+export function generateMarkerInput(value, data, map, autoComplete) {
   const markerSelect = data.filter((rnf) => rnf.properties.nom === value);
   if (markerSelect.length > 0) {
     generateClusters(markerSelect);

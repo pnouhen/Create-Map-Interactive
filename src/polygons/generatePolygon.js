@@ -1,11 +1,8 @@
 import L from "leaflet";
-import { generateMap } from "../maps/generateMap";
 import { clearPolygons } from "./clearPloygons";
 
-export function generatePolygons(data, currentPolygon, color) {
-  const map = generateMap();
-
-  clearPolygons(currentPolygon); 
+export function generatePolygons(data, currentPolygon, color, map) {
+  clearPolygons(currentPolygon, map); 
 
   if (data.type === "MultiPolygon" && data.coordinates[0][0].length > 2) {
     data.coordinates.forEach(polygonCoords => {

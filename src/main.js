@@ -2,9 +2,10 @@
 import "./markers/generateClusters"
 
 import "./filter/searchRnfName"
-import "./filter/filterDepartments"
 import "./filter/filterRegions"
+import "./filter/filterDepartments"
 import "./filter/searchRnfArea"
+import "./filter/filterRange"
 
 import "./responsive/generateSectionFilter"
 

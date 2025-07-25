@@ -7,5 +7,5 @@ export function centerMarkers(data, map, latLng) {
 
   const zoom = calculZoom(data, map)
 
-  newSetview(lat, lng, zoom)
+  newSetview(map, lat, lng, zoom)
 }

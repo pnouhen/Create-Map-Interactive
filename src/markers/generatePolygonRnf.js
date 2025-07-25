@@ -18,6 +18,6 @@ export function generatePolygonRnf(data, marker, map, latLng) {
   centerMarkers(markerSelect, map, latLng);
 
   map.on("popupclose", () => {
-    clearPolygons(currentPolygon);
+    clearPolygons(currentPolygon, map);
   });
 }

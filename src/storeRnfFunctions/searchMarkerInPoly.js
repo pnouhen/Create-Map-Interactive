@@ -7,12 +7,13 @@ export function searchMarkerInPoly(data, geometry) {
 
   const pt = turf.point([latLng[1], latLng[0]]);
   let resultat = "";
-
+  
+  
   if (geometry.type === "MultiPolygon" && geometry.coordinates[0][0].length > 2) {
     let responses = [];
 
     let poly = { coordinates: [], type: "Polygon" };
-
+    
     geometry.coordinates.map((coords) => {
       poly.coordinates = coords;
       const response = turf.booleanPointInPolygon(pt, poly);

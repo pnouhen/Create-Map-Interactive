@@ -26,7 +26,7 @@ async function filterDepartments() {
       storeDepartments,
       searchDepartmentButton,
       searchDepartmentText,
-      searchDepartmentAutoComplete
+      searchDepartmentAutoComplete,
     );
 
     if (storeRegion.length > 0) {

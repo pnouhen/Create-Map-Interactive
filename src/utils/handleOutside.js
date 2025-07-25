@@ -1,17 +1,13 @@
-import { disableAutoComplete } from "./disableAutoComplete";
+import { disableAutoComplete } from "../utils/disableAutoComplete";
 
 export function handleOutside(autoComplete) {
-  const closeAutocomplete = () => {
-    disableAutoComplete(autoComplete);
-  };
-
   document.addEventListener("click", () => {
-    closeAutocomplete();
+    disableAutoComplete(autoComplete);
   });
 
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" || e.key === "Tab") {
-      closeAutocomplete();
+    disableAutoComplete(autoComplete);
     }
   });
 }

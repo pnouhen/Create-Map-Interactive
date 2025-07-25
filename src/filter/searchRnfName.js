@@ -7,13 +7,16 @@ import { generateMarkerInput } from "../searchRnfName/generateMarkerInput.js";
 import { cleanInputList } from "../searchRnfName/cleanInputList.js";
 import { searchWithInput } from "../searchRnfName/searchWithInput.js";
 import { returnAutoComplete } from "../searchRnfName/returnAutoComplete.js";
+import { generateMap } from "../maps/generateMap.js";
 
 const searchRnfInput = document.getElementById("searchRnf");
 const searchRnfAutoComplete = document.getElementById("searchRnfAutoComplete");
 
 let previousData = storeRnf;
 
-export function searchRnfName(data, zoom, map) {
+export function searchRnfName(data, zoom) {
+  const map = generateMap()
+
   cleanInputList(previousData, data, searchRnfAutoComplete, searchRnfInput);
 
   // Function for EventListener
@@ -22,14 +25,14 @@ export function searchRnfName(data, zoom, map) {
     if (searchRnfInput.value === "") {
       generateClusters(data);
       if (data === storeRnf) {
-        centerAll();
+        centerAll(map);
       } else {
         centerPolygon(zoom, map);
       }
     }
     generateListRnf(searchRnfAutoComplete, searchRnfInput, data);
 
-    generateMarkerInput(searchRnfInput.value, data);
+    generateMarkerInput(searchRnfInput.value, data, map);
   };
 
   searchWithInput(searchRnfInput, searchRnfValue);

@@ -12,6 +12,7 @@ export function generateMarker(data, map) {
   data.forEach((el) => {
     const latLng = coordinateMarker(el);
     const marker = L.marker(latLng, { icon: greenIcon });
+    
     // Associate dataRnn.features =>  marker
     marker["id"] = el.id;
 

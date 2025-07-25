@@ -15,6 +15,6 @@ export function identifyRnfArea(data, zoom, valueMinMax, value, condition) {
   generateClusters(storeRnfArea);
 
 if(zoom === undefined) {
-  centerAll()
+  centerAll(map)
 }
 }

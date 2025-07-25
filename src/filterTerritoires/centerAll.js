@@ -5,10 +5,10 @@ import {
   zoomDefault,
 } from "../maps/mapSetviewDefault";
 
-export function centerAll() {
+export function centerAll(map) {
   const lat = latDefault;
   const lng = lngDefault;
   const zoom = zoomDefault;
 
-  newSetview(lat, lng, zoom);
+  newSetview(map,lat, lng, zoom);
 }

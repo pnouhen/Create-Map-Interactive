@@ -7,7 +7,7 @@ export function associateMarkersInPoly(data, territoires) {
       if (territoire.manuel !== true) {
         const geometry = territoire.geo_shape.geometry;
         const shearch = searchMarkerInPoly(rnf, geometry);
-        if (shearch === true) {
+        if (shearch) {
           if (territoire.dep_code) {
             let dep_code = []
             dep_code.push(territoire.dep_code[0])

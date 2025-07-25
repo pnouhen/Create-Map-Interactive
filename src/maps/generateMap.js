@@ -17,6 +17,11 @@ export function generateMap() {
         '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(map);
 
+    // Wait before fixing map size
+    setTimeout(() => {
+      map.invalidateSize();
+    }, 100);
+
     return map;
   }
 }

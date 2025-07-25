@@ -1,6 +1,9 @@
+import { disableAutoComplete } from "../utils/disableAutoComplete";
+
 const bgBlack = document.querySelector(".js-bgBlack");
 const buttonFilter = document.querySelector(".js-buttonFilter");
 const sectionFilter = document.querySelector(".js-sectionFilter");
+const arrayUl = document.querySelectorAll(".ul");
 
 let isOpen = false;
 
@@ -16,11 +19,12 @@ export function generateSectionFilter() {
       buttonFilter.textContent = "Filtrer";
     }
   };
-
   buttonFilter.addEventListener("click", toggleSectionFilter);
   bgBlack.addEventListener("click", toggleSectionFilter);
+
   sectionFilter.addEventListener("click", (e) => {
     e.stopPropagation();
+    arrayUl.forEach((ul) => disableAutoComplete(ul));
   });
 }
 

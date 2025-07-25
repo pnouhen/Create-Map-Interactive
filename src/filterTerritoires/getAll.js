@@ -6,11 +6,11 @@ import { generateClusters } from "../markers/generateClusters";
 import { clearPolygons } from "../polygons/clearPloygons";
 import { centerAll } from "./centerAll";
 
-export function getAll(currentPolygonReg) {
-  clearPolygons(currentPolygonDep);
+export function getAll(map,currentPolygonReg) {
+  clearPolygons(currentPolygonDep, map);
 
   if (currentPolygonReg) {
-    clearPolygons(currentPolygonReg);
+    clearPolygons(currentPolygonReg, map);
   }
 
   generateClusters(storeRnf);
@@ -19,5 +19,5 @@ export function getAll(currentPolygonReg) {
 
   searchRnfName(storeRnf);
 
-  centerAll();
+  centerAll(map);
 }

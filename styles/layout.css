@@ -60,7 +60,7 @@
     @apply font-medium;
   }
 
-  .input-button{
+  .input-button {
     @apply px-1.5 flex items-center justify-center text-sm border-2 border-black rounded-sm cursor-pointer;
   }
   .button-territoire {
@@ -171,4 +171,20 @@ a {
 
 .leaflet-popup-close-button span {
   font-size: 1.5rem;
+}
+
+datalist {
+  display: flex;
+  justify-content: space-between;
+  writing-mode:horizontal-tb;
+  width: 200px;
+}
+
+option {
+  padding: 0;
+}
+
+input[type="range"] {
+  width: 200px;
+  margin: 0;
 }

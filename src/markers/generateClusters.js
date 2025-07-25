@@ -8,15 +8,11 @@ import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 
 // Initial value
-let map = null;
 let clusterGroup = null;
 
 export function generateClusters(data) {
-  map = generateMap();
-  if (!map) {
-    map = generateMap();
-  }
-
+  const map = generateMap();
+  
   // Delete the preview cluster if it exists for map and clusterGroup
   if (clusterGroup) {
     map.removeLayer(clusterGroup);

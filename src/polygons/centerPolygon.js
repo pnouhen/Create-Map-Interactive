@@ -9,5 +9,5 @@ export function centerPolygon(data, map) {
     const lng = data.geo_point_2d.lon
     const zoom = calculZoom(geoShape, map)
 
-  newSetview(lat, lng, zoom)
+  newSetview(map, lat, lng, zoom)
 }
