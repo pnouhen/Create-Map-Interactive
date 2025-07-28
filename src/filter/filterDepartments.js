@@ -7,7 +7,7 @@ import { generateListDep } from "../filterDepartments/generateListDepartment";
 
 const searchDepartment = document.getElementById("searchDepartment");
 const searchDepartmentButton = searchDepartment.querySelector("button");
-const searchDepartmentText = searchDepartment.querySelector(".p");
+const searchDepartmentText = searchDepartment.querySelector(".js-p");
 const searchDepartmentAutoComplete = searchDepartment.querySelector(
   ".searchTerritoireAutoComplete"
 );

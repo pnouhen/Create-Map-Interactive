@@ -11,15 +11,15 @@ import { generateMap } from "../maps/generateMap";
 
 export let currentPolygonDep = [];
 
-export function generateDepartments(text, data) {
   const map = generateMap()
+
+export function generateDepartments(text, data) {
   const depValue = text.id;
 
   if (depValue === "undefined") {
-    console.log(map)
     getAll(map);
   } else if (depValue === "allDepOfRegion" && storeRegion.length > 0) {
-    getRegion()
+    getRegion(map)
   } else {
     const depSelect = searchDepartment(data, depValue);
 

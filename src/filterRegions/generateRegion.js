@@ -9,16 +9,13 @@ import { getRegion } from "./getRegion";
 import { generateMap } from "../maps/generateMap";
 
 export let regionValue = "";
-
 export let regionSelect = [];
-
-let currentPolygonReg = [];
-
 export let markersRegion = [];
 
-export function generateRegion(text, data) {
-  const map = generateMap();
+let currentPolygonReg = [];
+const map = generateMap();
 
+export function generateRegion(text, data) {
   regionValue = text.id;
   if (regionValue === "undefined") {
     getAll(map, currentPolygonReg);

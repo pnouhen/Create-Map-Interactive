@@ -4,7 +4,7 @@ import { filterPoint } from "./filterPoint";
 import { filterPolygon } from "./filterPolygon";
 import { generateClusters } from "../markers/generateClusters";
 
-export function filterMarkerRange(circle, storeRnf) {
+export function filterMarkerRange(circle, data) {
   const lat = circle._latlng.lat;
   const lng = circle._latlng.lng;
   const radius = circle._mRadius;
@@ -15,7 +15,7 @@ export function filterMarkerRange(circle, storeRnf) {
     units: "kilometers",
   });
 
-  const markers = storeRnf
+  const markers = data
     .filter((rnf) => filterPoint(rnf, lat, lng, radius))
     .filter((rnf) => filterPolygon(rnf, circleTurf));
 

@@ -8,13 +8,13 @@ import { arrayLiDep } from "../filterDepartments/configureDepartmentFilter";
 
 const searchRegion = document.getElementById("searchRegion");
 const searchRegionButton = searchRegion.querySelector("button");
-const searchRegionText = searchRegion.querySelector(".p");
+const searchRegionText = searchRegion.querySelector(".js-p");
 const searchRegionAutoComplete = searchRegion.querySelector(
   ".searchTerritoireAutoComplete"
 );
 
 const searchDepartment = document.getElementById("searchDepartment");
-const searchDepartmentText = searchDepartment.querySelector(".p");
+const searchDepartmentText = searchDepartment.querySelector(".js-p");
 
 async function filterRegions() {
   if (storeRegion.length > 0) {

@@ -9,8 +9,12 @@
     @apply md:text-2xl text-base font-bold text-center;
   }
 
-  .text {
+  .h3 {
     @apply md:text-xl text-base;
+  }
+
+  .text {
+    @apply md:text-lg text-sm;
   }
 
   .ul {
@@ -54,10 +58,6 @@
 
   .area-container {
     @apply flex flex-col items-center gap-2;
-  }
-
-  .area-container-p {
-    @apply font-medium;
   }
 
   .input-button {

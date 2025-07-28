@@ -1,4 +1,5 @@
 import { storeRnf } from "../datas/storeRnf";
+import { filterRange } from "../filter/filterRange";
 import { searchRnfArea } from "../filter/searchRnfArea";
 import { searchRnfName } from "../filter/searchRnfName";
 import { currentPolygonDep } from "../filterDepartments/generateDepartments";
@@ -18,6 +19,8 @@ export function getAll(map,currentPolygonReg) {
   searchRnfArea(storeRnf);
 
   searchRnfName(storeRnf);
+
+  filterRange(storeRnf)
 
   centerAll(map);
 }

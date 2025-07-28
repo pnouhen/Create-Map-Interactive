@@ -1,42 +1,55 @@
 import L from "leaflet";
-
-import { storeRnf } from "../datas/storeRnf";
 import { generateMap } from "../maps/generateMap";
 import { filterMarkerRange } from "./filterMarkerRange";
 import { generateClusters } from "../markers/generateClusters";
 
+const map = generateMap();
 let circle = null;
+let onMapClick = null;
 
-export function getCoordClick(input, isActive) {
-  const map = generateMap();
-
-  function onMapClick(e) {
+export function getCoordClick(input, data, isActive) {
+  const onMapClick = (e) => {
     if (circle) {
       map.removeLayer(circle);
     }
 
     circle = L.circle([e.latlng.lat, e.latlng.lng], {
-      color: "red",
-      fillColor: "#f03",
-      fillOpacity: 0.5,
+      color: "#27ae60",
+      fillColor: "#2ecc71",
+      fillOpacity: 0.4,
       radius: input.value * 1000,
     }).addTo(map);
 
-    filterMarkerRange(circle, storeRnf);
+    filterMarkerRange(circle, data);
 
-    input.addEventListener("input", () => {
-      circle.setRadius(input.value * 1000);
-      filterMarkerRange(circle, storeRnf);
-    });
-  }
+    const onInputChange = () => {
+      if (circle) {
+        circle.setRadius(input.value * 1000);
+        filterMarkerRange(circle, data);
+        console.log(data);
+      }
+    };
+
+    if (input._changeData) {
+      input.removeEventListener("input", input._changeData);
+    }
+
+    input._changeData = onInputChange;
+    input.addEventListener("input", onInputChange);
+  };
+
   if (isActive) {
     map.on("click", onMapClick);
   } else {
     map.off("click", onMapClick);
-
+    if (input._changeData) {
+      input.removeEventListener("input", input._changeData);
+    }
+    generateClusters(data);
     if (circle) {
       map.removeLayer(circle);
-      generateClusters(storeRnf)
+      circle = null;
     }
   }
 }
+

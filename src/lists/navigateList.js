@@ -31,7 +31,6 @@ export function navigateList(
       e.preventDefault();
       indexLi++;
       changeWithArrow();
-      console.log("test")
     }
 
     if (e.key === "ArrowUp" && indexLi > 0) {

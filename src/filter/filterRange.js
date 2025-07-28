@@ -1,24 +1,27 @@
+import { storeRnf } from "../datas/storeRnf";
 import { getCoordClick } from "../filterRange/getCoordClick";
 
 const inputRange = document.getElementById("rangeDistance");
 const rangeText = document.querySelector(".js-rangeText");
-const btnRangeDistance = document.querySelector(".js-btnRangeDistance");
+const checkboxRangeDistance = document.getElementById("checkboxRangeDistance");
 
-export function filterRange() {
-  let isActive = false;
+export function filterRange(data) {
+  const onClick = () => {
+    getCoordClick(inputRange, data, checkboxRangeDistance.checked);
+  };
 
-  btnRangeDistance.addEventListener("click", () => {
-    isActive = !isActive;
-    getCoordClick(inputRange, isActive);
+  if (checkboxRangeDistance._changeData) {
+    checkboxRangeDistance.removeEventListener(
+      "change",
+      checkboxRangeDistance._changeData
+    );
+    checkboxRangeDistance.checked = false;
+    getCoordClick(inputRange, data, checkboxRangeDistance.checked);
+  }
 
-    btnRangeDistance.classList.toggle("font-medium");
+  checkboxRangeDistance._changeData = onClick;
 
-    if(isActive) {
-      btnRangeDistance.textContent = "Désactiver le filtre"
-    } else {
-      btnRangeDistance.textContent = "Activer le filtre"
-    }
-  });
+  checkboxRangeDistance.addEventListener("change", onClick);
 
   rangeText.textContent = inputRange.value + " km";
   inputRange.addEventListener("input", () => {
@@ -26,4 +29,4 @@ export function filterRange() {
   });
 }
 
-filterRange();
+filterRange(storeRnf);
