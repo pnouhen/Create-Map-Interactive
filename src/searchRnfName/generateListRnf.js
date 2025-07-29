@@ -24,7 +24,7 @@ export function generateListRnf(autoComplete, input, data) {
     const selectRnf = autoComplete.querySelectorAll(".li");
     activeSuggestionRnf(selectRnf, input, data, autoComplete);
 
-    navigateList(input, selectRnf, autoComplete, input.value);
+    navigateList(input, selectRnf, autoComplete, input, data);
 
   } else {
     disableAutoComplete(autoComplete)

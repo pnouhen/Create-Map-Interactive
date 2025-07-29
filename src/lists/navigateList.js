@@ -1,9 +1,12 @@
+import { generateMarkerInput } from "../searchRnfName/generateMarkerInput";
+import { disableAutoComplete } from "../utils/disableAutoComplete";
+
 export function navigateList(
   button,
   arrayLi,
   autoComplete,
   text,
-  store,
+  data,
   onClickTerritoire
 ) {
   let indexLi = -1;
@@ -41,7 +44,6 @@ export function navigateList(
 
     if (e.key === "Enter" && indexLi > -1) {
       changeText();
-      if (store) onClickTerritoire(text, store);
     }
   };
 
@@ -58,10 +60,10 @@ export function navigateList(
   // Fonctions internes
   function changeWithArrow() {
     updateLi();
-    changeText();
     scrollIntoView();
-    if (store && autoComplete.classList.contains("ul")) {
-      onClickTerritoire(text, store);
+    if (onClickTerritoire && autoComplete.classList.contains("ul")) {
+      changeText();
+      onClickTerritoire(text, data);
     }
   }
 
@@ -70,9 +72,15 @@ export function navigateList(
   }
 
   function changeText() {
-    if (store && autoComplete.classList.contains("ul")) {
-      text.textContent = arrayLi[indexLi].textContent;
-      text.id = arrayLi[indexLi].id;
+    if (autoComplete.classList.contains("ul")) {
+      if (onClickTerritoire) {
+        text.textContent = arrayLi[indexLi].textContent;
+        text.id = arrayLi[indexLi].id;
+      } else {
+        text.value = arrayLi[indexLi].textContent
+        generateMarkerInput(arrayLi[indexLi].textContent, data, autoComplete);
+        disableAutoComplete(autoComplete)
+      }
     }
   }
 

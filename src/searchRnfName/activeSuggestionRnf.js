@@ -1,5 +1,4 @@
 import { showAutoComplete } from "../utils/showAutoComplete";
-import { disableAutoComplete } from "../utils/disableAutoComplete"
 import { generateMarkerInput } from "./generateMarkerInput";
 
 export function activeSuggestionRnf(selectRnf, input, data, autoComplete) {

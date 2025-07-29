@@ -1,5 +1,7 @@
 import { storeRnf } from "../datas/storeRnf";
-import { getCoordClick } from "../filterRange/getCoordClick";
+import { generateCircle } from "../filterRange/generateCircle";
+
+const checkboxDistance = document.getElementById("checkboxDistance");
 
 const inputRange = document.getElementById("rangeDistance");
 const rangeText = document.querySelector(".js-rangeText");
@@ -7,7 +9,11 @@ const checkboxRangeDistance = document.getElementById("checkboxRangeDistance");
 
 export function filterRange(data) {
   const onClick = () => {
-    getCoordClick(inputRange, data, checkboxRangeDistance.checked);
+    generateCircle(inputRange, data, checkboxRangeDistance.checked);
+
+    if (checkboxRangeDistance) {
+      checkboxDistance.checked = false
+    }
   };
 
   if (checkboxRangeDistance._changeData) {
@@ -16,7 +22,7 @@ export function filterRange(data) {
       checkboxRangeDistance._changeData
     );
     checkboxRangeDistance.checked = false;
-    getCoordClick(inputRange, data, checkboxRangeDistance.checked);
+    generateCircle(inputRange, data, checkboxRangeDistance.checked);
   }
 
   checkboxRangeDistance._changeData = onClick;

@@ -37,6 +37,7 @@ async function filterDepartments() {
         searchDepartmentAutoComplete
       );
     }
+
   } else {
     searchDepartmentButton.classList.add("button-territoire-inactive");
   }

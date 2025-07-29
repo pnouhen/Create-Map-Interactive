@@ -1,9 +1,14 @@
 import { regionValue } from "../filterRegions/generateRegion";
 import { updateDepartmentsByRegion } from "../filterTerritoires/updateDepartmentsByRegion";
+import { disableAutoComplete } from "../utils/disableAutoComplete";
 import { configureDepartmentFilter } from "./configureDepartmentFilter";
 import { generateListDep } from "./generateListDepartment";
 
 const searchRegion = document.getElementById("searchRegion");
+const searchDepartment = document.getElementById("searchDepartment");
+const searchDepartmentAutoComplete = searchDepartment.querySelector(
+  ".searchTerritoireAutoComplete"
+);
 
 export function choiceListDepartment(
   storeDepartments,
@@ -31,5 +36,7 @@ export function choiceListDepartment(
       searchDepartmentText,
       searchDepartmentAutoComplete
     );
+
+    disableAutoComplete(searchDepartmentAutoComplete);
   });
 }

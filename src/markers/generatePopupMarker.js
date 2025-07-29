@@ -1,12 +1,13 @@
-// Generate ToolTip in generatePoint.js
 import L from "leaflet";
 import { storeRegion } from "../datas/storeRegion";
 import { storeDepartments } from "../datas/storeDepartments";
 
-export function generatePopup(data, marker, map) {
+export let markerSelect = null 
+
+export function generatePopupMarker(data, marker, map) {
   // Search marker in data
   const id = marker.target.id;
-  const markerSelect = data.find((item) => item.id === id);
+  markerSelect = data.find((item) => item.id === id);
 
   // Search region in storeRegion
   let regionName = "";
@@ -23,8 +24,8 @@ export function generatePopup(data, marker, map) {
       (department) => department.dep_code[0] === markerSelect.dep_code[0]
     );
   }
-
-  // Create ToolTip
+  
+  // Create Popup
   const popup = L.popup();
   popup
     .setLatLng(marker.latlng)

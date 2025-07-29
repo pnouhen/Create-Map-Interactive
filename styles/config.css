@@ -20,7 +20,8 @@ html {
   --color-magnifying-glass: #c73c45;
   --color-geo: #6d86c6;
   --color-ruler: #f4c542;
-  --color-location : #27ae60;
+  --color-circle: #27ae60;
+  --color-hexagon: #ea5c78;
 
   --shadow-filter: 0px 0px 5px 7px rgba(0, 0, 0, 0.2);
 }
