@@ -1,11 +1,9 @@
 import L from "leaflet";
+import * as turf from "@turf/turf";
 
 import { generateMap } from "../maps/generateMap";
 import { coordinateMarker } from "../markers/coordinateMarker";
-import {
-  generatePopupMarker,
-  markerSelect,
-} from "../markers/generatePopupMarker";
+import { markerSelect } from "../markers/generatePopupMarker";
 import { generatePopupDistance } from "./generatePopupDistance";
 import { blackIcon } from "../markers/createIcon";
 
@@ -23,21 +21,38 @@ const onClick = (e) => {
 
   if (markerSelect) {
     const coordRnf = coordinateMarker(markerSelect);
-    currentRnf = L.latLng(coordRnf[0], coordRnf[1]);
-
     currentPoint = e.latlng;
-    const pointB = L.latLng(currentPoint.lat, currentPoint.lng);
-    currentMarker = L.marker([currentPoint.lat, currentPoint.lng], {icon : blackIcon}).addTo(map);
 
-    currentPolyline = L.polyline([currentRnf, pointB], {
-      color: "black",
-      dashArray: "15, 10",
-      weight: 3,
-      opacity: 0.8,
+    currentRnf = turf.point([coordRnf[1], coordRnf[0]]);
+    const pointB = turf.point([currentPoint.lng, currentPoint.lat]);
+
+    currentMarker = L.marker([currentPoint.lat, currentPoint.lng], {
+      icon: blackIcon,
     }).addTo(map);
-    map.fitBounds(currentPolyline.getBounds());
 
-    currentPopup = generatePopupDistance(currentRnf, pointB);
+    const greatCircleLine = turf.greatCircle(currentRnf, pointB, {
+      steps: 100,
+    });
+
+    currentPolyline = L.geoJSON(greatCircleLine, {
+      style: {
+        color: "black",
+        dashArray: "15, 10",
+        weight: 3,
+        opacity: 0.8,
+      },
+    }).addTo(map);
+
+    const latLng = { bbox: [...coordRnf, currentPoint.lat, currentPoint.lng] };
+    const coordPoly = coordinateMarker(latLng);
+
+    currentPopup = generatePopupDistance(
+      coordPoly,
+      coordRnf,
+      currentPoint,
+      map,
+      currentPolyline
+    );
     currentPopup.addTo(map);
   }
 };
@@ -53,10 +68,9 @@ export function generateDistance(isActive) {
   currentActive = isActive;
   if (currentActive) {
     map.on("click", onClick);
-    console.log(currentRnf);
   } else {
     map.off("click", onClick);
     if (currentPolyline || currentPoint) removeDistance();
-    currentPopup.remove(map);
+    if(currentPopup) currentPopup.remove(map);
   }
 }

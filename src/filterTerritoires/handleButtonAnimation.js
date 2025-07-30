@@ -1,21 +1,17 @@
 import { disableAutoComplete } from "../utils/disableAutoComplete";
 import { showAutoComplete } from "../utils/showAutoComplete";
 
-const searchTerritoireAutoCompleteAll = document.querySelectorAll(
-  ".searchTerritoireAutoComplete"
-);
+const arrayList = document.querySelectorAll(".ul");
 
 export function handleButtonAnimation(element, autoComplete) {
   element.addEventListener("click", (e) => {
     e.stopPropagation();
-    searchTerritoireAutoCompleteAll.forEach((searchTerritoireAutoComplete) => {
-      if (searchTerritoireAutoComplete === autoComplete) {
-        if(autoComplete.classList.contains("opacity-0")) {
-          showAutoComplete(autoComplete)
-        } else {
-        disableAutoComplete(autoComplete)
+    arrayList.forEach((ul) => {
+      if(ul === autoComplete && ul.classList.contains("opacity-0")) {
+        showAutoComplete(ul)
+      } else {
+        disableAutoComplete(ul)
       }
-      } 
-    });
+    })
   });
 }

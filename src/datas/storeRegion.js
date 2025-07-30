@@ -7,7 +7,7 @@ import { saintBarthelemy, saintMartin, terresAustrales } from "./storeTerritoire
 );
 
 export let storeRegion = []
-
+console.log(apiResponse)
 if(apiResponse){
 const regions = apiResponse.results;
 

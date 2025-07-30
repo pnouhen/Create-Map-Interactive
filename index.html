@@ -14,8 +14,8 @@
       rel="stylesheet"
     />
   </head>
-  <body class="max-w-[1440px] lg:mx-auto bg-gray-100">
-    <main class="relative flex flex-col items-center gap-4 p-4">
+  <body class="max-w-[1440px] mx-auto bg-gray-100">
+    <main class="flex flex-col items-center gap-4 p-4">
       <h1 class="mt-2 md:text-4xl text-xl font-bold text-center">
         Explorer les réserves naturelles de France
       </h1>
@@ -25,13 +25,14 @@
       </p>
 
       <div
-        class="relative w-full h-[96vh] flex lg:flex-row flex-col items-center gap-6"
+        class="w-full md:h-[96vh] flex lg:flex-row flex-col items-center gap-6"
       >
         <div
           id="map"
-          class="w-full h-full flex justify-center items-center border-2 rounded-md"
+          class="z-0 w-full md:h-full h-[50vh] flex justify-center items-center border-2 rounded-md"
         >
-          <div class="relative -z-50 flex items-baseline gap-3">
+        <!-- TODO Effacer en js -->
+          <div id="load" class="relative -z-50 flex items-baseline gap-3">
             <p class="text-2xl text-center">Chargement en cours</p>
             <div class="w-2.5 h-2.5 rounded-full bg-purple-400 bounce-1"></div>
             <div class="w-2.5 h-2.5 rounded-full bg-orange-400 bounce-2"></div>
@@ -39,198 +40,183 @@
           </div>
         </div>
 
-        <button
-          class="js-buttonFilter filter h2 lg:hidden absolute z-50 right-0 m-4 px-4 py-2 bg-green-200 cursor-pointer"
-        >
-          Filtrer
-        </button>
-
         <div
-          class="js-bgBlack lg:relative absolute top-0 max-lg:w-full w-[45rem] h-full max-lg:bg-black-50 lg:opacity-100 opacity-0 lg:pointer-events-auto pointer-events-none"
+          class="js-sectionFilter filter lg:h-full lg:w-[41rem] w-full mx-auto p-4 lg:flex lg:flex-col md:grid md:grid-cols-2 flex flex-col md:gap-4 gap-2 bg-green-50"
         >
-          <div
-            class="js-sectionFilter filter lg:h-full h-auto lg:w-[25rem] md:w-[31.38rem] w-11/12 mx-auto p-4 flex flex-col md:gap-6 gap-4 bg-green-50"
-          >
-            <div class="h2 w-full flex items-center gap-1">
-              <i class="fa-solid fa-filter"></i>
-              <h2>Filtrer les réserves naturelles</h2>
+          <div class="col-start-1 col-end-3 h2 w-full flex items-center gap-1">
+            <i class="fa-solid fa-filter"></i>
+            <h2>Filtrer les réserves naturelles</h2>
+          </div>
+
+          <div class="filter-section relative">
+            <div class="h3 label">
+              <i
+                class="fa-solid fa-magnifying-glass icon text-magnifying-glass"
+              ></i>
+              <label for="searchRnf">Rechercher par leur nom :</label>
             </div>
 
-            <div class="filter-section relative">
-              <div class="h3 label">
-                <i
-                  class="fa-solid fa-magnifying-glass icon text-magnifying-glass"
-                ></i>
-                <label for="searchRnf">Rechercher par leur nom :</label>
-              </div>
+            <input
+              name="searchRnf"
+              id="searchRnf"
+              type="text"
+              placeholder="Exemples : Val D'Allier, Py ..."
+              autocomplete="off"
+              class="w-full input text input-stepper"
+            />
 
-              <input
-                name="searchRnf"
-                id="searchRnf"
-                type="text"
-                placeholder="Exemples : Val D'Allier, Py ..."
-                autocomplete="off"
-                class="w-full input text input-stepper"
-              />
+            <ul
+              id="searchRnfAutoComplete"
+              class="ul lg:top-[6.25rem] md:top-auto top-[5.25rem] lg:bottom-auto md:bottom-[3.25rem] bottom-auto opacity-0 pointer-events-none"
+            ></ul>
+          </div>
 
-              <ul
-                id="searchRnfAutoComplete"
-                class="ul top-[6.25rem] opacity-0 pointer-events-none"
-              ></ul>
+          <div class="filter-section">
+            <div class="h3 label">
+              <i class="fa-solid fa-ruler icon text-ruler"></i>
+              <h3>Calculer la distance vers un point :</h3>
             </div>
 
-            <div class="filter-section relative">
-              <div class="h3 label">
-                <i class="fa-solid fa-ruler icon text-ruler"></i>
-                <h3>Calculer la distance vers un point :</h3>
-              </div>
-
-              <div class="flex justify-between">
-                <div class="flex gap-2">
-                  <input id="checkboxDistance" type="checkbox" />
-                  <label
-                    for="checkboxDistance"
-                    class="text text-start italic cursor-pointer"
-                  >
-                    Activer le filtre
-                  </label>
-                </div>
-              </div>
-            </div>
-
-            <div class="filter-section">
-              <div class="h3 label">
-                <i class="fa-solid fa-map icon text-geo"></i>
-                <h3>Filtrer par géographie :</h3>
-              </div>
-
-              <div
-                id="searchRegion"
-                class="w-full relative flex justify-center"
-              >
-                <button
-                  title="Choisir"
-                  class="w-full input text input-stepper button-territoire"
-                >
-                  <p class="js-p text">Sélectionner une région</p>
-                  <i class="fa-solid fa-chevron-down mr-2"></i>
-                </button>
-                <ul
-                  class="searchTerritoireAutoComplete ul top-[3.25rem] opacity-0 pointer-events-none"
-                ></ul>
-              </div>
-
-              <div
-                id="searchDepartment"
-                class="w-full relative flex justify-center"
-              >
-                <button
-                  title="Choisir"
-                  class="w-full input text input-stepper button-territoire"
-                >
-                  <p class="js-p text">Sélectionner un département</p>
-                  <i class="fa-solid fa-chevron-down mr-2"></i>
-                </button>
-                <ul
-                  class="searchTerritoireAutoComplete ul top-[3.25rem] opacity-0 pointer-events-none"
-                ></ul>
-              </div>
-            </div>
-
-            <div class="flex flex-col gap-2">
-              <div class="h3 label">
-                <i class="fa-solid fa-circle text-circle"></i>
-                <h3>Filtrer autour d’un point :</h3>
-              </div>
-
+            <div class="flex justify-between">
               <div class="flex gap-2">
-                <input id="checkboxRangeDistance" type="checkbox" />
+                <input id="checkboxDistance" type="checkbox" />
                 <label
-                  for="checkboxRangeDistance"
+                  for="checkboxDistance"
                   class="text text-start italic cursor-pointer"
                 >
                   Activer le filtre
                 </label>
               </div>
+            </div>
+          </div>
 
-              <div class="flex items-center gap-2">
-                <label class="text font-medium" for="rangeDistance"
-                  >Rayon :</label
-                >
-                <input
-                  class="range"
-                  type="range"
-                  id="rangeDistance"
-                  name="rangeDistance"
-                  min="0"
-                  value="50"
-                  max="200"
-                  step="10"
-                />
-                <p class="js-rangeText text"></p>
-              </div>
+          <div class="filter-section">
+            <div class="h3 label">
+              <i class="fa-solid fa-map icon text-geo"></i>
+              <h3>Filtrer par géographie :</h3>
+            </div>
+
+            <div id="searchRegion" class="relative w-full flex justify-center">
+              <button
+                title="Choisir"
+                class="w-full input text input-stepper button-territoire"
+              >
+                <p class="js-p text">Sélectionner une région</p>
+                <i class="fa-solid fa-chevron-down mr-2"></i>
+              </button>
+              <ul
+                class="searchTerritoireAutoComplete ul lg:top-[3.25rem] md:top-auto top-[2.75rem] lg:bottom-auto md:bottom-[3.25rem] bottom-auto opacity-0 pointer-events-none"
+              ></ul>
             </div>
 
             <div
-              class="w-full flex lg:flex-col md:flex-row flex-wrap lg:justify-center justify-center gap-4"
+              id="searchDepartment"
+              class="relative w-full flex justify-center"
             >
-              <div class="h3 label w-full">
-                <i class="fa-solid fa-draw-polygon text-hexagon"></i>
-                <h3>Filtrer par surface :</h3>
-              </div>
+              <button
+                title="Choisir"
+                class="w-full input text input-stepper button-territoire"
+              >
+                <p class="js-p text">Sélectionner un département</p>
+                <i class="fa-solid fa-chevron-down mr-2"></i>
+              </button>
+              <ul
+                class="searchTerritoireAutoComplete ul lg:top-[3.25rem] md:top-auto top-[2.75rem] lg:bottom-auto md:bottom-[3.25rem] bottom-auto opacity-0 pointer-events-none"
+              ></ul>
+            </div>
+          </div>
 
-              <div class="area-container">
-                <p class="text font-medium">Minimum :</p>
-                <div
-                  id="areaMinRnf"
-                  class="input-stepper flex justify-center gap-2"
-                >
-                  <button title="Diminuer" class="less input-button">
-                    <i class="fa-solid fa-minus"></i>
-                  </button>
-                  <div class="flex gap-1">
-                    <label for="areaMinRnfInput" class="absolute"></label>
-                    <input
-                      id="areaMinRnfInput"
-                      name="areaMinRnf"
-                      type="text"
-                      class="input text md:w-24 w-20 text-end"
-                    />
+          <div class="flex flex-col gap-2">
+            <div class="h3 label">
+              <i class="fa-solid fa-circle text-circle"></i>
+              <h3>Filtrer autour d’un point :</h3>
+            </div>
 
-                    <span class="text"> km²</span>
-                  </div>
+            <div class="flex gap-2">
+              <input id="checkboxRangeDistance" type="checkbox" />
+              <label
+                for="checkboxRangeDistance"
+                class="text text-start italic cursor-pointer"
+              >
+                Activer le filtre
+              </label>
+            </div>
 
-                  <button title="Augmenter" class="more input-button">
-                    <i class="fa-solid fa-plus"></i>
-                  </button>
+            <div class="flex items-center gap-2">
+              <label class="text font-medium" for="rangeDistance"
+                >Rayon :</label
+              >
+              <input
+                class="range"
+                type="range"
+                id="rangeDistance"
+                name="rangeDistance"
+                min="0"
+                value="50"
+                max="200"
+                step="10"
+              />
+              <p class="js-rangeText text"></p>
+            </div>
+          </div>
+
+          <div class="col-start-1 col-end-3 w-full lg:flex lg:flex-col md:grid md:grid-cols-2 flex flex-col lg:justify-center md:gap-4 gap-2">
+            <div class="h3 label max-lg:col-start-1 max-lg:col-end-3 w-full">
+              <i class="fa-solid fa-draw-polygon text-hexagon"></i>
+              <h3>Filtrer par surface :</h3>
+            </div>
+
+            <div class="area-container">
+              <p class="text font-medium">Minimum :</p>
+              <div
+                id="areaMinRnf"
+                class="input-stepper flex justify-center gap-2"
+              >
+                <button title="Diminuer" class="less input-button">
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+                <div class="relative flex gap-1">
+                  <label for="areaMinRnfInput" class="absolute"></label>
+                  <input
+                    id="areaMinRnfInput"
+                    name="areaMinRnf"
+                    type="text"
+                    class="input text w-20 text-end"
+                  />
+
+                  <span class="text"> km²</span>
                 </div>
+
+                <button title="Augmenter" class="more input-button">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
               </div>
+            </div>
 
-              <div class="area-container">
-                <p class="text font-medium">Maximum :</p>
-                <div
-                  id="areaMaxRnf"
-                  class="input-stepper flex justify-center gap-2"
-                >
-                  <button title="Diminuer" class="less input-button">
-                    <i class="fa-solid fa-minus"></i>
-                  </button>
-                  <label for="areaMaxRnfInput" class="absolute"> </label>
-                  <div class="felx gap-1">
-                    <input
-                      id="areaMaxRnfInput"
-                      name="areaMaxRnfInput"
-                      type="text"
-                      class="input text md:w-24 w-20 text-end"
-                    />
+            <div class="area-container">
+              <p class="text font-medium">Maximum :</p>
+              <div
+                id="areaMaxRnf"
+                class="input-stepper relative flex justify-center gap-2"
+              >
+                <button title="Diminuer" class="less input-button">
+                  <i class="fa-solid fa-minus"></i>
+                </button>
+                <label for="areaMaxRnfInput" class="absolute"> </label>
+                <div class="felx gap-1">
+                  <input
+                    id="areaMaxRnfInput"
+                    name="areaMaxRnfInput"
+                    type="text"
+                    class="input text w-24 text-end"
+                  />
 
-                    <span class="text"> km²</span>
-                  </div>
-
-                  <button title="Augmenter" class="more input-button">
-                    <i class="fa-solid fa-plus"></i>
-                  </button>
+                  <span class="text"> km²</span>
                 </div>
+
+                <button title="Augmenter" class="more input-button">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
               </div>
             </div>
           </div>

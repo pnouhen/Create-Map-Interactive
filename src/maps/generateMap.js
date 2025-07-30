@@ -11,17 +11,20 @@ export function generateMap() {
   } else {
     map = L.map("map").setView([latDefault, lngDefault], zoomDefault);
 
-    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+     const tileLayer = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 17,
       attribution:
         '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-    }).addTo(map);
+    });
 
-    // Wait before fixing map size
-    setTimeout(() => {
-      map.invalidateSize();
-    }, 100);
-    
+    tileLayer.on('load', () => {
+      const loader = document.getElementById("load");
+      if (loader) loader.classList.add("hidden");
+    });
+
+    tileLayer.addTo(map);
+
     return map;
   }
 }
+

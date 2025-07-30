@@ -26,7 +26,7 @@ async function filterDepartments() {
       storeDepartments,
       searchDepartmentButton,
       searchDepartmentText,
-      searchDepartmentAutoComplete,
+      searchDepartmentAutoComplete
     );
 
     if (storeRegion.length > 0) {
@@ -37,7 +37,6 @@ async function filterDepartments() {
         searchDepartmentAutoComplete
       );
     }
-
   } else {
     searchDepartmentButton.classList.add("button-territoire-inactive");
   }

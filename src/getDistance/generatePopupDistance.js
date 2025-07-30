@@ -1,23 +1,35 @@
 import L from "leaflet";
+import * as turf from "@turf/turf";
 
-export function generatePopupDistance(currentRnf, pointB) {
-  const distance = currentRnf.distanceTo(pointB) / 1000;
+import { calculPolygonDistance } from "./calculPolygonDistance";
+import { centerPolygon } from "../polygons/centerPolygon";
 
-  const lat = (currentRnf.lat + pointB.lat) / 2
-  const lng = (currentRnf.lng + pointB.lng) / 2
-    console.log(currentRnf.lat)
-    console.log(pointB.lat)
-    console.log(lat)
+export function generatePopupDistance(
+  lastCenter,
+  coordRnf,
+  currentPoint,
+  map,
+  currentPolyline
+) {
+  const polygon = calculPolygonDistance(lastCenter, coordRnf, currentPoint);
+  centerPolygon(polygon, map);
+
   const popup = L.popup();
 
-  popup
-    .setLatLng([lat, lng])
-    .setContent(
-      `<div class="toolType-content py-2.5">
-    <p class="toolType-sbTitle">Distance : </p>
-    <p>${distance.toFixed(3)} km</p>
-    `
-    )
+  const geoJsonLine = currentPolyline.toGeoJSON();
+  const lineLength = turf.length(geoJsonLine, { units: "kilometers" });
 
-    return popup
+  const formattedDistance = lineLength.toLocaleString("fr-FR", {
+    minimumFractionDigits: 3,
+    maximumFractionDigits: 3,
+  });
+
+  popup.setLatLng([lastCenter[1], lastCenter[0]]).setContent(
+    `<div class="toolType-content py-2.5">
+    <p class="toolType-sbTitle">Distance : </p>
+    <p>${formattedDistance} km</p>
+    `
+  );
+
+  return popup;
 }

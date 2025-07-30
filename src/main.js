@@ -8,7 +8,5 @@ import "./filter/filterDepartments"
 import "./filter/searchRnfArea"
 import "./filter/filterRange"
 
-import "./responsive/generateSectionFilter"
-
 // File css
 import "/styles/layout.css";
