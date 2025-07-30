@@ -4,6 +4,7 @@ import { searchRnfArea } from "../filter/searchRnfArea";
 import { searchRnfName } from "../filter/searchRnfName";
 import { generateClusters } from "../markers/generateClusters";
 import { rnfReady, storeRnf } from "./storeRnf";
+import { generateLoader } from "../loader/generateLoader";
 
 async function initializeData() {
   await rnfReady();
@@ -13,6 +14,7 @@ async function initializeData() {
   filterRange(storeRnf);
   generateClusters(storeRnf);
   getDistance(storeRnf);
+  generateLoader();
 }
 
 initializeData();
