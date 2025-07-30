@@ -8,13 +8,15 @@ import { recoverDepMap } from "../storeDepartments/recoverDepMap";
 import { getData } from "./getData";
 import { storeListDep } from "./storeListDep";
 
-async function generateDep() {
+export let storeDepartments = [];
+
+export async function departmentReady() {
   let store = [];
   store = await getData(
     "https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/departements-et-collectivites-doutre-mer-france@toursmetropole/records?limit=100",
     "dep"
   );
-   const listDep = await storeListDep();
+  const listDep = await storeListDep();
 
   if (store && listDep) {
     const depMissing = searchDepMissing(store, listDep);
@@ -31,8 +33,10 @@ async function generateDep() {
     store.results.push(saintMartin);
     store.results.push(terresAustrales);
 
-    return store.results.sort((a, b) => a.dep_code[0].localeCompare(b.dep_code[0]))
+    storeDepartments = store.results.sort((a, b) =>
+      a.dep_code[0].localeCompare(b.dep_code[0])
+    );
   }
 }
 
-export const storeDepartments = await generateDep();
+departmentReady();

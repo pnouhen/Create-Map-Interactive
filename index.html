@@ -27,12 +27,13 @@
       <div
         class="w-full md:h-[96vh] flex lg:flex-row flex-col items-center gap-6"
       >
-        <div
-          id="map"
-          class="z-0 w-full md:h-full h-[50vh] flex justify-center items-center border-2 rounded-md"
-        >
-        <!-- TODO Effacer en js -->
-          <div id="load" class="relative -z-50 flex items-baseline gap-3">
+        <div class="relative w-full md:h-full h-[50vh]">
+          <div
+            id="map"
+            class="z-0 w-full h-full flex justify-center items-center border-2 rounded-md"
+          ></div>
+
+          <div id="loader" class="absolute w-full h-full z-50 left-0 top-0 flex items-center justify-center gap-3 border-2 rounded bg-gray-100 opacity-100 transition-opacity duration-1000">
             <p class="text-2xl text-center">Chargement en cours</p>
             <div class="w-2.5 h-2.5 rounded-full bg-purple-400 bounce-1"></div>
             <div class="w-2.5 h-2.5 rounded-full bg-orange-400 bounce-2"></div>
@@ -79,9 +80,9 @@
 
             <div class="flex justify-between">
               <div class="flex gap-2">
-                <input id="checkboxDistance" type="checkbox" />
+                <input id="checkBoxDistance" type="checkbox" />
                 <label
-                  for="checkboxDistance"
+                  for="checkBoxDistance"
                   class="text text-start italic cursor-pointer"
                 >
                   Activer le filtre
@@ -133,9 +134,9 @@
             </div>
 
             <div class="flex gap-2">
-              <input id="checkboxRangeDistance" type="checkbox" />
+              <input id="checkBoxRange" type="checkbox" />
               <label
-                for="checkboxRangeDistance"
+                for="checkBoxRange"
                 class="text text-start italic cursor-pointer"
               >
                 Activer le filtre
@@ -160,7 +161,9 @@
             </div>
           </div>
 
-          <div class="col-start-1 col-end-3 w-full lg:flex lg:flex-col md:grid md:grid-cols-2 flex flex-col lg:justify-center md:gap-4 gap-2">
+          <div
+            class="col-start-1 col-end-3 w-full lg:flex lg:flex-col md:grid md:grid-cols-2 flex flex-col lg:justify-center md:gap-4 gap-2"
+          >
             <div class="h3 label max-lg:col-start-1 max-lg:col-end-3 w-full">
               <i class="fa-solid fa-draw-polygon text-hexagon"></i>
               <h3>Filtrer par surface :</h3>

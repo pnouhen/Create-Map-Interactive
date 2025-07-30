@@ -1,15 +1,29 @@
+import { storeRnf } from "../datas/storeRnf";
 import { generateDistance } from "../getDistance/generateDistance";
+import { generateClusters } from "../markers/generateClusters";
+import { filterRange } from "./filterRange";
 
-const checkboxDistance = document.getElementById("checkboxDistance");
-const checkboxRangeDistance = document.getElementById("checkboxRangeDistance");
+const checkBoxDistance = document.getElementById("checkBoxDistance");
+const checkBoxRange = document.getElementById("checkBoxRange");
 
-export function getDistance() {
-  checkboxDistance.addEventListener("change", () => {
-    generateDistance(checkboxDistance.checked);
-    if (checkboxDistance) {
-      checkboxRangeDistance.checked = false
+export function getDistance(data,action) {
+  if (action === "clean") {
+    checkBoxDistance.checked = false;
+    generateDistance(checkBoxDistance.checked);
+  }
+
+  checkBoxDistance.addEventListener("change", () => {
+    generateDistance(checkBoxDistance.checked);
+    if (checkBoxDistance.checked && checkBoxRange.checked) {
+      checkBoxRange.checked = false;
+      filterRange(data)
+      if(data.length === 0)
+      generateClusters(storeRnf)
+    else {
+      generateClusters(data)
+    }
     }
   });
 }
 
-getDistance();
+getDistance(storeRnf);

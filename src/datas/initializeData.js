@@ -1,19 +1,18 @@
-import { storeRnf } from "../datas/storeRnf";
 import { filterRange } from "../filter/filterRange";
 import { getDistance } from "../filter/getDistance";
 import { searchRnfArea } from "../filter/searchRnfArea";
 import { searchRnfName } from "../filter/searchRnfName";
 import { generateClusters } from "../markers/generateClusters";
+import { rnfReady, storeRnf } from "./storeRnf";
 
-export function getTerritoire(data, zoom) {
-  generateClusters(data);
+async function initializeData() {
+  await rnfReady();
 
-  searchRnfName(data, zoom);
-
-  searchRnfArea(data, zoom);
-
-  filterRange(data)
-
-  getDistance(storeRnf,"clean")
-
+  searchRnfName(storeRnf);
+  searchRnfArea(storeRnf);
+  filterRange(storeRnf);
+  generateClusters(storeRnf);
+  getDistance(storeRnf);
 }
+
+initializeData();

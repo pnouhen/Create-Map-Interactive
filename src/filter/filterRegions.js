@@ -1,9 +1,9 @@
-import { storeRegion } from "../datas/storeRegion";
+import { regionReady, storeRegion } from "../datas/storeRegion";
 import { filterTerritoires } from "../filterTerritoires/filterTerritoires";
 import { generateRegion } from "../filterRegions/generateRegion";
 import { generateListRegion } from "../filterRegions/generateListRegion";
 import { onButtonClick } from "../filterTerritoires/onButtonClick";
-import { storeDepartments } from "../datas/storeDepartments";
+import { departmentReady, storeDepartments } from "../datas/storeDepartments";
 import { arrayLiDep } from "../filterDepartments/configureDepartmentFilter";
 
 const searchRegion = document.getElementById("searchRegion");
@@ -17,6 +17,7 @@ const searchDepartment = document.getElementById("searchDepartment");
 const searchDepartmentText = searchDepartment.querySelector(".js-p");
 
 async function filterRegions() {
+  await regionReady();
   if (storeRegion.length > 0) {
     await generateListRegion(searchRegionAutoComplete, storeRegion);
 
@@ -24,10 +25,11 @@ async function filterRegions() {
 
     const arrayLi = searchRegionAutoComplete.querySelectorAll(".li");
 
+    await departmentReady();
     const onClickRegion = () => {
       generateRegion(searchRegionText, storeRegion);
 
-      if (storeDepartments && searchDepartmentText.id !== "") {
+      if (storeDepartments.length > 0 && searchDepartmentText.id !== "") {
         searchDepartmentText.textContent = arrayLiDep[0].textContent;
         searchDepartmentText.id = arrayLiDep[0].id;
       }

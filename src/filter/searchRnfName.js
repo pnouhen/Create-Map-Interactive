@@ -14,7 +14,7 @@ const searchRnfAutoComplete = document.getElementById("searchRnfAutoComplete");
 let previousData = storeRnf;
 
 export function searchRnfName(data, zoom) {
-  const map = generateMap()
+  const map = generateMap();
 
   cleanInputList(previousData, data, searchRnfAutoComplete, searchRnfInput);
 
@@ -36,5 +36,3 @@ export function searchRnfName(data, zoom) {
 
   searchWithInput(searchRnfInput, searchRnfValue);
 }
-
-searchRnfName(storeRnf);

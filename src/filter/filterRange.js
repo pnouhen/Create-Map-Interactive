@@ -1,38 +1,36 @@
-import { storeRnf } from "../datas/storeRnf";
 import { generateCircle } from "../filterRange/generateCircle";
+import { getDistance } from "./getDistance";
 
-const checkboxDistance = document.getElementById("checkboxDistance");
+const checkBoxDistance = document.getElementById("checkBoxDistance");
 
 const inputRange = document.getElementById("rangeDistance");
 const rangeText = document.querySelector(".js-rangeText");
-const checkboxRangeDistance = document.getElementById("checkboxRangeDistance");
+const checkBoxRange = document.getElementById("checkBoxRange");
 
 export function filterRange(data) {
-  const onClick = () => {
-    generateCircle(inputRange, data, checkboxRangeDistance.checked);
+  if (checkBoxRange) getDistance("clean");
 
-    if (checkboxRangeDistance) {
-      checkboxDistance.checked = false
+  const onClick = () => {
+    generateCircle(inputRange, data, checkBoxRange.checked);
+
+    if (checkBoxRange) {
+      checkBoxDistance.checked = false;
+      getDistance(data, "clean")
     }
   };
 
-  if (checkboxRangeDistance._changeData) {
-    checkboxRangeDistance.removeEventListener(
-      "change",
-      checkboxRangeDistance._changeData
-    );
-    checkboxRangeDistance.checked = false;
-    generateCircle(inputRange, data, checkboxRangeDistance.checked);
+  if (checkBoxRange._changeData) {
+    checkBoxRange.removeEventListener("change", checkBoxRange._changeData);
+    checkBoxRange.checked = false;
+    generateCircle(inputRange, data, checkBoxRange.checked);
   }
 
-  checkboxRangeDistance._changeData = onClick;
+  checkBoxRange._changeData = onClick;
 
-  checkboxRangeDistance.addEventListener("change", onClick);
+  checkBoxRange.addEventListener("change", onClick);
 
   rangeText.textContent = inputRange.value + " km";
   inputRange.addEventListener("input", () => {
     rangeText.textContent = inputRange.value + " km";
   });
 }
-
-filterRange(storeRnf);

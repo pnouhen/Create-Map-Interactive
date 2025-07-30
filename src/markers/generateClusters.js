@@ -1,4 +1,4 @@
-import { storeRnf } from "../datas/storeRnf";
+import { rnfReady, storeRnf } from "../datas/storeRnf";
 import { generateMap } from "../maps/generateMap";
 import { generateMarker } from "./generateMarker";
 
@@ -11,16 +11,13 @@ let clusterGroup = null;
 const map = generateMap();
 
 export function generateClusters(data) {
-  // Delete the preview cluster if it exists for map and clusterGroup
   if (clusterGroup) {
     map.removeLayer(clusterGroup);
     clusterGroup.clearLayers();
   }
-  // Generate cluster
+
   clusterGroup = L.markerClusterGroup();
   const markers = generateMarker(data, map);
   markers.forEach((el) => clusterGroup.addLayer(el));
   map.addLayer(clusterGroup);
 }
-
-generateClusters(storeRnf);
