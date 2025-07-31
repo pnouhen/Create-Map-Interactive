@@ -3,7 +3,7 @@ import {
   lngDefault,
   newSetview,
   zoomDefault,
-} from "../maps/mapSetviewDefault";
+} from "../maps/mapSetview";
 
 export function centerAll(map) {
   const lat = latDefault;

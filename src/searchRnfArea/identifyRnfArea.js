@@ -1,7 +1,6 @@
 import { generateMap } from "../maps/generateMap";
 import { findRnfArea } from "./findRnfArea";
 import { generateClusters } from "../markers/generateClusters";
-import { centerAll } from "../filterTerritoires/centerAll";
 
 const map = generateMap();
 

@@ -1,4 +1,4 @@
-import { newSetview } from "../maps/mapSetviewDefault";
+import { newSetview } from "../maps/mapSetview";
 import { calculZoom } from "../polygons/calculZoom";
 
 export function centerMarkers(data, map, latLng) {

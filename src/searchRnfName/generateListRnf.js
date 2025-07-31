@@ -1,6 +1,6 @@
 import { activeSuggestionRnf } from "../searchRnfName/activeSuggestionRnf.js";
 import { handleOutside } from "../utils/handleOutside.js";
-import { navigateList } from "../lists/navigateList.js";
+import { navigateList } from "../utils/navigateList.js";
 import { disableAutoComplete } from "../utils/disableAutoComplete.js";
 
 // To generate the list for to propose Rnf

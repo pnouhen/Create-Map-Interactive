@@ -1,5 +1,5 @@
 import { createLiDepartment } from "../filterDepartments/createLiDepartment";
-import { generateLiAll } from "../lists/generateLiAll";
+import { generateLiAll } from "./generateLiAll";
 
 export function updateDepartmentsByRegion(
   searchDepartmentAutoComplete,

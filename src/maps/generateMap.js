@@ -1,7 +1,7 @@
 /* Generate the map with OpenStreetMap**/
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { latDefault, lngDefault, zoomDefault } from "./mapSetviewDefault";
+import { latDefault, lngDefault, zoomDefault } from "./mapSetview";
 
 let map = null;
 

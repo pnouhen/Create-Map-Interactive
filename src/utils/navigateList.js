@@ -1,6 +1,6 @@
 import { generateMarkerInput } from "../searchRnfName/generateMarkerInput";
-import { disableAutoComplete } from "../utils/disableAutoComplete";
-import { updateElementListener } from "../utils/updateElementListener";
+import { disableAutoComplete } from "./disableAutoComplete";
+import { updateElementListener } from "./updateElementListener";
 
 export function navigateList(
   button,

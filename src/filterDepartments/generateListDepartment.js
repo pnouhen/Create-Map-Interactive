@@ -1,4 +1,4 @@
-import { generateLiAll } from "../lists/generateLiAll";
+import { generateLiAll } from "../filterTerritoires/generateLiAll";
 
 export function generateListDep(autoComplete, data) {
   generateLiAll(autoComplete, "TOUTES LES DEPARTEMENTS");

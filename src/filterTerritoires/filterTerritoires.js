@@ -1,4 +1,4 @@
-import { navigateList } from "../lists/navigateList";
+import { navigateList } from "../utils/navigateList";
 import { handleButtonText } from "./handleButtonText";
 
 export async function filterTerritoires(

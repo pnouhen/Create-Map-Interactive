@@ -1,12 +1,12 @@
 import { getData } from "./getData";
-import { associateMarkersInPoly } from "../storeRnfFunctions/associateMarkersInPoly";
-import { generateRnfArea } from "../storeRnfFunctions/generateRnfArea";
+import { associateMarkersInPoly } from "../storeRnf/associateMarkersInPoly";
+import { generateRnfArea } from "../storeRnf/generateRnfArea";
 import { regionReady, storeRegion } from "./storeRegion";
-import { associateRnfTerritoiresManuel } from "../storeRnfFunctions/associateRnfTerritoiresManuel";
+import { associateRnfTerritoiresManuel } from "../storeRnf/associateRnfTerritoiresManuel";
 import { departmentReady, storeDepartments } from "./storeDepartments";
-import { searchNameDep } from "../storeRnfFunctions/searchNameDep";
-import { associateMarkersInPointDep } from "../storeRnfFunctions/associateMarkersInPointDep";
-import { associateMarkersInPointReg } from "../storeRnfFunctions/associateMarkersInPointReg";
+import { searchNameDep } from "../storeRnf/searchNameDep";
+import { associateMarkersInPointDep } from "../storeRnf/associateMarkersInPointDep";
+import { associateMarkersInPointReg } from "../storeRnf/associateMarkersInPointReg";
 
 export let storeRnf = [];
 
