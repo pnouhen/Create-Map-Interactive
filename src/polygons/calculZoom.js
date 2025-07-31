@@ -8,7 +8,9 @@ export function calculZoom(data, map) {
   const southWest = coordinates._southWest;
 
   const bounds = L.latLngBounds([northEast, southWest]);
-  const optimalZoom = map.getBoundsZoom(bounds);
+  let optimalZoom = map.getBoundsZoom(bounds);
+
+  if (window.innerWidth < 768) optimalZoom = optimalZoom - 1;
 
   return optimalZoom;
 }
