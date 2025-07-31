@@ -1,4 +1,3 @@
-import { clearPolygons } from "../polygons/clearPloygons";
 import { colorRnf } from "../polygons/colorPolygons";
 import { generatePolygons } from "../polygons/generatePolygon";
 import { centerMarkers } from "./centerMarkers";
@@ -16,8 +15,4 @@ export function generatePolygonRnf(data, marker, map, latLng) {
   generatePolygons(coords, currentPolygon, colorRnf, map);
 
   centerMarkers(markerSelect, map, latLng);
-
-  map.on("popupclose", () => {
-    clearPolygons(currentPolygon, map);
-  });
 }
