@@ -3,9 +3,9 @@ import { findRnfArea } from "./findRnfArea";
 import { generateClusters } from "../markers/generateClusters";
 import { centerAll } from "../filterTerritoires/centerAll";
 
-const map = generateMap()
+const map = generateMap();
 
-export function identifyRnfArea(data, zoom, valueMinMax, value, condition) {
+export function identifyRnfArea(data, valueMinMax, value, condition) {
   if (condition === "min") {
     valueMinMax.min = value;
   }
@@ -14,10 +14,6 @@ export function identifyRnfArea(data, zoom, valueMinMax, value, condition) {
   }
 
   const storeRnfArea = findRnfArea(data, valueMinMax);
-  
-  generateClusters(storeRnfArea);
 
-if(zoom === undefined) {
-  centerAll(map)
-}
+  generateClusters(storeRnfArea);
 }

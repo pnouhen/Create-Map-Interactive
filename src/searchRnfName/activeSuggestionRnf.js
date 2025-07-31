@@ -12,8 +12,9 @@ export function activeSuggestionRnf(selectRnf, input, data, autoComplete) {
         generateMarkerInput(li.textContent, data, autoComplete);
       });
     });
+
     showAutoComplete(autoComplete);
   } else {
-    disableAutoComplete(autoComplete)
+    disableAutoComplete(autoComplete);
   }
 }

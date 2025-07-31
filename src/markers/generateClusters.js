@@ -8,6 +8,7 @@ import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 
 let clusterGroup = null;
+
 const map = generateMap();
 
 export function generateClusters(data) {
@@ -17,7 +18,9 @@ export function generateClusters(data) {
   }
 
   clusterGroup = L.markerClusterGroup();
+
   const markers = generateMarker(data, map);
   markers.forEach((el) => clusterGroup.addLayer(el));
+  
   map.addLayer(clusterGroup);
 }

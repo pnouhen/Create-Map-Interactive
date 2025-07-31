@@ -9,12 +9,12 @@ export async function filterTerritoires(
   autoComplete,
   onClickTerritoire
 ) {
-
   arrayLi.forEach((territoire) => {
     handleButtonText(territoire, text);
     territoire.addEventListener("click", () => {
       onClickTerritoire();
     });
   });
+
   navigateList(button, arrayLi, autoComplete, text, data, onClickTerritoire);
 }

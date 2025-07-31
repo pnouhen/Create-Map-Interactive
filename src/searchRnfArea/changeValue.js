@@ -1,32 +1,34 @@
 import Cleave from "cleave.js";
 import { identifyRnfArea } from "./identifyRnfArea";
+import { updateElementListener } from "../utils/updateElementListener";
 
-export function changeValue(data, zoom, areaRnf, input, valueMinMax, type) {
+export function changeValue(data, areaRnf, input, valueMinMax, type) {
   const more = areaRnf.querySelector(".more");
   const less = areaRnf.querySelector(".less");
 
-if(data.length === 0) {
-  input.value = 0
-}
+  if (data.length === 0) {
+    input.value = 0;
+  }
 
   let value = parseInt(input.value.replace(/\s/g, ""));
   const valueMax = valueMinMax.max;
 
   areaRnf.addEventListener("input", () => {
-    // If the input is empty, then her value is 0 
+    // If the input is empty, then her value is 0
     if (!parseInt(input.value.replace(/\s/g, ""))) {
       value = 0;
     } else {
       value = parseInt(input.value.replace(/\s/g, ""));
     }
 
+    // Thousands spacing
     new Cleave(input, {
       numeral: true,
       numeralThousandsGroupStyle: "thousand",
       delimiter: " ",
     });
 
-    identifyRnfArea(data, zoom, valueMinMax, value, type);
+    identifyRnfArea(data, valueMinMax, value, type);
   });
 
   const lessValue = () => {
@@ -34,13 +36,14 @@ if(data.length === 0) {
       value--;
       input.value = value;
 
+      // Thousands spacing
       new Cleave(input, {
         numeral: true,
         numeralThousandsGroupStyle: "thousand",
         delimiter: " ",
       });
 
-      identifyRnfArea(data, zoom, valueMinMax, value, type);
+      identifyRnfArea(data, valueMinMax, value, type);
     }
   };
 
@@ -49,23 +52,21 @@ if(data.length === 0) {
       value++;
       input.value = value;
 
+      // Thousands spacing
       new Cleave(input, {
         numeral: true,
         numeralThousandsGroupStyle: "thousand",
         delimiter: " ",
       });
 
-      identifyRnfArea(data, zoom, valueMinMax, value, type);
+      identifyRnfArea(data, valueMinMax, value, type);
     }
   };
 
   more.onclick = moreValue;
   less.onclick = lessValue;
 
-  if (input._customKeydownHandler) {
-    input.removeEventListener("keydown", input._customKeydownHandler);
-  }
-
+  // Actualisation EventListener
   const handler = (e) => {
     if (e.key === "ArrowDown") {
       e.preventDefault();
@@ -78,7 +79,5 @@ if(data.length === 0) {
     }
   };
 
-  input._customKeydownHandler = handler;
-
-  input.addEventListener("keydown", handler);
+  updateElementListener(input, "keydown", handler);
 }

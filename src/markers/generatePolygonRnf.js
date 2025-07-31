@@ -6,7 +6,7 @@ import { centerMarkers } from "./centerMarkers";
 let currentPolygon = [];
 
 export function generatePolygonRnf(data, marker, map, latLng) {
-  //  // Search the id in data
+  // Search the id in data
   const id = marker.target.id;
   const markerSelect = data.find((item) => item.id === id);
 

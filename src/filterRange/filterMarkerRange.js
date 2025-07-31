@@ -9,12 +9,12 @@ export function filterMarkerRange(circle, data) {
   const lng = circle._latlng.lng;
   const radius = circle._mRadius;
 
-  // Turf radius is in kilometers
   const circleTurf = turf.circle([lng, lat], radius / 1000, {
     steps: 64,
     units: "kilometers",
   });
 
+  // Filter point then filter polygon beacause the second filter takes too long
   const markers = data
     .filter((rnf) => filterPoint(rnf, lat, lng, radius))
     .filter((rnf) => filterPolygon(rnf, circleTurf));

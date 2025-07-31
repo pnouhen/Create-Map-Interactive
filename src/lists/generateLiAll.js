@@ -2,7 +2,7 @@ export function generateLiAll(autoComplete, LiName, LiID) {
   const li = document.createElement("li");
   li.classList.add("li", "text");
   li.textContent = LiName;
-  li.id = LiID
+  li.id = LiID;
 
   autoComplete.appendChild(li);
 }

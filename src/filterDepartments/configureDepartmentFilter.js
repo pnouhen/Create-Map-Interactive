@@ -1,7 +1,7 @@
 import { filterTerritoires } from "../filterTerritoires/filterTerritoires";
 import { generateDepartments } from "./generateDepartments";
 
-export let arrayLiDep = []
+export let arrayLiDep = [];
 
 export function configureDepartmentFilter(
   storeDepartments,
@@ -16,7 +16,7 @@ export function configureDepartmentFilter(
       searchDepartmentAutoComplete
     );
 
-   arrayLiDep = searchDepartmentAutoComplete.querySelectorAll(".li");
+  arrayLiDep = searchDepartmentAutoComplete.querySelectorAll(".li");
 
   filterTerritoires(
     arrayLiDep,

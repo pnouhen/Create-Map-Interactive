@@ -4,6 +4,7 @@ import { filterMarkerRange } from "./filterMarkerRange";
 import { generateClusters } from "../markers/generateClusters";
 
 const map = generateMap();
+
 let circle = null;
 let currentInput = null;
 let currentData = null;
@@ -29,10 +30,10 @@ function onMapClick(e) {
     }
   };
 
+  // Actualisation EventListener
   if (currentInput._changeData) {
     currentInput.removeEventListener("input", currentInput._changeData);
   }
-
   currentInput._changeData = onInputChange;
   currentInput.addEventListener("input", onInputChange);
 }
@@ -52,7 +53,6 @@ export function generateCircle(input, data, isActive) {
 
     if (circle) {
       map.removeLayer(circle);
-      circle = null;
     }
 
     generateClusters(data);

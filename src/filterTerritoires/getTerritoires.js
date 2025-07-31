@@ -5,15 +5,14 @@ import { searchRnfArea } from "../filter/searchRnfArea";
 import { searchRnfName } from "../filter/searchRnfName";
 import { generateClusters } from "../markers/generateClusters";
 
-export function getTerritoire(data, zoom) {
+export function getTerritoire(data) {
   generateClusters(data);
 
-  searchRnfName(data, zoom);
+  searchRnfName(data);
 
-  searchRnfArea(data, zoom);
+  searchRnfArea(data);
 
-  filterRange(data)
+  filterRange(data);
 
-  getDistance(storeRnf,"clean")
-
+  getDistance(storeRnf, "clean");
 }

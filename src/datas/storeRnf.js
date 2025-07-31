@@ -9,18 +9,21 @@ import { associateMarkersInPointDep } from "../storeRnfFunctions/associateMarker
 import { associateMarkersInPointReg } from "../storeRnfFunctions/associateMarkersInPointReg";
 
 export let storeRnf = [];
-// mettre rnf ready a chaque fois qu'il y a besoin
+
 export async function rnfReady() {
+  // Api for Corse
   const storeRnc = await getData(
     "https://apicarto.ign.fr/api/nature/rnc",
     "dataRnc"
   );
+
+  // API for the rest
   const storeRnn = await getData(
     "https://apicarto.ign.fr/api/nature/rnn",
     "dataRnn"
   );
 
-  storeRnf = [...storeRnn.features, ...storeRnc.features]
+  storeRnf = [...storeRnn.features, ...storeRnc.features];
 
   generateRnfArea(storeRnf);
 
@@ -30,7 +33,7 @@ export async function rnfReady() {
   if (storeDepartments.length > 0) {
     associateMarkersInPoly(storeRnf, storeDepartments);
 
-    searchNameDep(storeRnf);
+    searchNameDep(storeRnf, storeDepartments);
 
     associateMarkersInPointDep(storeRnf, storeDepartments);
   }

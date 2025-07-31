@@ -7,7 +7,7 @@ import { disableAutoComplete } from "../utils/disableAutoComplete.js";
 export function generateListRnf(autoComplete, input, data) {
   autoComplete.innerHTML = "";
 
-  // Minimun 2 letters
+  // Minimun 2 letters because one rnf have two letters
   if (input.value.length > 1) {
     // To create the list
     data

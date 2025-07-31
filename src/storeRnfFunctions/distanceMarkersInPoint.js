@@ -2,23 +2,26 @@ import { coordinateMarker } from "../markers/coordinateMarker";
 
 import * as turf from "@turf/turf";
 
-export function distanceMarkersInPoint(data, territoires) {
+export function distanceMarkersInPoint(data, storeTerritoire) {
   const rnfCoords = coordinateMarker(data);
-  return territoires
-    .map((territoire) => {
-      const territoireCoords = territoire.geo_point_2d;
-      const from = turf.point([rnfCoords[1], rnfCoords[0]]);
-      const to = turf.point([territoireCoords.lon, territoireCoords.lat]);
-      const distance = turf.distance(from, to);
 
-      let dep_code = ""
-      let reg_code = ""
+  return storeTerritoire
+    .map((territoire) => {
+      const rnf = turf.point([rnfCoords[1], rnfCoords[0]]);
+      const territoireCoords = turf.point([
+        territoire.geo_point_2d.lon,
+        territoire.geo_point_2d.lat,
+      ]);
+      const distance = turf.distance(rnf, territoireCoords);
+
+      let dep_code = "";
+      let reg_code = "";
 
       if (territoire.dep_code) {
-            dep_code = territoire.dep_code[0];
-          } else {
-            reg_code = territoire.reg_code[0];
-          }
+        dep_code = territoire.dep_code[0];
+      } else {
+        reg_code = territoire.reg_code[0];
+      }
 
       return {
         distance: distance,

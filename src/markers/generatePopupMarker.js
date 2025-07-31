@@ -2,7 +2,7 @@ import L from "leaflet";
 import { storeRegion } from "../datas/storeRegion";
 import { storeDepartments } from "../datas/storeDepartments";
 
-export let markerSelect = null 
+export let markerSelect = null;
 
 export function generatePopupMarker(data, marker, map) {
   // Search marker in data
@@ -24,7 +24,7 @@ export function generatePopupMarker(data, marker, map) {
       (department) => department.dep_code[0] === markerSelect.dep_code[0]
     );
   }
-  
+
   // Create Popup
   const popup = L.popup();
   popup
@@ -44,13 +44,13 @@ export function generatePopupMarker(data, marker, map) {
           : ""
       }
        ${
-        departmentName
-          ? `<div class="toolType-info">
+         departmentName
+           ? `<div class="toolType-info">
       <p class="toolType-sbTitle">Département :</p>
       <p>${departmentName[0].dep_name[0]}</p>
       </div>`
-          : ""
-      }
+           : ""
+       }
 
       <div class="toolType-info">
         <p class="toolType-sbTitle">Surface : </p>

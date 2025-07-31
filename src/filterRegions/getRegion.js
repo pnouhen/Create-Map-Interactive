@@ -9,6 +9,6 @@ export function getRegion(map) {
 
   const zoom = regionSelect[0];
   centerPolygon(zoom, map);
-  
-  getTerritoire(markersRegion, zoom);
+
+  getTerritoire(markersRegion);
 }

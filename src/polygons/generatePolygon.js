@@ -1,18 +1,14 @@
-import L from "leaflet";
 import { clearPolygons } from "./clearPloygons";
+import { createPolygon } from "./createPolygon";
 
 export function generatePolygons(data, currentPolygon, color, map) {
-  clearPolygons(currentPolygon, map); 
+  clearPolygons(currentPolygon, map);
 
   if (data.type === "MultiPolygon" && data.coordinates[0][0].length > 2) {
-    data.coordinates.forEach(polygonCoords => {
-      const latLng = polygonCoords[0].map(coord => [coord[1], coord[0]]);
-      const polygon = L.polygon(latLng, { color: color }).addTo(map);
-      currentPolygon.push(polygon);
+    data.coordinates.forEach((polygonCoords) => {
+      createPolygon(polygonCoords[0], color, map, currentPolygon);
     });
   } else {
-    const latLng = data.coordinates[0].map(coord => [coord[1], coord[0]]);
-    const polygon = L.polygon(latLng, { color: color }).addTo(map);
-    currentPolygon.push(polygon);
+    createPolygon(data.coordinates[0], color, map, currentPolygon);
   }
 }

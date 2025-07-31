@@ -5,7 +5,7 @@ export function filterPolygon(rnf, circleTurf) {
 
   const coordinates = rnf.geometry.coordinates;
 
-  // MultiPolygon
+  // For multi-polygon
   if (coordinates.length > 1) {
     for (const poly of coordinates) {
       const polygon = turf.polygon([poly[0]]);

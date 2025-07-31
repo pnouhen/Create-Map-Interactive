@@ -3,7 +3,7 @@ import { filterTerritoires } from "../filterTerritoires/filterTerritoires";
 import { generateRegion } from "../filterRegions/generateRegion";
 import { generateListRegion } from "../filterRegions/generateListRegion";
 import { onButtonClick } from "../filterTerritoires/onButtonClick";
-import { departmentReady, storeDepartments } from "../datas/storeDepartments";
+import { storeDepartments } from "../datas/storeDepartments";
 import { arrayLiDep } from "../filterDepartments/configureDepartmentFilter";
 
 const searchRegion = document.getElementById("searchRegion");
@@ -25,7 +25,6 @@ async function filterRegions() {
 
     const arrayLi = searchRegionAutoComplete.querySelectorAll(".li");
 
-    await departmentReady();
     const onClickRegion = () => {
       generateRegion(searchRegionText, storeRegion);
 

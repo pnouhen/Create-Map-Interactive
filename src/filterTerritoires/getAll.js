@@ -10,20 +10,14 @@ import { centerAll } from "./centerAll";
 
 export function getAll(map, currentPolygonReg) {
   clearPolygons(currentPolygonDep, map);
-
   if (currentPolygonReg) {
     clearPolygons(currentPolygonReg, map);
   }
 
   generateClusters(storeRnf);
-
   searchRnfArea(storeRnf);
-
   searchRnfName(storeRnf);
-
   filterRange(storeRnf);
-
-  getDistance(storeRnf,"clean");
-
+  getDistance(storeRnf, "clean");
   centerAll(map);
 }

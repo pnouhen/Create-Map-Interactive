@@ -5,5 +5,4 @@ export function onButtonClick(button, search, autoComplete) {
   button.classList.add("cursor-pointer");
   handleButtonAnimation(search, autoComplete);
   handleOutside(autoComplete);
-  
 }

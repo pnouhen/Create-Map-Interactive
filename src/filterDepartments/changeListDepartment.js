@@ -10,7 +10,7 @@ const searchDepartmentAutoComplete = searchDepartment.querySelector(
   ".searchTerritoireAutoComplete"
 );
 
-export function choiceListDepartment(
+export function changeListDepartment(
   storeDepartments,
   searchDepartmentButton,
   searchDepartmentText,
@@ -30,6 +30,7 @@ export function choiceListDepartment(
       generateListDep(searchDepartmentAutoComplete, storeDepartments);
     }
 
+    // Reactivate the filter
     configureDepartmentFilter(
       storeDepartments,
       searchDepartmentButton,

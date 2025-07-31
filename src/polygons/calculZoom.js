@@ -2,7 +2,6 @@ import { generateGapMinMax } from "./generateGapMinMax";
 
 export function calculZoom(data, map) {
   const geometry = data.geometry;
-
   const coordinates = generateGapMinMax(geometry);
 
   const northEast = coordinates._northEast;

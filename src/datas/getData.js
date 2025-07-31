@@ -1,5 +1,6 @@
 import { fetchData } from "./fetchData";
 
+// SessionStorage management
 export async function getData(apiUrl, dataName) {
   let local = []
       if(!sessionStorage.getItem(dataName)){

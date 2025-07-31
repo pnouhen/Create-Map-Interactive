@@ -7,7 +7,7 @@ const areaMaxRnf = document.getElementById("areaMaxRnf");
 const inputAreaMinRnf = areaMinRnf.querySelector("input");
 const inputAreaMaxRnf = areaMaxRnf.querySelector("input");
 
-export function searchRnfArea(data, zoom) {
+export function searchRnfArea(data) {
   let valueMinMax = findRnfAreaMinMax(data);
   let minValue = valueMinMax.min;
   let maxValue = valueMinMax.max;
@@ -15,6 +15,6 @@ export function searchRnfArea(data, zoom) {
   inputAreaMinRnf.value = Number(minValue).toLocaleString();
   inputAreaMaxRnf.value = Number(maxValue).toLocaleString();
 
-  changeValue(data, zoom, areaMinRnf, inputAreaMinRnf, valueMinMax, "min");
-  changeValue(data, zoom, areaMaxRnf, inputAreaMaxRnf, valueMinMax, "max");
+  changeValue(data, areaMinRnf, inputAreaMinRnf, valueMinMax, "min");
+  changeValue(data, areaMaxRnf, inputAreaMaxRnf, valueMinMax, "max");
 }

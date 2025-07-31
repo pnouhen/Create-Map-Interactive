@@ -9,12 +9,12 @@ import { clearPolygons } from "../polygons/clearPloygons";
 export function generateMarker(data, map) {
   let markers = [];
 
-  data.forEach((el) => {
-    const latLng = coordinateMarker(el);
+  data.forEach((rnf) => {
+    const latLng = coordinateMarker(rnf);
     const marker = L.marker(latLng, { icon: redIcon });
     
     // Associate dataRnn.features =>  marker
-    marker["id"] = el.id;
+    marker["id"] = rnf.id;
 
     // Generate ToolTip
     marker.on("click", (marker) => {
@@ -22,7 +22,6 @@ export function generateMarker(data, map) {
       generatePolygonRnf(data, marker, map, latLng);
     });
 
-    // Push marker in markers
     markers.push(marker);
   });
   return markers;

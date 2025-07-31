@@ -7,6 +7,8 @@ export async function fetchData(apiUrl, dataName) {
     }
 
     const data = await response.json();
+
+    // SessionStorage is limited at 10Mo
     if (dataName !== "region") {
       sessionStorage.setItem(dataName, JSON.stringify(data));
     }

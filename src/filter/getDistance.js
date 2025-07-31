@@ -6,7 +6,8 @@ import { filterRange } from "./filterRange";
 const checkBoxDistance = document.getElementById("checkBoxDistance");
 const checkBoxRange = document.getElementById("checkBoxRange");
 
-export function getDistance(data,action) {
+export function getDistance(data, action) {
+  // Delete other checkbox
   if (action === "clean") {
     checkBoxDistance.checked = false;
     generateDistance(checkBoxDistance.checked);
@@ -16,12 +17,11 @@ export function getDistance(data,action) {
     generateDistance(checkBoxDistance.checked);
     if (checkBoxDistance.checked && checkBoxRange.checked) {
       checkBoxRange.checked = false;
-      filterRange(data)
-      if(data.length === 0)
-      generateClusters(storeRnf)
-    else {
-      generateClusters(data)
-    }
+      filterRange(data);
+      if (data.length === 0) generateClusters(storeRnf);
+      else {
+        generateClusters(data);
+      }
     }
   });
 }

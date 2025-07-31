@@ -10,5 +10,5 @@ export function centerAll(map) {
   const lng = lngDefault;
   const zoom = zoomDefault;
 
-  newSetview(map,lat, lng, zoom);
+  newSetview(map, lat, lng, zoom);
 }

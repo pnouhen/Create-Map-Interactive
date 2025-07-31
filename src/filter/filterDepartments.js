@@ -1,6 +1,6 @@
 import { departmentReady, storeDepartments } from "../datas/storeDepartments";
 import { onButtonClick } from "../filterTerritoires/onButtonClick";
-import { choiceListDepartment } from "../filterDepartments/choiceListDepartment";
+import { changeListDepartment } from "../filterDepartments/changeListDepartment";
 import { regionReady, storeRegion } from "../datas/storeRegion";
 import { configureDepartmentFilter } from "../filterDepartments/configureDepartmentFilter";
 import { generateListDep } from "../filterDepartments/generateListDepartment";
@@ -32,7 +32,7 @@ async function filterDepartments() {
 
     await regionReady();
     if (storeRegion.length > 0) {
-      choiceListDepartment(
+      changeListDepartment(
         storeDepartments,
         searchDepartmentButton,
         searchDepartmentText,

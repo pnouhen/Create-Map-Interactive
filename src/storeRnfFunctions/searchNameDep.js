@@ -1,6 +1,4 @@
-import { storeDepartments } from "../datas/storeDepartments";
-
-export function searchNameDep(data) {
+export function searchNameDep(data, storeDepartments) {
   data.map((rnf) => {
     if (rnf.dep_code === undefined) {
       storeDepartments.forEach((dep) => {

@@ -12,10 +12,10 @@ export const regionReady = async () => {
     "https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/regions-et-collectivites-doutre-mer-france@toursmetropole/records?limit=20&refine=year%3A%222025%22",
     "region"
   );
-
-  if (apiResponse.results?.length > 0) {
+  if (apiResponse !== undefined) {
     const regions = apiResponse.results;
 
+    // Add regions witch aren't in the API
     regions.push(saintBarthelemy, saintMartin, terresAustrales);
 
     storeRegion = regions;

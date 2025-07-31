@@ -1,5 +1,6 @@
 import { generateMarkerInput } from "../searchRnfName/generateMarkerInput";
 import { disableAutoComplete } from "../utils/disableAutoComplete";
+import { updateElementListener } from "../utils/updateElementListener";
 
 export function navigateList(
   button,
@@ -12,12 +13,10 @@ export function navigateList(
   let indexLi = -1;
   let mouseEnabled = true;
 
-  // Réactivation de la souris au prochain vrai mouvement
+  // Hover management
   window.addEventListener("mousemove", () => {
     mouseEnabled = true;
   });
-
-  // Ajout des handlers souris
   arrayLi.forEach((li, index) => {
     li.addEventListener("mouseenter", () => {
       if (!mouseEnabled) return;
@@ -26,7 +25,7 @@ export function navigateList(
     });
   });
 
-  // Navigation clavier
+  // Navigation keydown
   const navigate = (e) => {
     mouseEnabled = false;
 
@@ -47,15 +46,7 @@ export function navigateList(
     }
   };
 
-  // Supprimer ancien listener si présent
-  if (button._customKeydown) {
-    button.removeEventListener("keydown", button._customKeydown);
-  }
-
-  // Stocker le listener pour le retirer plus tard
-  button._customKeydown = navigate;
-
-  button.addEventListener("keydown", navigate);
+  updateElementListener(button, "keydown", navigate)
 
   // Fonctions internes
   function changeWithArrow() {
@@ -77,13 +68,15 @@ export function navigateList(
         text.textContent = arrayLi[indexLi].textContent;
         text.id = arrayLi[indexLi].id;
       } else {
-        text.value = arrayLi[indexLi].textContent
+        // For function searchName
+        text.value = arrayLi[indexLi].textContent;
         generateMarkerInput(arrayLi[indexLi].textContent, data, autoComplete);
-        disableAutoComplete(autoComplete)
+        disableAutoComplete(autoComplete);
       }
     }
   }
 
+  // Overflow follows Arrows
   function scrollIntoView() {
     arrayLi[indexLi]?.scrollIntoView({
       behavior: "smooth",

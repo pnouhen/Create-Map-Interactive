@@ -16,26 +16,26 @@ export async function departmentReady() {
     "https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/departements-et-collectivites-doutre-mer-france@toursmetropole/records?limit=100",
     "dep"
   );
+
   const listDep = await storeListDep();
 
   if (store && listDep) {
+    // Filtrer and add departments whitch aren't in the API
     const depMissing = searchDepMissing(store, listDep);
-    const deps = await Promise.all(
-      // Filtrer departments whitch aren't in the API
-      depMissing
-        .filter((dep) => dep.manuel !== true)
-        .map(async (dep) => recoverDepMap(dep))
-    );
+    const newDep = await recoverDepMap(depMissing);
 
-    store.results.push(deps[0]);
+    if (newDep) {
+      store.results.push(newDep.results[0]);
 
-    store.results.push(saintBarthelemy);
-    store.results.push(saintMartin);
-    store.results.push(terresAustrales);
+      // Add departments witch aren't in all API
+      store.results.push(saintBarthelemy);
+      store.results.push(saintMartin);
+      store.results.push(terresAustrales);
 
-    storeDepartments = store.results.sort((a, b) =>
-      a.dep_code[0].localeCompare(b.dep_code[0])
-    );
+      storeDepartments = store.results.sort((a, b) =>
+        a.dep_code[0].localeCompare(b.dep_code[0])
+      );
+    }
   }
 }
 

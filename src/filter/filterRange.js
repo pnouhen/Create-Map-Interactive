@@ -8,25 +8,23 @@ const rangeText = document.querySelector(".js-rangeText");
 const checkBoxRange = document.getElementById("checkBoxRange");
 
 export function filterRange(data) {
-  if (checkBoxRange) getDistance("clean");
-
   const onClick = () => {
     generateCircle(inputRange, data, checkBoxRange.checked);
 
+    // Delete other checkbox
     if (checkBoxRange) {
       checkBoxDistance.checked = false;
-      getDistance(data, "clean")
+      getDistance(data, "clean");
     }
   };
 
+  // Actualisation EventListener
   if (checkBoxRange._changeData) {
     checkBoxRange.removeEventListener("change", checkBoxRange._changeData);
     checkBoxRange.checked = false;
     generateCircle(inputRange, data, checkBoxRange.checked);
   }
-
   checkBoxRange._changeData = onClick;
-
   checkBoxRange.addEventListener("change", onClick);
 
   rangeText.textContent = inputRange.value + " km";

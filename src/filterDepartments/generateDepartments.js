@@ -23,6 +23,7 @@ export function generateDepartments(text, data) {
   } else {
     const depSelect = searchDepartment(data, depValue);
 
+    // Departments includes in manuel don't have the polygon
     if (depSelect[0].manuel === undefined) {
       const polygon = depSelect[0].geo_shape.geometry;
       generatePolygons(polygon, currentPolygonDep, colorDep, map);

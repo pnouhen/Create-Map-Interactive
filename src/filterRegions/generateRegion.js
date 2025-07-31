@@ -24,6 +24,7 @@ export function generateRegion(text, data) {
 
     regionSelect = searchRegion(data, regionValue);
 
+    // Departments includes in manuel don't have the polygon
     if (regionSelect[0].manuel === undefined) {
       const polygon = regionSelect[0].geo_shape.geometry;
       generatePolygons(polygon, currentPolygonReg, colorRegion, map);
