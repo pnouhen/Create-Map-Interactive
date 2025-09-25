@@ -4,6 +4,7 @@ import { filterPoint } from "./filterPoint";
 import { filterPolygon } from "./filterPolygon";
 import { generateClusters } from "../markers/generateClusters";
 import { searchRnfName } from "../filter/searchRnfName";
+import { searchRnfArea } from "../filter/searchRnfArea";
 
 export function filterMarkerRange(circle, data) {
   const lat = circle._latlng.lat;
@@ -21,6 +22,8 @@ export function filterMarkerRange(circle, data) {
     .filter((rnf) => filterPolygon(rnf, circleTurf));
 
   searchRnfName(markers);
+
+  searchRnfArea(markers)
 
   generateClusters(markers);
 }

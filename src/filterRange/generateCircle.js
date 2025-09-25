@@ -2,6 +2,7 @@ import L from "leaflet";
 import { generateMap } from "../maps/generateMap";
 import { filterMarkerRange } from "./filterMarkerRange";
 import { generateClusters } from "../markers/generateClusters";
+import { searchRnfArea } from "../filter/searchRnfArea";
 
 const map = generateMap();
 
@@ -54,7 +55,8 @@ export function generateCircle(input, data, isActive) {
     if (circle) {
       map.removeLayer(circle);
     }
-
     generateClusters(data);
+    
+    searchRnfArea(data)
   }
 }

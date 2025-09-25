@@ -6,6 +6,7 @@ import { cleanInputList } from "../searchRnfName/cleanInputList.js";
 import { generateMap } from "../maps/generateMap.js";
 import { updateElementListener } from "../utils/updateElementListener.js";
 import { showAutoComplete } from "../utils/showAutoComplete.js";
+import { searchRnfArea } from "./searchRnfArea.js";
 
 const searchRnfInput = document.getElementById("searchRnf");
 const searchRnfAutoComplete = document.getElementById("searchRnfAutoComplete");
@@ -30,6 +31,8 @@ export function searchRnfName(data) {
     generateListRnf(searchRnfAutoComplete, searchRnfInput, data);
 
     generateMarkerInput(searchRnfInput.value, data, map);
+
+    searchRnfArea(data)
   };
 
   updateElementListener(searchRnfInput, "input", searchRnfValue);

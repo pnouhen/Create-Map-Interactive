@@ -1,3 +1,4 @@
+import { searchRnfArea } from "../filter/searchRnfArea";
 import { generateMap } from "../maps/generateMap";
 import { centerMarkers } from "../markers/centerMarkers";
 import { coordinateMarker } from "../markers/coordinateMarker";
@@ -14,5 +15,7 @@ export function generateMarkerInput(value, data, autoComplete) {
     centerMarkers(markerSelect[0], map, latLng);
 
     autoComplete.innerHTML = "";
+
+    searchRnfArea(markerSelect)
   }
 }
