@@ -4,6 +4,7 @@ import { changeListDepartment } from "../filterDepartments/changeListDepartment"
 import { regionReady, storeRegion } from "../datas/storeRegion";
 import { configureDepartmentFilter } from "../filterDepartments/configureDepartmentFilter";
 import { generateListDep } from "../filterDepartments/generateListDepartment";
+import { storeRnf } from "../datas/storeRnf";
 
 const searchDepartment = document.getElementById("searchDepartment");
 const searchDepartmentButton = searchDepartment.querySelector("button");
@@ -14,7 +15,7 @@ const searchDepartmentAutoComplete = searchDepartment.querySelector(
 
 async function filterDepartments() {
   await departmentReady();
-  if (storeDepartments.length > 0) {
+  if (storeDepartments.length > 0 && storeRnf.length > 0) {
     generateListDep(searchDepartmentAutoComplete, storeDepartments);
 
     onButtonClick(

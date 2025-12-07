@@ -1,3 +1,5 @@
+import { errorData } from "./errorData";
+
 export async function fetchData(apiUrl, dataName) {
   try {
     const response = await fetch(apiUrl);
@@ -15,5 +17,6 @@ export async function fetchData(apiUrl, dataName) {
     return data;
   } catch (error) {
     console.error("Catch :", error.message);
+    errorData()
   }
 }
