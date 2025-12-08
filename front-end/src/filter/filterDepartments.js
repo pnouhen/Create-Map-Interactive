@@ -15,7 +15,9 @@ const searchDepartmentAutoComplete = searchDepartment.querySelector(
 
 async function filterDepartments() {
   await departmentReady();
-  if (storeDepartments.length > 0 && storeRnf.length > 0) {
+  if (storeDepartments.length === 0) {
+    searchDepartmentButton.classList.add("button-territoire-inactive");
+  } else {
     generateListDep(searchDepartmentAutoComplete, storeDepartments);
 
     onButtonClick(
@@ -40,8 +42,6 @@ async function filterDepartments() {
         searchDepartmentAutoComplete
       );
     }
-  } else {
-    searchDepartmentButton.classList.add("button-territoire-inactive");
   }
 }
 

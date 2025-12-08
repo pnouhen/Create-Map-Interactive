@@ -12,38 +12,38 @@ export let storeRnf = [];
 
 export async function rnfReady() {
   // Api for Corse
-  const storeRnc = await getData(
-    "https://apicarto.ign.fr/api/nature/rnc",
-    "dataRnc"
-  );
+  // const storeRnc = await getData(
+  //   "https://apicarto.ign.fr/api/nature/rnc",
+  //   "dataRnc"
+  // );
 
-  // API for the rest
-  const storeRnn = await getData(
-    "https://apicarto.ign.fr/api/nature/rnn",
-    "dataRnn"
-  );
+  // // API for the rest
+  // const storeRnn = await getData(
+  //   "https://apicarto.ign.fr/api/nature/rnn",
+  //   "dataRnn"
+  // );
 
-  storeRnf = [...storeRnn.features, ...storeRnc.features];
+  // storeRnf = [...storeRnn.features, ...storeRnc.features];
 
-  generateRnfArea(storeRnf);
+  // generateRnfArea(storeRnf);
 
-  associateRnfTerritoiresManuel(storeRnf);
+  // associateRnfTerritoiresManuel(storeRnf);
 
-  await departmentReady();
-  if (storeDepartments.length > 0) {
-    associateMarkersInPoly(storeRnf, storeDepartments);
+  // await departmentReady();
+  // if (storeDepartments.length > 0) {
+  //   associateMarkersInPoly(storeRnf, storeDepartments);
 
-    searchNameDep(storeRnf, storeDepartments);
+  //   searchNameDep(storeRnf, storeDepartments);
 
-    associateMarkersInPointDep(storeRnf, storeDepartments);
-  }
+  //   associateMarkersInPointDep(storeRnf, storeDepartments);
+  // }
 
-  await regionReady();
-  if (storeRegion.length > 0) {
-    associateMarkersInPoly(storeRnf, storeRegion);
+  // await regionReady();
+  // if (storeRegion.length > 0) {
+  //   associateMarkersInPoly(storeRnf, storeRegion);
 
-    associateMarkersInPointReg(storeRnf, storeRegion);
-  }
+  //   associateMarkersInPointReg(storeRnf, storeRegion);
+  // }
 }
 
 rnfReady();

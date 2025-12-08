@@ -3,8 +3,6 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const app = express();
 
-console.log(process.env.MONGO_URI);
-
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("Connexion à MongoDB réussie !"))
@@ -19,9 +17,17 @@ app.use((req, res, next) => {
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+    "GET"
   );
   next();
+
+  // Routes
+  const regionsRoute = require("./routes/regions.routes")
+  const departementsRoute = require("./routes/departments.routes")
+
+  // Use Routes
+  app.use("/api/regions", regionsRoute)
+  app.use("/api/departments", departementsRoute)
 });
 
 module.exports = app;

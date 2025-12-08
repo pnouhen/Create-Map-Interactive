@@ -19,7 +19,9 @@ const searchDepartmentText = searchDepartment.querySelector(".js-p");
 
 async function filterRegions() {
   await regionReady();
-  if (storeRegion.length > 0 && storeRnf.length > 0) {
+  if (storeRegion.length === 0) {
+    searchRegionButton.classList.add("button-territoire-inactive");
+  } else {
     await generateListRegion(searchRegionAutoComplete, storeRegion);
 
     onButtonClick(searchRegionButton, searchRegion, searchRegionAutoComplete);
@@ -42,8 +44,6 @@ async function filterRegions() {
       searchRegionAutoComplete,
       onClickRegion
     );
-  } else {
-    searchRegionButton.classList.add("button-territoire-inactive");
   }
 }
 

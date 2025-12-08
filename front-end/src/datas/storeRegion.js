@@ -8,13 +8,11 @@ import {
 export let storeRegion = [];
 
 export const regionReady = async () => {
-  const apiResponse = await getData(
-    "https://data.opendatasoft.com/api/explore/v2.1/catalog/datasets/regions-et-collectivites-doutre-mer-france@toursmetropole/records?limit=20&refine=year%3A%222025%22",
+  const regions = await getData(
+    `${import.meta.env.VITE_BASE_API}/api/regions`,
     "region"
   );
-  if (apiResponse !== undefined) {
-    const regions = apiResponse.results;
-
+  if (regions !== undefined) {
     // Add regions witch aren't in the API
     regions.push(saintBarthelemy, saintMartin, terresAustrales);
 
