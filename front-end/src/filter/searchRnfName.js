@@ -11,7 +11,7 @@ import { searchRnfArea } from "./searchRnfArea.js";
 const searchRnfInput = document.getElementById("searchRnf");
 const searchRnfAutoComplete = document.getElementById("searchRnfAutoComplete");
 
-let previousData = storeRnf;
+let previousData = [];
 
 export function searchRnfName(data) {
   const map = generateMap();

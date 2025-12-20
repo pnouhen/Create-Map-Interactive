@@ -25,5 +25,3 @@ export function getDistance(data, action) {
     }
   });
 }
-
-getDistance(storeRnf);

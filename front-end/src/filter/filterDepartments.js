@@ -1,7 +1,7 @@
 import { departmentReady, storeDepartments } from "../datas/storeDepartments";
 import { onButtonClick } from "../filterTerritoires/onButtonClick";
 import { changeListDepartment } from "../filterDepartments/changeListDepartment";
-import { regionReady, storeRegion } from "../datas/storeRegion";
+import { storeRegion } from "../datas/storeRegion";
 import { configureDepartmentFilter } from "../filterDepartments/configureDepartmentFilter";
 import { generateListDep } from "../filterDepartments/generateListDepartment";
 import { storeRnf } from "../datas/storeRnf";
@@ -13,11 +13,12 @@ const searchDepartmentAutoComplete = searchDepartment.querySelector(
   ".searchTerritoireAutoComplete"
 );
 
-async function filterDepartments() {
+export async function filterDepartments() {
   await departmentReady();
-  if (storeDepartments.length === 0) {
-    searchDepartmentButton.classList.add("button-territoire-inactive");
-  } else {
+
+  if (storeDepartments.length > 0 && storeRnf) {
+    searchDepartmentButton.classList.remove("button-territoire-inactive");
+
     generateListDep(searchDepartmentAutoComplete, storeDepartments);
 
     onButtonClick(
@@ -33,7 +34,6 @@ async function filterDepartments() {
       searchDepartmentAutoComplete
     );
 
-    await regionReady();
     if (storeRegion.length > 0) {
       changeListDepartment(
         storeDepartments,
@@ -44,5 +44,3 @@ async function filterDepartments() {
     }
   }
 }
-
-filterDepartments();

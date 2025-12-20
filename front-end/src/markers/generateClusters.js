@@ -12,15 +12,17 @@ let clusterGroup = null;
 const map = generateMap();
 
 export function generateClusters(data) {
-  if (clusterGroup) {
-    map.removeLayer(clusterGroup);
-    clusterGroup.clearLayers();
+  if (data) {
+    if (clusterGroup) {
+      map.removeLayer(clusterGroup);
+      clusterGroup.clearLayers();
+    }
+
+    clusterGroup = L.markerClusterGroup();
+
+    const markers = generateMarker(data, map);
+    markers.forEach((el) => clusterGroup.addLayer(el));
+
+    map.addLayer(clusterGroup);
   }
-
-  clusterGroup = L.markerClusterGroup();
-
-  const markers = generateMarker(data, map);
-  markers.forEach((el) => clusterGroup.addLayer(el));
-  
-  map.addLayer(clusterGroup);
 }

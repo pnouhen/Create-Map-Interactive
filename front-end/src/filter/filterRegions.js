@@ -17,11 +17,12 @@ const searchRegionAutoComplete = searchRegion.querySelector(
 const searchDepartment = document.getElementById("searchDepartment");
 const searchDepartmentText = searchDepartment.querySelector(".js-p");
 
-async function filterRegions() {
-  await regionReady();
-  if (storeRegion.length === 0) {
-    searchRegionButton.classList.add("button-territoire-inactive");
-  } else {
+export async function filterRegions() {
+  await regionReady()
+  
+  if (storeRegion.length > 0 && storeRnf) {
+    searchRegionButton.classList.remove("button-territoire-inactive");
+
     await generateListRegion(searchRegionAutoComplete, storeRegion);
 
     onButtonClick(searchRegionButton, searchRegion, searchRegionAutoComplete);
@@ -46,5 +47,3 @@ async function filterRegions() {
     );
   }
 }
-
-filterRegions();

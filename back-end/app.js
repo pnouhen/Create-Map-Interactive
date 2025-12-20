@@ -24,10 +24,12 @@ app.use((req, res, next) => {
   // Routes
   const regionsRoute = require("./routes/regions.routes")
   const departementsRoute = require("./routes/departments.routes")
+  const rnfRoute = require("./routes/rnf.routes")
 
   // Use Routes
   app.use("/api/regions", regionsRoute)
   app.use("/api/departments", departementsRoute)
+  app.use("/api/rnf", rnfRoute)
 });
 
 module.exports = app;

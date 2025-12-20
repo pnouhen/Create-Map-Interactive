@@ -1,9 +1,9 @@
 import { getData } from "./getData";
 import { associateMarkersInPoly } from "../storeRnf/associateMarkersInPoly";
 import { generateRnfArea } from "../storeRnf/generateRnfArea";
-import { regionReady, storeRegion } from "./storeRegion";
+import { storeRegion } from "./storeRegion";
 import { associateRnfTerritoiresManuel } from "../storeRnf/associateRnfTerritoiresManuel";
-import { departmentReady, storeDepartments } from "./storeDepartments";
+import { storeDepartments } from "./storeDepartments";
 import { searchNameDep } from "../storeRnf/searchNameDep";
 import { associateMarkersInPointDep } from "../storeRnf/associateMarkersInPointDep";
 import { associateMarkersInPointReg } from "../storeRnf/associateMarkersInPointReg";
@@ -11,39 +11,26 @@ import { associateMarkersInPointReg } from "../storeRnf/associateMarkersInPointR
 export let storeRnf = [];
 
 export async function rnfReady() {
-  // Api for Corse
-  // const storeRnc = await getData(
-  //   "https://apicarto.ign.fr/api/nature/rnc",
-  //   "dataRnc"
-  // );
+  storeRnf = await getData(
+    `${import.meta.env.VITE_BASE_API}/api/rnf`,
+    "dataRnf"
+  );
+  if (storeRnf) {
+    generateRnfArea(storeRnf);
+    associateRnfTerritoiresManuel(storeRnf);
+  }
 
-  // // API for the rest
-  // const storeRnn = await getData(
-  //   "https://apicarto.ign.fr/api/nature/rnn",
-  //   "dataRnn"
-  // );
+  if (storeRegion.length > 0) {
+    associateMarkersInPoly(storeRnf, storeRegion);
 
-  // storeRnf = [...storeRnn.features, ...storeRnc.features];
+    associateMarkersInPointReg(storeRnf, storeRegion);
+  }
 
-  // generateRnfArea(storeRnf);
+  if (storeDepartments.length > 0) {
+    associateMarkersInPoly(storeRnf, storeDepartments);
 
-  // associateRnfTerritoiresManuel(storeRnf);
+    searchNameDep(storeRnf, storeDepartments);
 
-  // await departmentReady();
-  // if (storeDepartments.length > 0) {
-  //   associateMarkersInPoly(storeRnf, storeDepartments);
-
-  //   searchNameDep(storeRnf, storeDepartments);
-
-  //   associateMarkersInPointDep(storeRnf, storeDepartments);
-  // }
-
-  // await regionReady();
-  // if (storeRegion.length > 0) {
-  //   associateMarkersInPoly(storeRnf, storeRegion);
-
-  //   associateMarkersInPointReg(storeRnf, storeRegion);
-  // }
+    associateMarkersInPointDep(storeRnf, storeDepartments);
+  }
 }
-
-rnfReady();

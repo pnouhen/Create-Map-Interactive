@@ -8,7 +8,7 @@ import {
 export let storeRegion = [];
 
 export const regionReady = async () => {
-  const regions = await getData(
+  let regions = await getData(
     `${import.meta.env.VITE_BASE_API}/api/regions`,
     "region"
   );
@@ -19,6 +19,3 @@ export const regionReady = async () => {
     storeRegion = regions;
   }
 };
-
-regionReady()
-

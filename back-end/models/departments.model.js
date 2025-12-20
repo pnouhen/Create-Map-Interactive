@@ -5,21 +5,23 @@ const geo_point_2dSchema = new mongoose.Schema({
   lat: { type: Number, required: true },
 });
 
+const geometrySchema = new mongoose.Schema({
+  type: {
+    type: String,
+    required: true,
+  },
+  coordinates: {
+    type: [[[[{ type: Number }, { type: Number }]]]],
+    required: true,
+  },
+});
+
 const geo_shapeSchema = new mongoose.Schema({
   type: {
     type: String,
     required: true,
   },
-  geometry: {
-    type: {
-      type: String,
-      required: true,
-    },
-    coordinates: {
-      type: [[[[{ type: Number }, { type: Number }]]]],
-      required: true,
-    },
-  },
+  geometry: { geometrySchema },
 });
 
 const departementsSchema = new mongoose.Schema({

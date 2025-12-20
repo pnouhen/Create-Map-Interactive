@@ -1,5 +1,3 @@
-import { errorData } from "./errorData";
-
 export async function fetchData(apiUrl, dataName) {
   try {
     const response = await fetch(apiUrl);
@@ -11,12 +9,11 @@ export async function fetchData(apiUrl, dataName) {
     const data = await response.json();
 
     // SessionStorage is limited at 10Mo
-    if (dataName !== "region") {
+    if (dataName !== "dep") {
       sessionStorage.setItem(dataName, JSON.stringify(data));
     }
     return data;
   } catch (error) {
     console.error("Catch :", error.message);
-    errorData()
   }
 }
