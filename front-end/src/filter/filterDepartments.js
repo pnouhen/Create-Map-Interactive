@@ -1,4 +1,4 @@
-import { departmentReady, storeDepartments } from "../datas/storeDepartments";
+import { storeDepartments } from "../datas/storeDepartments";
 import { onButtonClick } from "../filterTerritoires/onButtonClick";
 import { changeListDepartment } from "../filterDepartments/changeListDepartment";
 import { storeRegion } from "../datas/storeRegion";
@@ -14,8 +14,6 @@ const searchDepartmentAutoComplete = searchDepartment.querySelector(
 );
 
 export async function filterDepartments() {
-  await departmentReady();
-
   if (storeDepartments.length > 0 && storeRnf) {
     searchDepartmentButton.classList.remove("button-territoire-inactive");
 

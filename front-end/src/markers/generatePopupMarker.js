@@ -12,6 +12,7 @@ export function generatePopupMarker(data, marker, map) {
   // Search region in storeRegion
   let regionName = "";
   if (storeRegion.length > 0) {
+
     regionName = storeRegion.filter(
       (region) => region.reg_code[0] === markerSelect.reg_code[0]
     );

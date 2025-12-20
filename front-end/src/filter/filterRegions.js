@@ -1,4 +1,4 @@
-import { regionReady, storeRegion } from "../datas/storeRegion";
+import { storeRegion } from "../datas/storeRegion";
 import { filterTerritoires } from "../filterTerritoires/filterTerritoires";
 import { generateRegion } from "../filterRegions/generateRegion";
 import { generateListRegion } from "../filterRegions/generateListRegion";
@@ -18,7 +18,6 @@ const searchDepartment = document.getElementById("searchDepartment");
 const searchDepartmentText = searchDepartment.querySelector(".js-p");
 
 export async function filterRegions() {
-  await regionReady()
   
   if (storeRegion.length > 0 && storeRnf) {
     searchRegionButton.classList.remove("button-territoire-inactive");

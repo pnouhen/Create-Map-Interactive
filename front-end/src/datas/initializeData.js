@@ -7,9 +7,14 @@ import { rnfReady, storeRnf } from "./storeRnf";
 import { generateLoader } from "../loader/generateLoader";
 import { filterRegions } from "../filter/filterRegions";
 import { filterDepartments } from "../filter/filterDepartments";
+import { regionReady } from "./storeRegion";
+import { departmentReady } from "./storeDepartments";
 
 async function initializeData() {
+  await regionReady();
+  await departmentReady();
   await rnfReady();
+
   searchRnfName(storeRnf);
   searchRnfArea(storeRnf);
   filterRange(storeRnf);
